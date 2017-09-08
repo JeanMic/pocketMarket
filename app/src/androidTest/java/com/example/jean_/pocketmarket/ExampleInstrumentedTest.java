@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.example.jean_.pocketmarket", appContext.getPackageName());
-        String teste = "testando";
+        String teste = "testando import";
     }
 }
