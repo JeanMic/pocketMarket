@@ -1,4 +1,4 @@
-package modelo;
+package com.example.jean_.pocketmarket.modelo;
 
 /**
  * Created by jean_ on 11/09/2017.
