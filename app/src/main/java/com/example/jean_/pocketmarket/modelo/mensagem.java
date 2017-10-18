@@ -8,32 +8,31 @@ import java.util.Date;
 
 public class mensagem {
 
-    private int CPFCNPJEnvio;
-
-    private int CPFCNPJRecebimento;
+    private int CPFCNPJRemetente;
 
     private String nomeRazaoSocialRemetente;
+
+    private int CPFCNPJDestinatario;
 
     private Date DataHoraEnvio;
 
     private String Mensagem;
 
 
-
-    public void setCPFCNPJEnvio(int CPFCNPJEnvio) {
-        this.CPFCNPJEnvio = CPFCNPJEnvio;
+    public void setCPFCNPJEnvio(int CPFCNPJremetente) {
+        this.CPFCNPJRemetente = CPFCNPJremetente;
     }
 
-    public int getCPFCNPJEnvio() {
-        return CPFCNPJEnvio;
+    public int getCPFCNPJremetente() {
+        return CPFCNPJRemetente;
     }
 
-    public void setCPFCNPJRecebimento(int CPFCNPJRecebimento) {
-        this.CPFCNPJRecebimento = CPFCNPJRecebimento;
+    public void setCPFCNPJdestinatario(int CPFCNPJdestinatario) {
+        this.CPFCNPJDestinatario = CPFCNPJdestinatario;
     }
 
-    public int getCPFCNPJRecebimento() {
-        return CPFCNPJRecebimento;
+    public int getCPFCNPJdestinatario() {
+        return CPFCNPJDestinatario;
     }
 
     public void setNomeRazaoSocialRemetente(String nomeRazaoSocialRemetente) {

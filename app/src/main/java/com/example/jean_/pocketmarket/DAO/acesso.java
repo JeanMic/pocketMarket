@@ -10,23 +10,34 @@ import java.sql.Statement;
  * Created by jean_ on 15/10/2017.
  */
 
-public abstract class acesso {
+public abstract class acesso implements metodosDAO {
 
     Connection connection = null;
     ResultSet rs = null;
     Statement stm = null;
+    String sql = null;
 
-     public Statement createStatement() throws ClassNotFoundException {
+    public acesso() throws ClassNotFoundException {
 
-     try {
-        Class.forName("com.mysql.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market", "root", "123");
-        stm = connection.createStatement();
-        return stm;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market", "root", "123");
+            stm = connection.createStatement();
 
-    }catch(SQLException e){
+        } catch (SQLException e) {
             e.getErrorCode();
-            return null;
         }
     }
+
+    public void desconecta() throws SQLException {
+        if (!connection.isClosed())
+            connection.close();
+
+        if (!stm.isClosed())
+            stm.close();
+
+        if (rs.isClosed())
+            rs.close();
+    }
+
 }
