@@ -32,9 +32,9 @@ public abstract class usuario {
 
     private String UFComResi;
 
-    private String loginComResi;
+    private String login;
 
-    private String senhaComResi;
+    private String senha;
 
 
     public void setCPFCNPJ(int CPFCNPJ) {
@@ -141,20 +141,20 @@ public abstract class usuario {
         return UFComResi;
     }
 
-    public void setLoginComResi(String loginComResi) {
-        this.loginComResi = loginComResi;
+    public void setLogin(String loginComResi) {
+        this.login = login;
     }
 
-    public String getLoginComResi() {
-        return loginComResi;
+    public String getLogin() {
+        return login;
     }
 
-    public void setSenhaComResi(String senhaComResi) {
-        this.senhaComResi = senhaComResi;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
-    public String getSenhaComResi() {
-        return senhaComResi;
+    public String getSenha() {
+        return senha;
     }
 
 }
