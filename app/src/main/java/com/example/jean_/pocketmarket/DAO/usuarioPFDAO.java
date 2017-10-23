@@ -64,7 +64,7 @@ public class usuarioPFDAO extends acesso {
                 "'" + usuario.getIdade() + "', \n" +
                 "        '0',\n" +
                 "        '',\n" +
-                "        '');";
+                "        '');";//
         try {
             rs = stm.executeQuery(sql);
             this.desconecta();
