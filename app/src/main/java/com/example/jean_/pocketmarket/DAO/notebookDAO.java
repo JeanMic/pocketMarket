@@ -1,6 +1,5 @@
 package com.example.jean_.pocketmarket.DAO;
 
-import com.example.jean_.pocketmarket.modelo.computadoresNotebooks;
 import com.example.jean_.pocketmarket.modelo.notebook;
 
 import java.sql.SQLException;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
  * Created by jean_ on 17/10/2017.
  */
 
-public class notebookDAO extends acesso {
+public class notebookDAO extends acesso implements metodosDAO {
 
     public notebookDAO() throws ClassNotFoundException {
     }

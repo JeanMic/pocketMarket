@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Created by jean_ on 17/10/2017.
  */
 
-public class celularesTelefoniaDAO extends acesso {
+public class celularesTelefoniaDAO extends acesso implements metodosDAO {
 
 
     public celularesTelefoniaDAO() throws ClassNotFoundException {

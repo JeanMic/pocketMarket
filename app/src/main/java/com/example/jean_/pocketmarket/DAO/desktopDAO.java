@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Created by jean_ on 17/10/2017.
  */
 
-public class desktopDAO extends acesso {
+public class desktopDAO extends acesso implements metodosDAO {
 
 
     public desktopDAO() throws ClassNotFoundException {

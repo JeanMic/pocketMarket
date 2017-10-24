@@ -10,7 +10,7 @@ import java.sql.Statement;
  * Created by jean_ on 15/10/2017.
  */
 
-public abstract class acesso implements metodosDAO {
+public abstract class acesso {
 
     Connection connection = null;
     ResultSet rs = null;

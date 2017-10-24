@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Created by jean_ on 17/10/2017.
  */
 
-public class servicosDAO extends acesso {
+public class servicosDAO extends acesso implements metodosDAO {
 
     public servicosDAO() throws ClassNotFoundException {
     }

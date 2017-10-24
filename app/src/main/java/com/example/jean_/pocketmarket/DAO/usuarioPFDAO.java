@@ -9,7 +9,7 @@ import com.example.jean_.pocketmarket.modelo.usuarioPF;
  * Created by jean_ on 17/10/2017.
  */
 
-public class usuarioPFDAO extends acesso {
+public class usuarioPFDAO extends acesso implements metodosDAO {
 
     public usuarioPFDAO() throws ClassNotFoundException {
     }

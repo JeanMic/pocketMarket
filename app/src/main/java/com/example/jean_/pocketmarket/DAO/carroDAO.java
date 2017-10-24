@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Created by jean_ on 17/10/2017.
  */
 
-public class carroDAO extends acesso {
+public class carroDAO extends acesso implements metodosDAO {
 
     public carroDAO() throws ClassNotFoundException {
     }

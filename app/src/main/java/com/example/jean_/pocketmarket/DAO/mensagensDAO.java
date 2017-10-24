@@ -1,6 +1,5 @@
 package com.example.jean_.pocketmarket.DAO;
 
-import com.example.jean_.pocketmarket.DAO.acesso;
 import com.example.jean_.pocketmarket.modelo.mensagem;
 
 import java.sql.SQLException;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
  * Created by jean_ on 17/10/2017.
  */
 
-public class mensagensDAO extends acesso {
+public class mensagensDAO extends acesso implements metodosDAO {
 
     public mensagensDAO() throws ClassNotFoundException {
     }
