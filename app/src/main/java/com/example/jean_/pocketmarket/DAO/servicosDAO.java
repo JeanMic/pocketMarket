@@ -30,8 +30,8 @@ public class servicosDAO extends acesso {
                 "'" + serv.getTituloServico() + "', \n" +
                 "'" + serv.getDescricaoServico() + "',\n" +
                 "'" + serv.getCategoriaServico() + "', \n" +
-                "'" + serv.getPrecoServico() + "',\n" +
-                "'" + DEFINIR ONDE VOU PEGAR O CPF DO USUARIO LOGADO +")'";
+                "'" + serv.getPrecoServico() + "',\n"; //+
+               // "'" + DEFINIR ONDE VOU PEGAR O CPF DO USUARIO LOGADO +")'";
         try {
             rs = stm.executeQuery(sql);
             this.desconecta();

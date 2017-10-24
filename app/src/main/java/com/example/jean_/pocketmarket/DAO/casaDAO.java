@@ -76,8 +76,8 @@ public class casaDAO extends acesso {
                 "INSERT INTO market.produtoimovel_has_usuario (\n" +
                 "produtoImovel_idprodutoImovel,\n" +
                 "usuario_CPFCNPJ\n" +
-                ")\n" +
-                "SELECT LAST_INSERT_ID(), '" + CPF_usuario_logado + "';";
+                ")\n"; //+
+               // "SELECT LAST_INSERT_ID(), '" + CPF_usuario_logado + "';";
 
         try {
             rs = stm.executeQuery(sql);

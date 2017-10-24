@@ -59,8 +59,8 @@ public class celularesTelefoniaDAO extends acesso {
                 "INSERT INTO market.produtocelularestelefonia_has_usuario (\n" +
                 "produtoCelularestelefonia_idprodutoCelularestelefonia,\n" +
                 "usuario_CPFCNPJ\n" +
-                ")\n" +
-                "SELECT LAST_INSERT_ID(), '" + CPF_usuario_logado + "'; ";
+                ")\n"; //+
+               // "SELECT LAST_INSERT_ID(), '" + CPF_usuario_logado + "'; ";
         try {
             rs = stm.executeQuery(sql);
             this.desconecta();

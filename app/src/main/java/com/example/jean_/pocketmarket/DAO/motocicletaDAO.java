@@ -58,8 +58,8 @@ public class motocicletaDAO extends acesso {
                 "'0' , \n" +
                 "\n" +
                 "INSERT INTO market.usuario_has_produtoveiculo ( produtoVeiculo_idVenda,\n" +
-                "usuario_CPFCNPJ )\n" +
-                "SELECT LAST_INSERT_ID(), '" + CPF_usuario_logado + "';";
+                "usuario_CPFCNPJ )\n"; //+
+               // "SELECT LAST_INSERT_ID(), '" + CPF_usuario_logado + "';";
 
         try {
             rs = stm.executeQuery(sql);
