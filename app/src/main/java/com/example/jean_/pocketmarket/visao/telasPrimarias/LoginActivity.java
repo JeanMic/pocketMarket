@@ -1,4 +1,4 @@
-package com.example.jean_.pocketmarket.visao;
+package com.example.jean_.pocketmarket.visao.telasPrimarias;
 
 import android.content.Intent;
 import android.os.StrictMode;
@@ -60,16 +60,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             //se pressionou o botao de login, mandar pro controle o login e senha e testar autenticalção
             case R.id.botaoLogin:
                 try {
-                    controle.autenticacao(txtdoc.getText().toString().trim(), txtsenha.getText().toString().trim());
+
+                    if (controle.autenticacao(txtdoc.getText().toString().trim(), txtsenha.getText().toString().trim())){
+                        //usuario se autenticou com sucesso, criar itent que joga ele pra dentro do app
+                    } else {
+                        //criar aqui a intend do usuario ja autenticado
+                    }
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
             case R.id.textolink:
-                // Navigate to RegisterActivity
-                //Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
-                //startActivity(intentRegister);
+                // cria a intent da tela do formulario de cadastro de Usuarios PF e PJ
+                Intent decisaoCadastro = new Intent(getApplicationContext(), decisaoFormularioCadastro.class);
+                startActivity(decisaoCadastro);
                 break;
         }
     }

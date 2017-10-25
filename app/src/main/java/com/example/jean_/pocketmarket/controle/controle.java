@@ -25,12 +25,13 @@ public class controle {
 
         autenticacao obj = new autenticacao();
         //se trouxe resultado é pq foi encontrado
-        if (obj.select(login, hexSenhaEncripitada.toString())){
+        if (obj.select(login, hexSenhaEncripitada.toString())) {
             obj.desconecta();
             return true;
         } else {
             obj.desconecta();
             return false;
         }
-           }
+
+    }
 }
