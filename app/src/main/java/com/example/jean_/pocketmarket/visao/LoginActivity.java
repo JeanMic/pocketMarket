@@ -61,6 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.botaoLogin:
                 try {
                     controle.autenticacao(txtdoc.getText().toString().trim(), txtsenha.getText().toString().trim());
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
