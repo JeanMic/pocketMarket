@@ -21,7 +21,7 @@ public abstract class acesso {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market", "root", "123");
+            connection = DriverManager.getConnection("jdbc:mysql://JEAN-NOTE:3306/market", "admin", "123");
             stm = connection.createStatement();
 
         } catch (SQLException e) {

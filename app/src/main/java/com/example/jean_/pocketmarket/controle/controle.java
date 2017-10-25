@@ -19,8 +19,8 @@ public class controle {
         byte bytesSenha[] = algoritmo.digest(Senha.getBytes("UTF-8"));
 
         StringBuilder hexSenhaEncripitada = new StringBuilder();
-        for (byte b : bytesSenha) {
-            hexSenhaEncripitada.append(String.format("%02X", 0xFF & b));
+        for (byte byteAtual : bytesSenha) {
+            hexSenhaEncripitada.append(String.format("%02X", 0xFF & byteAtual));
         }
 
         autenticacao obj = new autenticacao();
