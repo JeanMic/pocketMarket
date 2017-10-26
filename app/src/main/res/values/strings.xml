@@ -1,11 +1,20 @@
 <resources>
     <string name="app_name">Pocket Market</string>
     <string name="text_accounts">All Accounts</string>
-    <string name="hint_name">Name</string>
-    <string name="hint_email">CPF / CNPJ</string>
-    <string name="hint_password">Senha</string>
+    <string name="nome">Nome</string>
+    <string name="cpf">CPF</string>
+    <string name="cpfcnpglogin">CPF / CNPJ</string>
+    <string name="email">Email</string>
+    <string name="senhaLogin">Senha</string>
     <string name="hint_confirm_password">Confirm Password</string>
-    <string name="text_login">Login</string>
+    <string name="endereco">Endereço Residencial</string>
+    <string name="cep">CEP</string>
+    <string name="numeroresudencia">Número Residencial</string>
+    <string name="complementoresidencia">Complemento Residencial</string>
+    <string name="bairroresidencial">Bairro</string>
+    <string name="cidaderesidencial">Cidade</string>
+    <string name="UFresidencial">UF</string>
+    <string name="textobotaologin">Login</string>
     <string name="text_decisaoPF">Cadastro Pessoa Fisica</string>
     <string name="text_decisaoPJ">Cadastro Pessoa Juridica</string>
     <string name="text_register">Register</string>
@@ -14,7 +23,7 @@
     <string name="error_message_age">Enter Age</string>
     <string name="error_message_password">Enter Password</string>
     <string name="success_message">Registration Successful</string>
-    <string name="text_not_member">Não Possui Conta? Cadastre-se Agora</string>
+    <string name="textoformulario">Não Possui Conta? Cadastre-se Agora</string>
     <string name="text_already_member">Already a member? Login</string>
     <string name="error_email_exists">Email Already Exists</string>
     <string name="error_password_match">Password Does Not Matches</string>
@@ -22,4 +31,35 @@
     <string name="action_settings">Settings</string>
     <string name="text_hello">Hello,</string>
     <string name="text_title">Android Tutorials Hub</string>
+
+    <string-array name="listaUFs">
+        <item>AC</item>
+        <item>AL</item>
+        <item>AM</item>
+        <item>AP</item>
+        <item>BA</item>
+        <item>CE</item>
+        <item>DF</item>
+        <item>ES</item>
+        <item>GO</item>
+        <item>MA</item>
+        <item>MG</item>
+        <item>MS</item>
+        <item>MT</item>
+        <item>PA</item>
+        <item>PB</item>
+        <item>PE</item>
+        <item>PI</item>
+        <item>PR</item>
+        <item>RJ</item>
+        <item>RN</item>
+        <item>RO</item>
+        <item>RR</item>
+        <item>RS</item>
+        <item>SC</item>
+        <item>SE</item>
+        <item>SP</item>
+        <item>TO</item>
+    </string-array>
+
 </resources>

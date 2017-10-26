@@ -6,9 +6,9 @@ package com.example.jean_.pocketmarket.modelo;
 
 public abstract class usuario {
 
-    private int CPFCNPJ;
+    private int CPFCNPJ; ok
 
-    private byte Foto;
+    private byte Foto; verificar depois
 
     private String tipoUsuario;
 
@@ -16,19 +16,19 @@ public abstract class usuario {
 
     private int telefoneOuCelular;
 
-    private String email;
+    private String email; ok
 
-    private String enderecoComResi;
+    private String enderecoComResi; ok
 
-    private int CEPComResi;
+    private int CEPComResi; ok
 
-    private String complementoComResi;
+    private String complementoComResi; ok
 
-    private String numeroComResi;
+    private String numeroComResi; ok
 
-    private String bairroComResi;
+    private String bairroComResi;ok
 
-    private String cidadeComResi;
+    private String cidadeComResi; ok
 
     private String UFComResi;
 
