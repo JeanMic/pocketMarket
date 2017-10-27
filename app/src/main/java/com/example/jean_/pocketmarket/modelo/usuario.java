@@ -32,7 +32,7 @@ public abstract class usuario {
 
     private String UFComResi;
 
-    private String login;
+    private String login; //vou remover
 
     private String senha;
 
