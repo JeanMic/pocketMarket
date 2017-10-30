@@ -1,6 +1,7 @@
 package com.example.jean_.pocketmarket.controle;
 
 import com.example.jean_.pocketmarket.DAO.autenticacao;
+import com.example.jean_.pocketmarket.modelo.usuarioPF;
 import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPF;
 
 import java.io.UnsupportedEncodingException;
@@ -43,50 +44,25 @@ public class controle {
 
     public static boolean validaEntradasUsuarioPF(formularioPF formPF) {
 
-        if (validaNome(formPF.getTxtNome())) {
-            if (validaCPF(formPF.getTxtCPF())) {
-                if (validaSenha(formPF.getTxtSenha())) {
-                    if (validadataNasc(formPF.getTxtDtNasc())) {
-                        if (validaEmail(formPF.getTxtEmail())) {
-                            if (validaEndereco(formPF.getTxtEndereco())) {
-                                if (validaCep(formPF.getTxtCep())){
-                                    if (validaNumeroResid(formPF.getTxtNumResidencia())){
+        if (validaVazio(formPF.getTxtNome(), "O Nome Deve ser Informado") && validaCPF(formPF.getTxtCPF()) &&
+                validaVazio(formPF.getTxtSenha(), "A Senha Deve ser Informada") && validadataNasc(formPF.getTxtDtNasc()) &&
+                validaEmail(formPF.getTxtEmail()) && validaVazio(formPF.getTxtEndereco(), "O Endereço Deve Ser Informado") &&
+                validaCep(formPF.getTxtCep()) && validaVazio(formPF.getTxtNumResidencia(), "O Número da Residencia Deve Ser Informado") &&
+                validaVazio(formPF.getTxtComplResid(), "O Complemento da Residencia Deve Ser Informado") &&
+                validaVazio(formPF.getTxtBairro(), "O Bairro Deve Ser Informado") &&
+                validaVazio(formPF.getTxtCidade(), "A Cidade Deve Ser Informada") &&
+                getTxtDDDNumCel(formPF.getTxtDDDNumCel())) {
 
-                                    } else {
-                                        formPF.setMsgCtrl(msgErroAtual);
-                                        return false;
-                                    }
-                                } else {
-                                    formPF.setMsgCtrl(msgErroAtual);
-                                    return false;
-                                }
-                            } else{
-                                formPF.setMsgCtrl(msgErroAtual);
-                                return false;
-                            }
-                        } else {
-                            formPF.setMsgCtrl(msgErroAtual);
-                            return false;
-                        }
-                    } else {
-                        formPF.setMsgCtrl(msgErroAtual);
-                        return false;
-                    }
-                } else {
-                    formPF.setMsgCtrl(msgErroAtual);
-                    return false;
-                }
+            usuarioPF usupf = new usuarioPF();
 
-            } else {
-                formPF.setMsgCtrl(msgErroAtual);
-                return false;
-            }
+            usupf.setNome(formPF.getTxtNome());
+
+            //situação positiva aqui
+            return true;
         } else {
             formPF.setMsgCtrl(msgErroAtual);
             return false;
         }
-
-        //fim do metodo
     }
 
     public static boolean validaCPF(String CPF) {
@@ -131,26 +107,26 @@ public class controle {
         }
     }
 
-    public static boolean validaNome(String nome) {
+//    public static boolean validaNome(String nome) {
+//
+//        if ((nome != null) && (nome.length() > 0)) {
+//            return true;
+//        } else {
+//            msgErroAtual = "O Nome Deve ser Informado";
+//            return false;
+//        }
+//
+//    }
 
-        if ((nome != null) && (nome.length() > 0)) {
-            return true;
-        } else {
-            msgErroAtual = "O Nome Deve ser Informado";
-            return false;
-        }
-
-    }
-
-    public static boolean validaSenha(String senha) {
-
-        if ((senha != null) && (senha.length() > 0)) {
-            return true;
-        } else {
-            msgErroAtual = "A Senha Deve ser Informada";
-            return false;
-        }
-    }
+//    public static boolean validaSenha(String senha) {
+//
+//        if ((senha != null) && (senha.length() > 0)) {
+//            return true;
+//        } else {
+//            msgErroAtual = "A Senha Deve ser Informada";
+//            return false;
+//        }
+//    }
 
     public static boolean validadataNasc(String dtNasc) {
 
@@ -166,7 +142,7 @@ public class controle {
                     return false;
                 }
             } else {
-                msgErroAtual = "A data de Nascimento Informada é Inválida";
+                msgErroAtual = "A data de Nascimento Está Incompleta";
                 return false;
             }
 
@@ -194,15 +170,15 @@ public class controle {
         }
     }
 
-    public static boolean validaEndereco(String endereco) {
-
-        if ((endereco != null) && (endereco.length() > 0)) {
-            return true;
-        } else {
-            msgErroAtual = "O Endereço Deve Ser Informado";
-            return false;
-        }
-    }
+//    public static boolean validaEndereco(String endereco) {
+//
+//        if ((endereco != null) && (endereco.length() > 0)) {
+//            return true;
+//        } else {
+//            msgErroAtual = "O Endereço Deve Ser Informado";
+//            return false;
+//        }
+//    }
 
     public static boolean validaCep(String cep) {
 
@@ -221,12 +197,29 @@ public class controle {
         }
     }
 
-    public static boolean validaNumeroResid(String numeroResid) {
+    public static boolean validaVazio(String estaVazio, String MsgErro) {
 
-        if ((numeroResid != null) && (numeroResid.length() > 0)) {
+        if ((estaVazio != null) && (estaVazio.length() > 0)) {
             return true;
         } else {
-            msgErroAtual = "O Número de Residência Deve Ser Informado";
+            msgErroAtual = MsgErro;
+            return false;
+        }
+    }
+
+    public static boolean getTxtDDDNumCel(String numtel) {
+
+        String regexCep = "^\\([0-9]{2}\\)[0-9]{5}-[0-9]{4}$";
+
+        if ((numtel != null) && (numtel.length() > 0)) {
+            if (numtel.matches(numtel)) {
+                return true;
+            } else {
+                msgErroAtual = "O Númedo de DDD e Celular Informado é Inválido";
+                return false;
+            }
+        } else {
+            msgErroAtual = "O Númedo de DDD e Celular Deve Ser Informado";
             return false;
         }
     }
