@@ -8,13 +8,13 @@ import java.util.Date;
 
 public class usuarioPF extends usuario {
 
-    private String nome;
+    private String nome; //ok
 
-    private String sexo;
+    private String sexo; //ok
 
-    private Date dataNascimento;
+    private Date dataNascimento; //ok
 
-    private int idade;
+    private int idade; //sera preenchido em tempo de execução, baseado na data de nascimento
 
 
     public void setNome(String nome) {

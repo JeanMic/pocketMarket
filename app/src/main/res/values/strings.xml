@@ -3,6 +3,7 @@
     <string name="text_accounts">All Accounts</string>
     <string name="nome">Nome</string>
     <string name="cpf">CPF</string>
+    <string name="datanasc">Data Nascimento</string>
     <string name="cpfcnpglogin">CPF / CNPJ</string>
     <string name="email">Email</string>
     <string name="senhaLogin">Senha</string>
@@ -10,6 +11,11 @@
     <string name="endereco">Endereço Residencial</string>
     <string name="cep">CEP</string>
     <string name="numeroresudencia">Número Residencial</string>
+    <string name="dddcel">DDD Celular</string>
+    <string name="numcel">DDD e Número de Celular</string>
+    <string name="senhapf">Senha Usuário</string>
+    <string name="rdfem">Feminino</string>
+    <string name="rdmasc">Masculino</string>
     <string name="complementoresidencia">Complemento Residencial</string>
     <string name="bairroresidencial">Bairro</string>
     <string name="cidaderesidencial">Cidade</string>
@@ -17,7 +23,7 @@
     <string name="textobotaologin">Login</string>
     <string name="text_decisaoPF">Cadastro Pessoa Fisica</string>
     <string name="text_decisaoPJ">Cadastro Pessoa Juridica</string>
-    <string name="text_register">Register</string>
+    <string name="registro">Confirmar Cadastro</string>
     <string name="error_message_name">Enter Full Name</string>
     <string name="error_message_email">Enter Valid Email</string>
     <string name="error_message_age">Enter Age</string>

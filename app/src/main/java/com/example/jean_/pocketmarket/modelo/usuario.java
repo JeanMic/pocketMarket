@@ -6,35 +6,35 @@ package com.example.jean_.pocketmarket.modelo;
 
 public abstract class usuario {
 
-    private int CPFCNPJ; ok
+    private int CPFCNPJ; //ok
 
-    private byte Foto; verificar depois
+    private byte Foto; //verificar depois
 
-    private String tipoUsuario;
+    private String tipoUsuario; //sera preenchido em tempo de execucao
 
-    private int DDDTelefoneOuCelular;
+    private int DDDTelefoneOuCelular; //ok
 
-    private int telefoneOuCelular;
+    private int telefoneOuCelular; //ok
 
-    private String email; ok
+    private String email; //ok
 
-    private String enderecoComResi; ok
+    private String enderecoComResi; //ok
 
-    private int CEPComResi; ok
+    private int CEPComResi; //ok
 
-    private String complementoComResi; ok
+    private String complementoComResi; //ok
 
-    private String numeroComResi; ok
+    private String numeroComResi; //ok
 
-    private String bairroComResi;ok
+    private String bairroComResi;//ok
 
-    private String cidadeComResi; ok
+    private String cidadeComResi; //ok
 
-    private String UFComResi;
+    private String UFComResi; //ok
 
     private String login; //vou remover
 
-    private String senha;
+    private String senha; //ok
 
 
     public void setCPFCNPJ(int CPFCNPJ) {

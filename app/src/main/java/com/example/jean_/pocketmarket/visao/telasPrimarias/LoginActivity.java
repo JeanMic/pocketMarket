@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
+import android.widget.RadioGroup;
 
 import com.example.jean_.pocketmarket.R;
 import com.example.jean_.pocketmarket.controle.controle;
@@ -23,6 +24,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private AppCompatButton btlogin;
     private AppCompatTextView txtlink;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
