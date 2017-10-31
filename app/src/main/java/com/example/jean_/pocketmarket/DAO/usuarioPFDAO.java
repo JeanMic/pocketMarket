@@ -32,7 +32,6 @@ public class usuarioPFDAO extends acesso implements metodosDAO {
                 "             `bairroComResi`," +
                 "             `cidadeComResi`," +
                 "             `UFComResi`," +
-                "             `login`," +
                 "             `senha`," +
                 "             `nome`," +
                 "             `sexo`," +

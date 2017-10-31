@@ -32,6 +32,11 @@
         <activity
             android:name=".visao.telasPrimarias.formularioPJ"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasNavegacao.telaPrincipal"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

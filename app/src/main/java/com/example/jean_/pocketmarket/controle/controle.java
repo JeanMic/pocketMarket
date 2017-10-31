@@ -43,7 +43,6 @@ public class controle {
             obj.desconecta();
             return false;
         }
-
     }
 
     public static boolean validaEntradasUsuarioPF(formularioPF formPF) {
@@ -80,10 +79,11 @@ public class controle {
 
             try {
                 new usuarioPFDAO().insert(usupf);
+                return true;
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                formPF.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
+                return false;
             }
-            return true;
 
         } else {
             formPF.setMsgCtrl(msgErroAtual);
@@ -129,6 +129,60 @@ public class controle {
 
         } else {
             msgErroAtual = "O CPF Deve ser Informado";
+            return false;
+        }
+    }
+
+    public static Boolean validaCNPJ(String CNPJ) {
+
+        int vSoma = 0;
+        int vDigito = 0;
+
+        if (CNPJ != null && CNPJ.replaceAll("[^0-9]", "").length() != 14) {
+            msgErroAtual = "O CNPJ Informado Está Imcompleto";
+            return false;
+        }
+
+        CNPJ = CNPJ.replaceAll("[^0-9]", "");
+
+        String vCalculoCNPJ = CNPJ.substring(0, 12);
+
+        char[] vCharCNPJ = CNPJ.toCharArray();
+
+		/* Primeira parte */
+        for (int i = 0; i < 4; i++) {
+            if (((vCharCNPJ[i] - 48) >= 0) && ((vCharCNPJ[i] - 48) <= 9)) {
+                vSoma += (vCharCNPJ[i] - 48) * (6 - (i + 1));
+            }
+        }
+        for (int i = 0; i < 8; i++) {
+            if (((vCharCNPJ[i + 4] - 48) >= 0) && ((vCharCNPJ[i + 4] - 48) <= 9)) {
+                vSoma += (vCharCNPJ[i + 4] - 48) * (10 - (i + 1));
+            }
+        }
+        vDigito = 11 - (vSoma % 11);
+
+        vCalculoCNPJ += ((vDigito == 10) || (vDigito == 11)) ? "0" : Integer.toString(vDigito);
+
+		/* Segunda parte */
+        vSoma = 0;
+        for (int i = 0; i < 5; i++) {
+            if (((vCharCNPJ[i] - 48) >= 0) && ((vCharCNPJ[i] - 48) <= 9)) {
+                vSoma += (vCharCNPJ[i] - 48) * (7 - (i + 1));
+            }
+        }
+        for (int i = 0; i < 8; i++) {
+            if (((vCharCNPJ[i + 5] - 48) >= 0) && ((vCharCNPJ[i + 5] - 48) <= 9)) {
+                vSoma += (vCharCNPJ[i + 5] - 48) * (10 - (i + 1));
+            }
+        }
+        vDigito = 11 - (vSoma % 11);
+        vCalculoCNPJ += ((vDigito == 10) || (vDigito == 11)) ? "0" : Integer.toString(vDigito);
+
+        if (CNPJ.equals(vCalculoCNPJ)) {
+            return true;
+        } else {
+            msgErroAtual = "O CNPJ Informado é Inválido";
             return false;
         }
     }

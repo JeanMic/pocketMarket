@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.visao.telasPrimarias;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.TextInputEditText;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.jean_.pocketmarket.R;
 import com.example.jean_.pocketmarket.controle.controle;
+import com.example.jean_.pocketmarket.visao.telasNavegacao.telaPrincipal;
 
 /**
  * Created by jmtb on 25/10/2017.
@@ -25,8 +27,10 @@ import com.example.jean_.pocketmarket.controle.controle;
 
 public class formularioPF extends AppCompatActivity implements View.OnClickListener {
 
-    //variáveis de Ids e outras finalidades
+    //a variável abaixo é populada no controle caso aconteça de um dado ser inválido
     private String msgCtrl;
+
+    //variáveis de Ids e outras finalidades
     private Spinner viewSpinner;
     private AppCompatButton viewBtConfirm;
 
@@ -97,11 +101,9 @@ public class formularioPF extends AppCompatActivity implements View.OnClickListe
         txtUF = (String) viewSpinner.getSelectedItem();
         txtDDDNumCel = viewDDDNumCel.getText().toString().trim();
 
-        //Toast.makeText(this, nome.concat(" // ").concat(sexo).concat(" // ").concat(campo_CPF.getText().toString()).concat(" // ").concat(dtnasc.getText().toString()), Toast.LENGTH_LONG).show();
-
         if (controle.validaEntradasUsuarioPF(this)) {
-
-
+            Intent telaPrincipal = new Intent(getApplicationContext(), telaPrincipal.class);
+            startActivity(telaPrincipal);
         } else {
             Toast.makeText(this, this.msgCtrl, Toast.LENGTH_LONG).show();
         }
