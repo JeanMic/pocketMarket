@@ -1,6 +1,7 @@
 package com.example.jean_.pocketmarket.controle;
 
 import com.example.jean_.pocketmarket.DAO.autenticacao;
+import com.example.jean_.pocketmarket.DAO.usuarioPFDAO;
 import com.example.jean_.pocketmarket.modelo.usuarioPF;
 import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPF;
 
@@ -11,6 +12,9 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * Created by jmtb on 23/10/2017.
@@ -55,10 +59,32 @@ public class controle {
 
             usuarioPF usupf = new usuarioPF();
 
+            usupf.setCPFCNPJ(Long.parseLong(formPF.getTxtCPF().replaceAll("[^0-9]", "")));
+            //usupf.setFoto("123".getBytes());
+            usupf.setTipoUsuario("PF");
+            usupf.setDDDTelefoneOuCelular(Integer.parseInt(formPF.getTxtDDDNumCel().substring(1, 3)));
+            usupf.setTelefoneOuCelular(Integer.parseInt(formPF.getTxtDDDNumCel().substring(4, 14).replace("-", "")));
+            usupf.setEmail(formPF.getTxtEmail());
+            usupf.setEnderecoComResi(formPF.getTxtEndereco());
+            usupf.setCEPComResi(Integer.parseInt(formPF.getTxtCep().replace("-", "")));
+            usupf.setComplementoComResi(formPF.getTxtComplResid());
+            usupf.setNumeroComResi(formPF.getTxtNumResidencia());
+            usupf.setBairroComResi(formPF.getTxtBairro());
+            usupf.setCidadeComResi(formPF.getTxtCidade());
+            usupf.setUFComResi(formPF.getTxtUF());
+            usupf.setSenha(gerarSenha(formPF.getTxtSenha()));
             usupf.setNome(formPF.getTxtNome());
+            usupf.setSexo(formPF.getTxtSexo());
+            usupf.setDataNascimento(dataFormatoMySQL(formPF.getTxtDtNasc()));
+            usupf.setIdade(calculaIdade(formPF.getTxtDtNasc(), "dd/MM/yyyy"));
 
-            //situação positiva aqui
+            try {
+                new usuarioPFDAO().insert(usupf);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
             return true;
+
         } else {
             formPF.setMsgCtrl(msgErroAtual);
             return false;
@@ -107,27 +133,6 @@ public class controle {
         }
     }
 
-//    public static boolean validaNome(String nome) {
-//
-//        if ((nome != null) && (nome.length() > 0)) {
-//            return true;
-//        } else {
-//            msgErroAtual = "O Nome Deve ser Informado";
-//            return false;
-//        }
-//
-//    }
-
-//    public static boolean validaSenha(String senha) {
-//
-//        if ((senha != null) && (senha.length() > 0)) {
-//            return true;
-//        } else {
-//            msgErroAtual = "A Senha Deve ser Informada";
-//            return false;
-//        }
-//    }
-
     public static boolean validadataNasc(String dtNasc) {
 
         if (dtNasc != null) {
@@ -155,7 +160,7 @@ public class controle {
 
     public static boolean validaEmail(String email) {
 
-        String regexEmail = "^[a-zA-Z0-9][a-zA-Z0-9\\._-]+@([a-zA-Z0-9\\._-]+\\.)[a-zA-Z-0-9]{2,3}$";
+        String regexEmail = "^[a-zA-Z0-9][a-zA-Z0-9._-]+@([a-zA-Z0-9._-]+\\.)[a-zA-Z-0-9]{2,3}$";
 
         if ((email != null) && (email.length() > 0)) {
             if (email.matches(regexEmail)) {
@@ -169,16 +174,6 @@ public class controle {
             return false;
         }
     }
-
-//    public static boolean validaEndereco(String endereco) {
-//
-//        if ((endereco != null) && (endereco.length() > 0)) {
-//            return true;
-//        } else {
-//            msgErroAtual = "O Endereço Deve Ser Informado";
-//            return false;
-//        }
-//    }
 
     public static boolean validaCep(String cep) {
 
@@ -212,7 +207,7 @@ public class controle {
         String regexCep = "^\\([0-9]{2}\\)[0-9]{5}-[0-9]{4}$";
 
         if ((numtel != null) && (numtel.length() > 0)) {
-            if (numtel.matches(numtel)) {
+            if (numtel.matches(regexCep)) {
                 return true;
             } else {
                 msgErroAtual = "O Númedo de DDD e Celular Informado é Inválido";
@@ -224,4 +219,75 @@ public class controle {
         }
     }
 
+    public static int calculaIdade(String dataNasc, String padrao) {
+
+        DateFormat formato = new SimpleDateFormat(padrao);
+
+        Date dataNascInput = null;
+
+        try {
+            dataNascInput = formato.parse(dataNasc);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        Calendar dataAniversario = new GregorianCalendar();
+
+        dataAniversario.setTime(dataNascInput);
+
+        // Cria um objeto calendar com a data atual
+
+        Calendar hoje = Calendar.getInstance();
+
+        // Obtém a idade baseado no ano
+
+        int idade = hoje.get(Calendar.YEAR) - dataAniversario.get(Calendar.YEAR);
+
+        dataAniversario.add(Calendar.YEAR, idade);
+
+        if (hoje.before(dataAniversario)) {
+            idade--;
+        }
+        return idade;
+    }
+
+    public static String dataFormatoMySQL(String dataNasc) {
+
+        SimpleDateFormat formatoOrigem = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatoDestino = new SimpleDateFormat("yyyy-MM-dd");
+        formatoOrigem.setLenient(false);
+        Date dataNascObj = null;
+        try {
+            dataNascObj = formatoOrigem.parse(dataNasc);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return formatoDestino.format(dataNascObj);
+    }
+
+    public static String gerarSenha(String senhaAntiga) {
+
+        MessageDigest algoritmo = null;
+        try {
+            algoritmo = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        byte bytesSenha[] = new byte[0];
+        try {
+            bytesSenha = algoritmo.digest(senhaAntiga.getBytes("UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        StringBuilder hexSenhaEncripitada = new StringBuilder();
+        for (byte byteAtual : bytesSenha) {
+            hexSenhaEncripitada.append(String.format("%02X", 0xFF & byteAtual));
+        }
+        return hexSenhaEncripitada.toString();
+
+    }
 }

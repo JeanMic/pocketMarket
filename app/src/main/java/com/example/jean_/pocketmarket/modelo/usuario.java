@@ -6,15 +6,15 @@ package com.example.jean_.pocketmarket.modelo;
 
 public abstract class usuario {
 
-    private int CPFCNPJ; //ok
+    private long CPFCNPJ; // ok
 
     private byte Foto; //verificar depois
 
-    private String tipoUsuario; //sera preenchido em tempo de execucao
+    private String tipoUsuario; // ok
 
     private int DDDTelefoneOuCelular; //ok
 
-    private int telefoneOuCelular; //ok
+    private int telefoneOuCelular; // ok
 
     private String email; //ok
 
@@ -26,22 +26,20 @@ public abstract class usuario {
 
     private String numeroComResi; //ok
 
-    private String bairroComResi;//ok
+    private String bairroComResi;// ok
 
     private String cidadeComResi; //ok
 
     private String UFComResi; //ok
 
-    private String login; //vou remover
-
     private String senha; //ok
 
 
-    public void setCPFCNPJ(int CPFCNPJ) {
+    public void setCPFCNPJ(long CPFCNPJ) {
         this.CPFCNPJ = CPFCNPJ;
     }
 
-    public int getCPFCNPJ() {
+    public long getCPFCNPJ() {
         return CPFCNPJ;
     }
 
@@ -139,14 +137,6 @@ public abstract class usuario {
 
     public String getUFComResi() {
         return UFComResi;
-    }
-
-    public void setLogin(String loginComResi) {
-        this.login = login;
-    }
-
-    public String getLogin() {
-        return login;
     }
 
     public void setSenha(String senha) {

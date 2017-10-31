@@ -32,7 +32,6 @@ public class usuarioPJDAO extends acesso implements metodosDAO {
                 "             `bairroComResi`,\n" +
                 "             `cidadeComResi`,\n" +
                 "             `UFComResi`,\n" +
-                "             `login`,\n" +
                 "             `senha`,\n" +
                 "             `nome`,\n" +
                 "             `sexo`,\n" +
@@ -56,7 +55,6 @@ public class usuarioPJDAO extends acesso implements metodosDAO {
                 "'" + usuario.getBairroComResi() + "', \n" +
                 "'" + usuario.getCidadeComResi() + "', \n" +
                 "'" + usuario.getUFComResi() + "', \n" +
-                "'" + usuario.getLogin() + "', \n" +
                 "'" + usuario.getSenha() + "', \n" +
                 "        '',\n" +
                 "        '',\n" +

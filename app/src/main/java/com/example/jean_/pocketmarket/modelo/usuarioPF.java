@@ -12,9 +12,9 @@ public class usuarioPF extends usuario {
 
     private String sexo; //ok
 
-    private Date dataNascimento; //ok
+    private String dataNascimento; // ok
 
-    private int idade; //sera preenchido em tempo de execução, baseado na data de nascimento
+    private int idade; // ok
 
 
     public void setNome(String nome) {
@@ -33,11 +33,11 @@ public class usuarioPF extends usuario {
         return sexo;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
