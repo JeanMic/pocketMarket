@@ -9,6 +9,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.jean_.pocketmarket.R;
 import com.example.jean_.pocketmarket.controle.controle;
@@ -65,9 +66,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 try {
 
                     if (controle.autenticacao(txtdoc.getText().toString().trim(), txtsenha.getText().toString().trim())){
-                        //usuario se autenticou com sucesso, criar itent que joga ele pra dentro do app
+                        Toast.makeText(this, "GG parça", Toast.LENGTH_LONG).show();
                     } else {
-                        //criar aqui a intend do usuario ja autenticado
+                        Toast.makeText(this, "ta errado fera, concerta isso ai", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (Exception e) {

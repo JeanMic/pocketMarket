@@ -61,9 +61,9 @@ public class usuarioPFDAO extends acesso implements metodosDAO {
                 "'" + usuario.getDataNascimento() + "', " +
                 "'" + usuario.getIdade() + "', " +
                 "        '0'," +
-                "        ''," +
-                "        '');";//
-        //java.sql.SQLException: Column count doesn't match value count at row 1
+                "        NULL," +
+                "        '0');";//
+
         try {
             int test = stm.executeUpdate(sql);
             this.desconecta();

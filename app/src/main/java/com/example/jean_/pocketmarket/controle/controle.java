@@ -58,7 +58,7 @@ public class controle {
 
             usuarioPF usupf = new usuarioPF();
 
-            usupf.setCPFCNPJ(Long.parseLong(formPF.getTxtCPF().replaceAll("[^0-9]", "")));
+            usupf.setCPFCNPJ(formPF.getTxtCPF().replaceAll("[^0-9]", ""));
             //usupf.setFoto("123".getBytes());
             usupf.setTipoUsuario("PF");
             usupf.setDDDTelefoneOuCelular(Integer.parseInt(formPF.getTxtDDDNumCel().substring(1, 3)));
@@ -101,7 +101,12 @@ public class controle {
 
             CPF = CPF.replaceAll("[^0-9]", "");
 
-            if (CPF.length() != 11) {
+            if (CPF.length() == 0) {
+                msgErroAtual = "Informe o CPF";
+                return false;
+            }
+
+            if (CPF.length() < 11) {
                 msgErroAtual = "O CPF Deve possuir onze digitos";
                 return false;
             }
@@ -189,7 +194,7 @@ public class controle {
 
     public static boolean validadataNasc(String dtNasc) {
 
-        if (dtNasc != null) {
+        if (dtNasc != null && dtNasc.replaceAll("[^0-9]", "").length() > 0) {
             if (dtNasc.replaceAll("[^0-9]", "").length() == 8) {
                 DateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
                 formatoData.setLenient(false);

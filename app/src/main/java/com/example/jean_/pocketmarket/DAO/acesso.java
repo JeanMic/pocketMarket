@@ -30,13 +30,14 @@ public abstract class acesso {
     }
 
     public void desconecta() throws SQLException {
-        if (!connection.isClosed())
+
+        if (connection != null && !connection.isClosed())
             connection.close();
 
-        if (!stm.isClosed())
+        if (stm != null && !stm.isClosed())
             stm.close();
 
-        if (rs.isClosed())
+        if (rs != null && !rs.isClosed())
             rs.close();
     }
 

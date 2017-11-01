@@ -6,7 +6,7 @@ package com.example.jean_.pocketmarket.modelo;
 
 public abstract class usuario {
 
-    private long CPFCNPJ; // ok
+    private String CPFCNPJ; // ok
 
     private byte Foto; //verificar depois
 
@@ -35,11 +35,11 @@ public abstract class usuario {
     private String senha; //ok
 
 
-    public void setCPFCNPJ(long CPFCNPJ) {
+    public void setCPFCNPJ(String CPFCNPJ) {
         this.CPFCNPJ = CPFCNPJ;
     }
 
-    public long getCPFCNPJ() {
+    public String getCPFCNPJ() {
         return CPFCNPJ;
     }
 
