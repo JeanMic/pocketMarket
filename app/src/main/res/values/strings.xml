@@ -1,13 +1,11 @@
 <resources>
     <string name="app_name">Pocket Market</string>
     <string name="text_accounts">All Accounts</string>
+
+    <!-- TEXTOS Usuário PF -->
     <string name="nome">Nome</string>
     <string name="cpf">CPF</string>
     <string name="datanasc">Data Nascimento</string>
-    <string name="cpfcnpglogin">CPF / CNPJ</string>
-    <string name="email">Email</string>
-    <string name="senhaLogin">Senha</string>
-    <string name="hint_confirm_password">Confirm Password</string>
     <string name="endereco">Endereço Residencial</string>
     <string name="cep">CEP</string>
     <string name="numeroresudencia">Número Residencial</string>
@@ -20,10 +18,36 @@
     <string name="bairroresidencial">Bairro</string>
     <string name="cidaderesidencial">Cidade</string>
     <string name="UFresidencial">UF</string>
-    <string name="textobotaologin">Login</string>
+    <string name="email">Email</string>
+    <string name="senhaLogin">Senha</string>
+    <!-- TEXTOS Usuário PF -->
+
+    <!-- Textos Usuário PJ -->
+    <string name="razaosocial">Razão Social</string>
+    <string name="cnpj">CNPJ</string>
+    <string name="senhapj">Senha Usuário</string>
+    <string name="datafundacao">Data De Fundacao</string>
+    <string name="emailcontato">Email Contato</string>
+    <string name="enderecocomercial">Endereço Comercial</string>
+    <string name="cepcomercial">CEP Comercial</string>
+    <string name="numerocomercial">Número Comercial</string>
+    <string name="complementoendpj">Complemento Endereço</string>
+    <string name="bairro">Bairro</string>
+    <string name="cidade">Cidade</string>
+    <string name="numcomer">DDD e Número Comercial</string>
+    <!-- Textos Usuário PJ -->
+
+    <!-- Textos Tela Decisão Cadastro PF/PJ -->
     <string name="text_decisaoPF">Cadastro Pessoa Fisica</string>
     <string name="text_decisaoPJ">Cadastro Pessoa Juridica</string>
+    <!-- Textos Tela Decisão Cadastro PF/PJ -->
+
     <string name="registro">Confirmar Cadastro</string>
+    <string name="registropj">Confirmar Cadastro</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="textobotaologin">Login</string>
+
+
     <string name="error_message_name">Enter Full Name</string>
     <string name="error_message_email">Enter Valid Email</string>
     <string name="error_message_age">Enter Age</string>
@@ -37,6 +61,8 @@
     <string name="action_settings">Settings</string>
     <string name="text_hello">Hello,</string>
     <string name="text_title">Android Tutorials Hub</string>
+
+    <string name="cpfcnpglogin">CPF / CNPJ</string>
 
     <string-array name="listaUFs">
         <item>AC</item>

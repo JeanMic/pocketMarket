@@ -3,7 +3,9 @@ package com.example.jean_.pocketmarket.controle;
 import com.example.jean_.pocketmarket.DAO.autenticacao;
 import com.example.jean_.pocketmarket.DAO.usuarioPFDAO;
 import com.example.jean_.pocketmarket.modelo.usuarioPF;
+import com.example.jean_.pocketmarket.modelo.usuarioPJ;
 import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPF;
+import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPJ;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -91,6 +93,52 @@ public class controle {
         }
     }
 
+    public static boolean validaEntradasUsuarioPJ(formularioPJ formPJ) {
+
+        if (validaVazio(formPJ.getTxtRazaosocial(), "O Nome Deve ser Informado") && validaCNPJ(formPJ.getTxtCNPJ()) &&
+                validaVazio(formPJ.getTxtSenhapj(), "A Senha Deve ser Informada") && validadataFundacao(formPJ.getTxtDtfundacao()) &&
+                validaEmail(formPJ.getTxtEmail()) && validaVazio(formPJ.getTxtEndereco(), "O Endereço Deve Ser Informado") &&
+                validaCep(formPJ.getTxtCep()) && validaVazio(formPJ.getTxtNumResidencia(), "O Número da Residencia Deve Ser Informado") &&
+                validaVazio(formPJ.getTxtComplResid(), "O Complemento da Residencia Deve Ser Informado") &&
+                validaVazio(formPJ.getTxtBairro(), "O Bairro Deve Ser Informado") &&
+                validaVazio(formPJ.getTxtCidade(), "A Cidade Deve Ser Informada") &&
+                getTxtDDDNumCel(formPJ.getTxtDDDNumCel())) {
+
+            usuarioPJ usupj = new usuarioPJ();
+
+            usupj.setCPFCNPJ(formPJ.getTxtCNPJ().replaceAll("[^0-9]", ""));
+            //usupf.setFoto("123".getBytes());
+            usupj.setTipoUsuario("PJ");
+            usupj.setDDDTelefoneOuCelular(Integer.parseInt(formPJ.getTxtDDDNumCel().substring(1, 3)));
+            usupj.setTelefoneOuCelular(Integer.parseInt(formPJ.getTxtDDDNumCel().substring(4, 14).replace("-", "")));
+            usupj.setEmail(formPJ.getTxtEmailcontato());
+            usupj.setEnderecoComResi(formPJ.getTxtEnderecocomercial());
+            usupj.setCEPComResi(Integer.parseInt(formPJ.getTxtCepcomercial().replace("-", "")));
+            usupj.setComplementoComResi(formPJ.getTxtComplcomercial());
+            usupj.setNumeroComResi(formPJ.getTxtNumcomercial());
+            usupj.setBairroComResi(formPJ.getTxtBairrocomercial());
+            usupj.setCidadeComResi(formPJ.getTxtCidadecomercial());
+            usupj.setUFComResi(formPJ.getTxtUFcomercial());
+            usupj.setSenha(gerarSenha(formPJ.getTxtSenhapj()));
+            //usupj.getRazaoSocial(formPJ.getTxtRazaosocial());
+            usupj.setSexo(formPJ.getTxtSexo());
+            usupj.setDataNascimento(dataFormatoMySQL(formPJ.getTxtDtNasc()));
+            usupj.setIdade(calculaIdade(formPJ.getTxtDtNasc(), "dd/MM/yyyy"));
+
+            try {
+                new usuarioPFDAO().insert(usupf);
+                return true;
+            } catch (ClassNotFoundException e) {
+                formPJ.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
+                return false;
+            }
+
+        } else {
+            formPJ.setMsgCtrl(msgErroAtual);
+            return false;
+        }
+    }
+
     public static boolean validaCPF(String CPF) {
 
         int Soma;
@@ -143,6 +191,7 @@ public class controle {
         int vSoma = 0;
         int vDigito = 0;
 
+        //melhorar esse código depois, deixar igual ao do CPF
         if (CNPJ != null && CNPJ.replaceAll("[^0-9]", "").length() != 14) {
             msgErroAtual = "O CNPJ Informado Está Imcompleto";
             return false;
@@ -212,6 +261,31 @@ public class controle {
 
         } else {
             msgErroAtual = "A data de Nascimento deve ser informada";
+            return false;
+        }
+
+    }
+
+    public static boolean validadataFundacao(String dtNasc) {
+
+        if (dtNasc != null && dtNasc.replaceAll("[^0-9]", "").length() > 0) {
+            if (dtNasc.replaceAll("[^0-9]", "").length() == 8) {
+                DateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+                formatoData.setLenient(false);
+                try {
+                    formatoData.parse(dtNasc);
+                    return true;
+                } catch (ParseException ex) {
+                    msgErroAtual = "A data de Fundação Informada é Inválida";
+                    return false;
+                }
+            } else {
+                msgErroAtual = "A data de Fundação Está Incompleta";
+                return false;
+            }
+
+        } else {
+            msgErroAtual = "A data de Fundação deve ser informada";
             return false;
         }
 
