@@ -2,6 +2,7 @@ package com.example.jean_.pocketmarket.controle;
 
 import com.example.jean_.pocketmarket.DAO.autenticacao;
 import com.example.jean_.pocketmarket.DAO.usuarioPFDAO;
+import com.example.jean_.pocketmarket.DAO.usuarioPJDAO;
 import com.example.jean_.pocketmarket.modelo.usuarioPF;
 import com.example.jean_.pocketmarket.modelo.usuarioPJ;
 import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPF;
@@ -97,11 +98,11 @@ public class controle {
 
         if (validaVazio(formPJ.getTxtRazaosocial(), "O Nome Deve ser Informado") && validaCNPJ(formPJ.getTxtCNPJ()) &&
                 validaVazio(formPJ.getTxtSenhapj(), "A Senha Deve ser Informada") && validadataFundacao(formPJ.getTxtDtfundacao()) &&
-                validaEmail(formPJ.getTxtEmail()) && validaVazio(formPJ.getTxtEndereco(), "O Endereço Deve Ser Informado") &&
-                validaCep(formPJ.getTxtCep()) && validaVazio(formPJ.getTxtNumResidencia(), "O Número da Residencia Deve Ser Informado") &&
-                validaVazio(formPJ.getTxtComplResid(), "O Complemento da Residencia Deve Ser Informado") &&
-                validaVazio(formPJ.getTxtBairro(), "O Bairro Deve Ser Informado") &&
-                validaVazio(formPJ.getTxtCidade(), "A Cidade Deve Ser Informada") &&
+                validaEmail(formPJ.getTxtEmailcontato()) && validaVazio(formPJ.getTxtEnderecocomercial(), "O Endereço Deve Ser Informado") &&
+                validaCep(formPJ.getTxtCepcomercial()) && validaVazio(formPJ.getTxtNumcomercial(), "O Número Comercial Deve Ser Informado") &&
+                validaVazio(formPJ.getTxtComplcomercial(), "O Complemento do Endereço Deve Ser Informado") &&
+                validaVazio(formPJ.getTxtBairrocomercial(), "O Bairro Deve Ser Informado") &&
+                validaVazio(formPJ.getTxtCidadecomercial(), "A Cidade Deve Ser Informada") &&
                 getTxtDDDNumCel(formPJ.getTxtDDDNumCel())) {
 
             usuarioPJ usupj = new usuarioPJ();
@@ -120,16 +121,18 @@ public class controle {
             usupj.setCidadeComResi(formPJ.getTxtCidadecomercial());
             usupj.setUFComResi(formPJ.getTxtUFcomercial());
             usupj.setSenha(gerarSenha(formPJ.getTxtSenhapj()));
-            //usupj.getRazaoSocial(formPJ.getTxtRazaosocial());
-            usupj.setSexo(formPJ.getTxtSexo());
-            usupj.setDataNascimento(dataFormatoMySQL(formPJ.getTxtDtNasc()));
-            usupj.setIdade(calculaIdade(formPJ.getTxtDtNasc(), "dd/MM/yyyy"));
+            usupj.setRazaoSocial(formPJ.getTxtRazaosocial());
+            usupj.setDataFundacao(dataFormatoMySQL(formPJ.getTxtDtfundacao()));
+            usupj.setIdadeFundacao(calculaIdade(formPJ.getTxtDtfundacao(), "dd/MM/yyyy"));
 
             try {
-                new usuarioPFDAO().insert(usupf);
+                new usuarioPJDAO().insert(usupj);
                 return true;
             } catch (ClassNotFoundException e) {
                 formPJ.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
+                return false;
+            } catch (SQLException e) {
+                formPJ.setMsgCtrl("Usuário já Cadastrado");
                 return false;
             }
 

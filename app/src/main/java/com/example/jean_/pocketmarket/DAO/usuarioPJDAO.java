@@ -15,12 +15,12 @@ public class usuarioPJDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public void insert(Object usua) {
+    public void insert(Object usua) throws SQLException {
 
         usuarioPJ usuario = (usuarioPJ) usua;
         sql = "INSERT INTO `market`.`usuario`\n" +
                 "            (`CPFCNPJ`,\n" +
-                "             `foto`,\n" +
+                // "             `foto`,\n" +
                 "             `tipoUsuario`,\n" +
                 "             `DDDTelefoneOuCelular`,\n" +
                 "             `telefoneOuCelular`,\n" +
@@ -33,17 +33,17 @@ public class usuarioPJDAO extends acesso implements metodosDAO {
                 "             `cidadeComResi`,\n" +
                 "             `UFComResi`,\n" +
                 "             `senha`,\n" +
-                "             `nome`,\n" +
-                "             `sexo`,\n" +
-                "             `dataNascimento`,\n" +
-                "             `idade`,\n" +
+                // "             `nome`,\n" +
+                // "             `sexo`,\n" +
+                //  "             `dataNascimento`,\n" +
+                //  "             `idade`,\n" +
                 "             `razaoSocial`,\n" +
                 "             `dataFundacao`,\n" +
                 "             `idadeFundacao`)\n" +
                 "VALUES\n" +
                 "(\n" +
                 "'" + usuario.getCPFCNPJ() + "', \n" +
-                "'" + usuario.getFoto() + "', \n" +
+                // "'" + usuario.getFoto() + "', \n" +
                 "'" + usuario.getTipoUsuario() + "', \n" +
                 "'" + usuario.getDDDTelefoneOuCelular() + "', \n" +
                 "'" + usuario.getTelefoneOuCelular() + "', \n" +
@@ -56,18 +56,19 @@ public class usuarioPJDAO extends acesso implements metodosDAO {
                 "'" + usuario.getCidadeComResi() + "', \n" +
                 "'" + usuario.getUFComResi() + "', \n" +
                 "'" + usuario.getSenha() + "', \n" +
-                "        '',\n" +
-                "        '',\n" +
-                "        '',\n" +
-                "        '',\n" +
+                //   "        '',\n" +
+                // "        '',\n" +
+                //  "        '',\n" +
+                //   "        '',\n" +
                 "'" + usuario.getRazaoSocial() + "', \n" +
                 "'" + usuario.getDataFundacao() + "', \n" +
-                "        '');"; //COLOCAR A IDADE DE FUNDAÇAO
+                "'" + usuario.getIdadeFundacao() + "');"; //COLOCAR A IDADE DE FUNDAÇAO
         try {
-            rs = stm.executeQuery(sql);
-            this.desconecta();
+            stm.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            this.desconecta();
         }
     }
 

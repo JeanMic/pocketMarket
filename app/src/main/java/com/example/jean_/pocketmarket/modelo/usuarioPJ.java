@@ -10,7 +10,7 @@ public class usuarioPJ extends usuario {
 
     private String razaoSocial;
 
-    private Date dataFundacao;
+    private String dataFundacao;
 
     private int idadeFundacao;
 
@@ -23,11 +23,11 @@ public class usuarioPJ extends usuario {
         return razaoSocial;
     }
 
-    public void setDataFundacao(Date dataFundacao) {
+    public void setDataFundacao(String dataFundacao) {
         this.dataFundacao = dataFundacao;
     }
 
-    public Date getDataFundacao() {
+    public String getDataFundacao() {
         return dataFundacao;
     }
 

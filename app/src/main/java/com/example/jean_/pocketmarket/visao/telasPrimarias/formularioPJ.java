@@ -93,8 +93,9 @@ public class formularioPJ extends AppCompatActivity implements View.OnClickListe
         txtDDDNumcomercial = viewDDDNumcomercial.getText().toString().trim();
 
         if (controle.validaEntradasUsuarioPJ(this)) {
-            Intent telaPrincipal = new Intent(getApplicationContext(), com.example.jean_.pocketmarket.visao.telasNavegacao.telaPrincipal.class);
-            startActivity(telaPrincipal);
+            Toast.makeText(this, "cadastrou porra!!", Toast.LENGTH_LONG).show();
+            //Intent telaPrincipal = new Intent(getApplicationContext(), com.example.jean_.pocketmarket.visao.telasNavegacao.telaPrincipal.class);
+           // startActivity(telaPrincipal);
         } else {
             Toast.makeText(this, this.msgCtrl, Toast.LENGTH_LONG).show();
         }
@@ -127,7 +128,7 @@ public class formularioPJ extends AppCompatActivity implements View.OnClickListe
         viewCidadecomercial = (EditText) findViewById(R.id.cidadecomercial);
         viewSpinnercomercial = (Spinner) findViewById(R.id.spinnerufscomercial);
 
-        viewDDDNumcomercial = (EditText) findViewById(R.id.layoutDDDnumcomercial);
+        viewDDDNumcomercial = (EditText) findViewById(R.id.DDDnumcomercial);
         viewDDDNumcomercial.addTextChangedListener(Mask.insert("(##)#####-####", viewDDDNumcomercial));
 
     }
@@ -192,6 +193,10 @@ public class formularioPJ extends AppCompatActivity implements View.OnClickListe
 
     public String getTxtDDDNumCel() {
         return txtDDDNumcomercial;
+    }
+
+    public void setMsgCtrl(String msgCtrl) {
+        this.msgCtrl = msgCtrl;
     }
 
 }

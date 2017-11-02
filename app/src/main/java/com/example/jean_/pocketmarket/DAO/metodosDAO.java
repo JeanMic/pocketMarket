@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface metodosDAO {
 
-    public void insert(Object obj);
+    public void insert(Object obj) throws SQLException;
 
     public ArrayList<Object> select();
 
