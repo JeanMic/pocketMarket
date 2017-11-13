@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nestedScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:paddingBottom="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    tools:context="com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdMoto">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/logo" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layouttitulovendamoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/titulovendamoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/titulovendamotocicleta"
+                android:inputType="text"
+                android:maxLength="50"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutdescricaovendamoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/descricaovendamoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/descricaovendamotocicleta"
+                android:inputType="text"
+                android:maxLength="300"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutmarcamoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/marcamoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/marcamoto"
+                android:inputType="text"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutmodelomoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/modelomoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/modelomoto"
+                android:inputType="text"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutanofabricacaomoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/anofabricacaomoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/anofabricacaomoto"
+                android:inputType="number"
+                android:maxLength="4"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutplacamoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/placamoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/placamoto"
+                android:inputType="text"
+                android:maxLength="7"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutquilometragemmoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/quilometragemmoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/quilometragemmoto"
+                android:inputType="number"
+                android:maxLength="6"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutcormoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/cormoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/cormoto"
+                android:inputType="text"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/combustivelmoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/combustivelalcoolmoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/combustivelmotoalcool" />
+
+            <RadioButton
+                android:id="@+id/combustivelgasolinamoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/combustivelmotogasolina" />
+
+        </RadioGroup>
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/possuimultasmoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/possuimultassim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/possuimultassim" />
+
+            <RadioButton
+                android:id="@+id/possuimultasnao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/possuimultasnao" />
+
+        </RadioGroup>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutcilindradasmoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/cilindradasmoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/cilindradasmoto"
+                android:inputType="number"
+                android:maxLength="4"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutprecomoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/precomoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/precomoto"
+                android:inputType="number"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/confirmcadasmoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@color/colorTextHint"
+            android:text="@string/registroprodutomoto" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+</android.support.v4.widget.NestedScrollView>

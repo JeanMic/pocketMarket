@@ -42,6 +42,25 @@
     <string name="text_decisaoPJ">Cadastro Pessoa Juridica</string>
     <!-- Textos Tela Decisão Cadastro PF/PJ -->
 
+    <!-- Textos layout venda motocicleta -->
+    <string name="titulovendamotocicleta">Titulo Venda</string>
+    <string name="descricaovendamotocicleta">Descrição Venda</string>
+    <string name="marcamoto">Marca Motocicleta</string>
+    <string name="modelomoto">Modelo Motocicleta</string>
+    <string name="anofabricacaomoto">Ano de Fabricação</string>
+    <string name="placamoto">Placa Motocicleta</string>
+    <string name="quilometragemmoto">Quilometragem</string>
+    <string name="cormoto">Cor</string>
+    <string name="combustivelmotoalcool">Álcool</string>
+    <string name="combustivelmotogasolina">Gasolina</string>
+    <string name="possuimultassim">Sim</string>
+    <string name="possuimultasnao">Não</string>
+    <string name="cilindradasmoto">Cilindradas</string>
+    <string name="precomoto">Preço</string>
+    <string name="registroprodutomoto">Cadastrar Produto</string>
+    <!-- Textos layout venda motocicleta -->
+
+
     <string name="registro">Confirmar Cadastro</string>
     <string name="registropj">Confirmar Cadastro</string>
     <string name="hint_confirm_password">Confirm Password</string>
