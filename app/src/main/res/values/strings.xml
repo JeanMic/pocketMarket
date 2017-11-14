@@ -60,6 +60,44 @@
     <string name="registroprodutomoto">Cadastrar Produto</string>
     <!-- Textos layout venda motocicleta -->
 
+    <!-- Textos layout venda carro -->
+    <string name="titulovendacarro">Titulo Venda</string>
+    <string name="descricaovendacarro">Descrição Venda</string>
+    <string name="marcacarro">Marca Carro</string>
+    <string name="modelocarro">Modelo Carro</string>
+    <string name="anofabricacaocarro">Ano de Fabricação</string>
+    <string name="placacarro">Placa Carro</string>
+    <string name="quilometragemcarro">Quilometragem</string>
+    <string name="corcarro">Cor</string>
+    <string name="combustivelcarroflex">Flex</string>
+    <string name="combustivelcarroalcool">Álcool</string>
+    <string name="combustivelcarrogasolina">Gasolina</string>
+    <string name="possuimultassimcarro">Sim</string>
+    <string name="possuimultasnaocarro">Não</string>
+    <string name="qtdportascarro">Quantidade Portas</string>
+    <string name="cambiocarro">Cambio</string>
+    <string name="precocarro">Preço</string>
+    <string name="registroprodutocarro">Cadastrar Produto</string>
+    <!-- Textos layout venda carro -->
+
+    <!-- Textos layout venda apartamento -->
+    <string name="titulovendaapartamento">Titulo Venda</string>
+    <string name="descricaovendaapartamento">Descrição Venda</string>
+    <string name="qtdquartosapartamento">Quantidade Quartos</string>
+    <string name="qtdsuitesapartamento">Quantidade Suites</string>
+    <string name="valiptuapartamento">Valor IPTU</string>
+    <string name="valcondominioapartamento">Valor Condominio</string>
+    <string name="qtdvagasgaragemapartamento">Quantidade Vagas Garagem</string>
+    <string name="vendaapartamento">Venda</string>
+    <string name="aluguelapartamento">Aluguel</string>
+    <string name="cepapartamento">CEP Apartamento</string>
+    <string name="areautilapartamento">Área Util (Metros Quadrados)</string>
+    <string name="precoapartamento">Preço Apartamento</string>
+    <string name="possui">Sim</string>
+    <string name="naopossui">Não</string>
+    <string name="registroprodutoapartamento">Registrar Venda</string>
+    <!-- Textos layout venda apartamento -->
+
 
     <string name="registro">Confirmar Cadastro</string>
     <string name="registropj">Confirmar Cadastro</string>
