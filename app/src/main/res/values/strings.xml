@@ -93,11 +93,57 @@
     <string name="cepapartamento">CEP Apartamento</string>
     <string name="areautilapartamento">Área Util (Metros Quadrados)</string>
     <string name="precoapartamento">Preço Apartamento</string>
-    <string name="possui">Sim</string>
-    <string name="naopossui">Não</string>
     <string name="registroprodutoapartamento">Registrar Venda</string>
     <!-- Textos layout venda apartamento -->
 
+    <!-- Textos layout venda casa -->
+    <string name="titulovendacasa">Titulo Venda</string>
+    <string name="descricaovendacasa">Descrição Venda</string>
+    <string name="qtdquartoscasa">Quantidade Quartos</string>
+    <string name="qtdsuitescasa">Quantidade Suites</string>
+    <string name="valiptucasa">Valor IPTU</string>
+    <string name="valcondominiocasa">Valor Condominio</string>
+    <string name="qtdvagasgaragemcasa">Quantidade Vagas Garagem</string>
+    <string name="vendacasa">Venda</string>
+    <string name="aluguelcasa">Aluguel</string>
+    <string name="cepcasa">CEP casa</string>
+    <string name="areaconstruidacasa">Área Construida (Metros Quadrados)</string>
+    <string name="precocasa">Preço casa</string>
+    <string name="registroprodutocasa">Registrar Venda</string>
+    <!-- Textos layout venda casa -->
+
+    <!-- Textos layout venda desktop -->
+    <string name="titulovendadesktop">Titulo Venda</string>
+    <string name="descricaovendadesktop">Descrição Venda</string>
+    <string name="marcadesktop">Marca Desktop</string>
+    <string name="modelodesktop">Modelo Desktop</string>
+    <string name="qtdramdesktop">Memoria RAM (em GBs)</string>
+    <string name="precodesktop">Preço Desktop</string>
+    <string name="registroprodutodesktop">Registrar Venda</string>
+    <!-- Textos layout venda desktop -->
+
+    <!-- Textos layout venda notebook -->
+    <string name="titulovendanotebook">Titulo Venda</string>
+    <string name="descricaovendanotebook">Descrição Venda</string>
+    <string name="marcanotebook">Marca notebook</string>
+    <string name="modelonotebook">Modelo notebook</string>
+    <string name="qtdramnotebook">Memoria RAM (em GBs)</string>
+    <string name="preconotebook">Preço notebook</string>
+    <string name="registroprodutonotebook">Registrar Venda</string>
+    <string name="tamanhotelanotebook">Tamanho da Tela (Polegadas)</string>
+    <!-- Textos layout venda notebook -->
+
+    <!-- Textos compartilhados -->
+    <string name="possui">Sim</string>
+    <string name="naopossui">Não</string>
+    <string name="marcaprocessador">Marca Processador</string>
+    <string name="modeloprocessador">Modelo Processador</string>
+    <string name="qtdgbshd">Quanidade Gigas HD</string>
+    <string name="sistema">Sistema Operacional</string>
+    <string name="versaosistema">Versão Sistema Operacional</string>
+
+
+    <!-- Textos compartilhados -->
 
     <string name="registro">Confirmar Cadastro</string>
     <string name="registropj">Confirmar Cadastro</string>
