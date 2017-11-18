@@ -16,12 +16,13 @@ public abstract class acesso {
     ResultSet rs = null;
     Statement stm = null;
     String sql = null;
+    String sqlRelacionamento = null;
 
     public acesso() throws ClassNotFoundException {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://192.168.15.3:3306/market", "admin", "123");
+            connection = DriverManager.getConnection("jdbc:mysql://192.168.15.2:3306/market", "admin", "123");
             stm = connection.createStatement();
 
         } catch (SQLException e) {

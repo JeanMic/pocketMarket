@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.jean_.pocketmarket.R;
 import com.example.jean_.pocketmarket.controle.controle;
+import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdMoto;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -77,7 +78,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.textolink:
                 // cria a intent da tela do formulario de cadastro de Usuarios PF e PJ
-                Intent decisaoCadastro = new Intent(getApplicationContext(), decisaoFormularioCadastro.class);
+
+                //linha abaixo comentada para testes
+                //Intent decisaoCadastro = new Intent(getApplicationContext(), decisaoFormularioCadastro.class);
+                Intent decisaoCadastro = new Intent(getApplicationContext(), formularioProdMoto.class);
+
                 startActivity(decisaoCadastro);
                 break;
         }

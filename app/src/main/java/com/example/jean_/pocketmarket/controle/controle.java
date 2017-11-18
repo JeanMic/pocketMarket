@@ -1,10 +1,17 @@
 package com.example.jean_.pocketmarket.controle;
 
+import android.widget.EditText;
+import android.widget.RadioGroup;
+
 import com.example.jean_.pocketmarket.DAO.autenticacao;
+import com.example.jean_.pocketmarket.DAO.motocicletaDAO;
 import com.example.jean_.pocketmarket.DAO.usuarioPFDAO;
 import com.example.jean_.pocketmarket.DAO.usuarioPJDAO;
+import com.example.jean_.pocketmarket.R;
+import com.example.jean_.pocketmarket.modelo.motocicleta;
 import com.example.jean_.pocketmarket.modelo.usuarioPF;
 import com.example.jean_.pocketmarket.modelo.usuarioPJ;
+import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdMoto;
 import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPF;
 import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPJ;
 
@@ -142,6 +149,66 @@ public class controle {
         }
     }
 
+    public static boolean validaEntradasProdutoMoto(formularioProdMoto formMoto) {
+
+        //validações comuns para todos os produtos
+        if (validaVazio(formMoto.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
+                validaVazio(formMoto.getViewdescricaoProduto().getText().toString().trim(), "A Descrição Deve ser Informado") &&
+                validaNumeroInteiro(formMoto.getViewprecoProduto().getText().toString().trim(), "O Preço Deve Ser Informado", "Informe Somente Números no Campo Preco Produto") &&
+
+                //validações do produto veiculo
+                validaVazio(formMoto.getViewMarca().getText().toString().trim(), "A Marca Deve Ser Informada") &&
+                validaVazio(formMoto.getViewModelo().getText().toString().trim(), "O Modelo Deve Ser Informado") &&
+                validaNumeroInteiro(formMoto.getViewanoFabricacao().getText().toString().trim(), "O Campo Ano Fabricação Deve ser Informado", "Informe Somente Números no Campo Ano Fabricaçao") &&
+                validaPlaca(formMoto.getViewPlaca().getText().toString().trim()) &&
+                validaNumeroInteiro(formMoto.getViewQuilometragem().getText().toString().trim(), "O Campo Quilometragem Deve ser Informado", "Informe Somente Números no Campo Quilometragem") &&
+                validaVazio(formMoto.getViewCor().getText().toString().trim(), "A Cor Deve Ser Informado") &&
+
+                //validação do produto moto
+                validaNumeroInteiro(formMoto.getViewCilindradas().getText().toString().trim(), "As Cilindradas Devem ser Informadas", "Informe Somente Números no Campo Cilindradas")) {
+
+            motocicleta moto = new motocicleta();
+
+            //sets comuns a todos os produtos
+            moto.setTituloProduto(formMoto.getViewtituloProduto().getText().toString().trim());
+            moto.setDescricaoProduto(formMoto.getViewdescricaoProduto().getText().toString().trim());
+            moto.setPrecoProduto(Float.parseFloat(formMoto.getViewprecoProduto().getText().toString().trim()));
+            moto.setCategoriaProduto("Moto");
+            moto.setDataDeCadastro(new Date());
+            moto.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+
+            //sets comuns para todos os produtos veículos
+            moto.setMarca(formMoto.getViewMarca().getText().toString().trim());
+            moto.setModelo(formMoto.getViewModelo().getText().toString().trim());
+            moto.setAnoFabricação(Integer.parseInt(formMoto.getViewanoFabricacao().getText().toString().trim()));
+            moto.setPlaca(formMoto.getViewPlaca().getText().toString().trim());
+            moto.setQuilometragem(Integer.parseInt(formMoto.getViewQuilometragem().getText().toString().trim()));
+            moto.setCor(formMoto.getViewCor().getText().toString().trim());
+            moto.setCombustivel((formMoto.getViewCombustivel().getCheckedRadioButtonId() == R.id.combustivelalcoolmoto) ? "ALCOOL" : "GASOLINA");
+            moto.setPossuiMultas((formMoto.getViewRadiopossuiMultas().getCheckedRadioButtonId() == R.id.possuimultassim) ? true : false);
+
+            //set comun para o produto moto
+            moto.setCilindradas(Integer.parseInt(formMoto.getViewCilindradas().getText().toString().trim()));
+
+            try {
+                new motocicletaDAO().insert(moto);
+                return true;
+            } catch (ClassNotFoundException e) {
+                formMoto.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
+                return false;
+            }
+//            catch (SQLException e) {
+//                formMoto.setMsgCtrl("Usuário já Cadastrado");
+//                return false;
+//            }
+
+        } else {
+            formMoto.setMsgCtrl(msgErroAtual);
+            return false;
+        }
+    }
+
+    //testado
     public static boolean validaCPF(String CPF) {
 
         int Soma;
@@ -189,6 +256,7 @@ public class controle {
         }
     }
 
+    //testado
     public static Boolean validaCNPJ(String CNPJ) {
 
         int vSoma = 0;
@@ -244,6 +312,7 @@ public class controle {
         }
     }
 
+    //testado
     public static boolean validadataNasc(String dtNasc) {
 
         if (dtNasc != null && dtNasc.replaceAll("[^0-9]", "").length() > 0) {
@@ -269,6 +338,7 @@ public class controle {
 
     }
 
+    //testado
     public static boolean validadataFundacao(String dtNasc) {
 
         if (dtNasc != null && dtNasc.replaceAll("[^0-9]", "").length() > 0) {
@@ -294,6 +364,7 @@ public class controle {
 
     }
 
+    //testado
     public static boolean validaEmail(String email) {
 
         String regexEmail = "^[a-zA-Z0-9][a-zA-Z0-9._-]+@([a-zA-Z0-9._-]+\\.)[a-zA-Z-0-9]{2,3}$";
@@ -311,6 +382,7 @@ public class controle {
         }
     }
 
+    //testado
     public static boolean validaCep(String cep) {
 
         String regexCep = "^[0-9]{5}-[0-9]{3}$";
@@ -328,6 +400,7 @@ public class controle {
         }
     }
 
+    //testado
     public static boolean validaVazio(String estaVazio, String MsgErro) {
 
         if ((estaVazio != null) && (estaVazio.length() > 0)) {
@@ -338,6 +411,7 @@ public class controle {
         }
     }
 
+    //testado
     public static boolean getTxtDDDNumCel(String numtel) {
 
         String regexCep = "^\\([0-9]{2}\\)[0-9]{5}-[0-9]{4}$";
@@ -355,6 +429,7 @@ public class controle {
         }
     }
 
+    //testado
     public static int calculaIdade(String dataNasc, String padrao) {
 
         DateFormat formato = new SimpleDateFormat(padrao);
@@ -388,6 +463,7 @@ public class controle {
         return idade;
     }
 
+    //testado
     public static String dataFormatoMySQL(String dataNasc) {
 
         SimpleDateFormat formatoOrigem = new SimpleDateFormat("dd/MM/yyyy");
@@ -403,6 +479,7 @@ public class controle {
         return formatoDestino.format(dataNascObj);
     }
 
+    //testado
     public static String gerarSenha(String senhaAntiga) {
 
         MessageDigest algoritmo = null;
@@ -426,4 +503,39 @@ public class controle {
         return hexSenhaEncripitada.toString();
 
     }
+
+    //testado
+    public static boolean validaNumeroInteiro(String numero, String msgVazio, String msgInvalido) {
+
+        if (numero != null && !numero.isEmpty()) {
+
+            if (numero.replaceAll("[0-9]", "").isEmpty()) {
+                return true;
+            } else {
+                msgErroAtual = msgInvalido;
+                return false;
+            }
+        } else {
+            msgErroAtual = msgVazio;
+            return false;
+        }
+    }
+
+    public static boolean validaPlaca(String Placa) {
+
+        if (Placa != null && Placa.length() != 0) {
+
+            if (Placa.replaceAll("[0-9A-Z]", "").length() == 0) {
+                return true;
+            } else {
+                msgErroAtual = "Informe Apenas Números e Letras Maiúsculas Sem Acentos No Campo Placa";
+                return false;
+            }
+        } else {
+            msgErroAtual = "A Placa deve Ser Informada";
+            return false;
+        }
+
+    }
+
 }

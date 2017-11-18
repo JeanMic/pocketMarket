@@ -37,6 +37,33 @@
             android:name=".visao.telasNavegacao.telaPrincipal"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".visao.telasNavegacao.formularioProdNotebook"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasNavegacao.formularioProdMoto"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasNavegacao.formularioProdDesktop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasNavegacao.formularioProdCelulares"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasNavegacao.formularioProdCasa"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasNavegacao.formularioProdCarro"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasNavegacao.formularioProdapartamento"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

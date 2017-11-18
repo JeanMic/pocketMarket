@@ -23,7 +23,7 @@ public class motocicletaDAO extends acesso implements metodosDAO {
                 "tituloProduto,\n" +
                 "descricaoProduto,\n" +
                 "categoriaProduto,\n" +
-                "fotoProduto,\n" +
+                //"fotoProduto,\n" +
                 "precoProduto,\n" +
                 "dataDeCadastro,\n" +
                 "marca,\n" +
@@ -42,9 +42,9 @@ public class motocicletaDAO extends acesso implements metodosDAO {
                 "'" + motocicleta.getTituloProduto() + "',\n" +
                 "'" + motocicleta.getDescricaoProduto() + "',\n" +
                 "'" + motocicleta.getCategoriaProduto() + "',\n" +
-                "'" + motocicleta.getFotoProduto() + "',\n" +
+                //"'" + motocicleta.getFotoProduto() + "',\n" +
                 "'" + motocicleta.getPrecoProduto() + "',\n" +
-                "NOW(),\n" +
+                "'" + motocicleta.getDatacadastroFormatada().format(motocicleta.getDataDeCadastro()) + "',\n" +
                 "'" + motocicleta.getMarca() + "',\n" +
                 "'" + motocicleta.getModelo() + "',\n" +
                 "'" + motocicleta.getAnoFabricação() + "',\n" +
@@ -55,14 +55,18 @@ public class motocicletaDAO extends acesso implements metodosDAO {
                 "'" + motocicleta.getPossuiMultas() + "',\n" +
                 "'" + motocicleta.getCilindradas() + "',\n" +
                 "'0' , \n" +
-                "'0' , \n" +
+                "'0'); \n";
+
+        sqlRelacionamento = "INSERT INTO market.usuario_has_produtoveiculo (\n" +
+                "produtoVeiculo_idVenda,\n" +
+                "usuario_CPFCNPJ)\n" +
                 "\n" +
-                "INSERT INTO market.usuario_has_produtoveiculo ( produtoVeiculo_idVenda,\n" +
-                "usuario_CPFCNPJ )\n"; //+
-               // "SELECT LAST_INSERT_ID(), '" + CPF_usuario_logado + "';";
+                "SELECT LAST_INSERT_ID(),\n" +
+                "'01234567890';";
 
         try {
-            rs = stm.executeQuery(sql);
+            stm.executeUpdate(sql);
+            stm.executeUpdate(sqlRelacionamento);
             this.desconecta();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,7 +92,6 @@ public class motocicletaDAO extends acesso implements metodosDAO {
         try {
 
 
-
             this.desconecta();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,7 +102,6 @@ public class motocicletaDAO extends acesso implements metodosDAO {
     public void delete() {
 
         try {
-
 
 
             this.desconecta();

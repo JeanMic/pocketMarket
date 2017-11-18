@@ -133,6 +133,18 @@
     <string name="tamanhotelanotebook">Tamanho da Tela (Polegadas)</string>
     <!-- Textos layout venda notebook -->
 
+    <!-- Textos layout venda celulares -->
+    <string name="titulovendacelulares">Titulo Venda</string>
+    <string name="descricaovendacelulares">Descrição Venda</string>
+    <string name="marcacelulares">Marca Celulares</string>
+    <string name="modelocelulares">Modelo Celulares</string>
+    <string name="qtdgbsarmazenamentocelular">Espaço Interno (em GBs)</string> @@@
+    <string name="precocelulares">Preço celulares</string>
+    <string name="registroprodutocelulares">Registrar Venda</string>
+    <string name="tamanhotelacelular">Tamanho da Tela (Polegadas)</string>
+    <!-- Textos layout venda celulares -->
+
+
     <!-- Textos compartilhados -->
     <string name="possui">Sim</string>
     <string name="naopossui">Não</string>

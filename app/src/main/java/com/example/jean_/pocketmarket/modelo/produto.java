@@ -4,6 +4,7 @@ package com.example.jean_.pocketmarket.modelo;
  * Created by jean_ on 11/09/2017.
  */
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public abstract class produto {
@@ -19,6 +20,8 @@ public abstract class produto {
     private float precoProduto;
 
     private Date dataDeCadastro;
+
+    private SimpleDateFormat datacadastroFormatada;
 
 
     public void setTituloProduto(String tituloProduto) {
@@ -69,5 +72,14 @@ public abstract class produto {
         return dataDeCadastro;
     }
 
+    public void setDatacadastroFormatada(SimpleDateFormat datacadastroFormatada) {
+
+        this.datacadastroFormatada = datacadastroFormatada;
+    }
+
+    public SimpleDateFormat getDatacadastroFormatada() {
+
+        return datacadastroFormatada;
+    }
 }
 
