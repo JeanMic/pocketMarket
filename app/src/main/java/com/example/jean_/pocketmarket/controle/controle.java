@@ -3,18 +3,24 @@ package com.example.jean_.pocketmarket.controle;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import com.example.jean_.pocketmarket.DAO.apartamentoDAO;
 import com.example.jean_.pocketmarket.DAO.autenticacao;
 import com.example.jean_.pocketmarket.DAO.carroDAO;
+import com.example.jean_.pocketmarket.DAO.casaDAO;
 import com.example.jean_.pocketmarket.DAO.motocicletaDAO;
 import com.example.jean_.pocketmarket.DAO.usuarioPFDAO;
 import com.example.jean_.pocketmarket.DAO.usuarioPJDAO;
 import com.example.jean_.pocketmarket.R;
+import com.example.jean_.pocketmarket.modelo.apartamento;
 import com.example.jean_.pocketmarket.modelo.carro;
+import com.example.jean_.pocketmarket.modelo.casa;
 import com.example.jean_.pocketmarket.modelo.motocicleta;
 import com.example.jean_.pocketmarket.modelo.usuarioPF;
 import com.example.jean_.pocketmarket.modelo.usuarioPJ;
 import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdCarro;
+import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdCasa;
 import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdMoto;
+import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdapartamento;
 import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPF;
 import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPJ;
 
@@ -271,6 +277,137 @@ public class controle {
             return false;
         }
     }
+
+    public static boolean validaEntradasProdutoCasa(formularioProdCasa formCasa) {
+
+        //validações comuns para todos os produtos
+        if (validaVazio(formCasa.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
+                validaVazio(formCasa.getViewdescricaoProduto().getText().toString().trim(), "A Descrição Deve ser Informado") &&
+                validaNumeroInteiro(formCasa.getViewprecoProduto().getText().toString().trim(), "O Preço Deve Ser Informado", "Informe Somente Números no Campo Preco Produto") &&
+
+                //validações do produto imoveis
+                validaNumeroInteiro(formCasa.getViewQtdquartos().getText().toString().trim(), "O Campo Qtd de Quartos Deve ser Informado", "Informe Somente Números no Campo Qtd de Quartos") &&
+                validaNumeroInteiro(formCasa.getViewQtdsuites().getText().toString().trim(), "O Campo Qtd de Suítes Deve ser Informado", "Informe Somente Números no Campo Qtd de Suítes") &&
+                validaNumeroInteiro(formCasa.getViewanoValorIPTU().getText().toString().trim(), "O Campo Valor IPTU Deve ser Informado", "Informe Somente Números no Campo Valor IPTU") &&
+                validaNumeroInteiro(formCasa.getViewValorCondominio().getText().toString().trim(), "O Campo Valor Condominio Deve ser Informado", "Informe Somente Números no Campo Valor Condominio") &&
+                validaNumeroInteiro(formCasa.getViewVagsaGaragem().getText().toString().trim(), "O Campo Vagas Garagem Deve ser Informado", "Informe Somente Números no Campo Vagas Garagem") &&
+                validaCep(formCasa.getViewCEPImovel().getText().toString().trim()) &&
+
+                //validação do produto casa
+                validaNumeroInteiro(formCasa.getViewAreaConstruida().getText().toString().trim(), "A Área Construída Devem ser Informada", "Informe Somente Números no Campo Área Construída")) {
+
+            casa casaObj = new casa();
+
+            //sets comuns a todos os produtos
+            casaObj.setTituloProduto(formCasa.getViewtituloProduto().getText().toString().trim());
+            casaObj.setDescricaoProduto(formCasa.getViewdescricaoProduto().getText().toString().trim());
+            casaObj.setPrecoProduto(Float.parseFloat(formCasa.getViewprecoProduto().getText().toString().trim()));
+            casaObj.setCategoriaProduto("Casa");
+            casaObj.setDataDeCadastro(new Date());
+            casaObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+
+            //sets comuns para todos os produtos Imovel
+            casaObj.setQtdQuartos(Integer.parseInt(formCasa.getViewQtdquartos().getText().toString().trim()));
+            casaObj.setQtdDeSuites(Integer.parseInt(formCasa.getViewQtdsuites().getText().toString().trim()));
+            casaObj.setValorIPTU(Float.parseFloat(formCasa.getViewanoValorIPTU().getText().toString().trim()));
+            casaObj.setValorCondominio(Float.parseFloat(formCasa.getViewValorCondominio().getText().toString().trim()));
+            casaObj.setVagasNaGaragem(Integer.parseInt(formCasa.getViewVagsaGaragem().getText().toString().trim()));
+            casaObj.setVendaOuAluguel((formCasa.getViewVendaouAluguel().getCheckedRadioButtonId() == R.id.vendacasa) ? "VENDA" : "ALUGUEL");
+            casaObj.setCEPDoImovel(Integer.parseInt(formCasa.getViewCEPImovel().getText().toString().replace("-", "").trim()));
+            casaObj.setPossuiPiscina((formCasa.getViewPussuiPiscina().getCheckedRadioButtonId() == R.id.possuipiscinacasa) ? true : false);
+            casaObj.setPossuiAreaDeServico((formCasa.getViewPussuiAreaServico().getCheckedRadioButtonId() == R.id.possuiareadeservicocasa) ? true : false);
+            casaObj.setPossuiArCondicionado((formCasa.getViewPussuiArCondicionado().getCheckedRadioButtonId() == R.id.possuiarcondicionadocasa) ? true : false);
+            casaObj.setPossuiQuardoEmpregada((formCasa.getViewPussuiQuartoEmpregada().getCheckedRadioButtonId() == R.id.possuiquartoempregadacasa) ? true : false);
+            casaObj.setCondominioFechado((formCasa.getViewPussuiCondominioFechado().getCheckedRadioButtonId() == R.id.possuicondominiofechadocasa) ? true : false);
+
+            //set comun para o produto Casa
+            casaObj.setAreaConstruida(Integer.parseInt(formCasa.getViewAreaConstruida().getText().toString().trim()));
+            casaObj.setPossuiCameraVigilancia((formCasa.getViewPussuiCameraVigilancia().getCheckedRadioButtonId() == R.id.possuicameravigilanciacasa) ? true : false);
+
+            try {
+                new casaDAO().insert(casaObj);
+                return true;
+            } catch (ClassNotFoundException e) {
+                formCasa.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
+                return false;
+            }
+//            catch (SQLException e) {
+//                formMoto.setMsgCtrl("Usuário já Cadastrado");
+//                return false;
+//            }
+
+        } else {
+            formCasa.setMsgCtrl(msgErroAtual);
+            return false;
+        }
+    }
+
+    public static boolean validaEntradasProdutoApartamento(formularioProdapartamento formApart) {
+
+        //validações comuns para todos os produtos
+        if (validaVazio(formApart.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
+                validaVazio(formApart.getViewdescricaoProduto().getText().toString().trim(), "A Descrição Deve ser Informado") &&
+                validaNumeroInteiro(formApart.getViewprecoProduto().getText().toString().trim(), "O Preço Deve Ser Informado", "Informe Somente Números no Campo Preco Produto") &&
+
+                //validações do produto imoveis
+                validaNumeroInteiro(formApart.getViewQtdquartos().getText().toString().trim(), "O Campo Qtd de Quartos Deve ser Informado", "Informe Somente Números no Campo Qtd de Quartos") &&
+                validaNumeroInteiro(formApart.getViewQtdsuites().getText().toString().trim(), "O Campo Qtd de Suítes Deve ser Informado", "Informe Somente Números no Campo Qtd de Suítes") &&
+                validaNumeroInteiro(formApart.getViewanoValorIPTU().getText().toString().trim(), "O Campo Valor IPTU Deve ser Informado", "Informe Somente Números no Campo Valor IPTU") &&
+                validaNumeroInteiro(formApart.getViewValorCondominio().getText().toString().trim(), "O Campo Valor Condominio Deve ser Informado", "Informe Somente Números no Campo Valor Condominio") &&
+                validaNumeroInteiro(formApart.getViewVagsaGaragem().getText().toString().trim(), "O Campo Vagas Garagem Deve ser Informado", "Informe Somente Números no Campo Vagas Garagem") &&
+                validaCep(formApart.getViewCEPImovel().getText().toString().trim()) &&
+
+                //validação do produto casa
+                validaNumeroInteiro(formApart.getViewAreaUtil().getText().toString().trim(), "A Área Construída Devem ser Informada", "Informe Somente Números no Campo Área Construída")) {
+
+            apartamento apartObj = new apartamento();
+
+            //sets comuns a todos os produtos
+            apartObj.setTituloProduto(formApart.getViewtituloProduto().getText().toString().trim());
+            apartObj.setDescricaoProduto(formApart.getViewdescricaoProduto().getText().toString().trim());
+            apartObj.setPrecoProduto(Float.parseFloat(formApart.getViewprecoProduto().getText().toString().trim()));
+            apartObj.setCategoriaProduto("Apartamento");
+            apartObj.setDataDeCadastro(new Date());
+            apartObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+
+            //sets comuns para todos os produtos Imovel
+            apartObj.setQtdQuartos(Integer.parseInt(formApart.getViewQtdquartos().getText().toString().trim()));
+            apartObj.setQtdDeSuites(Integer.parseInt(formApart.getViewQtdsuites().getText().toString().trim()));
+            apartObj.setValorIPTU(Float.parseFloat(formApart.getViewanoValorIPTU().getText().toString().trim()));
+            apartObj.setValorCondominio(Float.parseFloat(formApart.getViewValorCondominio().getText().toString().trim()));
+            apartObj.setVagasNaGaragem(Integer.parseInt(formApart.getViewVagsaGaragem().getText().toString().trim()));
+            apartObj.setVendaOuAluguel((formApart.getViewVendaouAluguel().getCheckedRadioButtonId() == R.id.vendacasa) ? "VENDA" : "ALUGUEL");
+            apartObj.setCEPDoImovel(Integer.parseInt(formApart.getViewCEPImovel().getText().toString().replace("-", "").trim()));
+            apartObj.setPossuiPiscina((formApart.getViewPussuiPiscina().getCheckedRadioButtonId() == R.id.possuipiscinaapartamento) ? true : false);
+            apartObj.setPossuiAreaDeServico((formApart.getViewPussuiAreaServico().getCheckedRadioButtonId() == R.id.possuiareadeservicoapartamento) ? true : false);
+            apartObj.setPossuiArCondicionado((formApart.getViewPussuiArCondicionado().getCheckedRadioButtonId() == R.id.possuiarcondicionadoapartamento) ? true : false);
+            apartObj.setPossuiQuardoEmpregada((formApart.getViewPussuiQuartoEmpregada().getCheckedRadioButtonId() == R.id.possuiquartoempregadaapartamento) ? true : false);
+            apartObj.setCondominioFechado((formApart.getViewPussuiCondominioFechado().getCheckedRadioButtonId() == R.id.possuicondominiofechadoapartamento) ? true : false);
+
+            //set comun para o produto apartamento
+            apartObj.setAreaUtil(Integer.parseInt(formApart.getViewAreaUtil().getText().toString().trim()));
+            apartObj.setPossuiAcademia((formApart.getViewPussuiAcademia().getCheckedRadioButtonId() == R.id.possuiacademiaapartamento) ? true : false);
+            apartObj.setPossuiVaranda((formApart.getViewPussuiVaranda().getCheckedRadioButtonId() == R.id.possuivarandaapartamento) ? true : false);
+            apartObj.setPossuiElevadorPredio((formApart.getViewPussuiElevadorPredio().getCheckedRadioButtonId() == R.id.possuielevadorapartamento) ? true : false);
+
+            try {
+                new apartamentoDAO().insert(apartObj);
+                return true;
+            } catch (ClassNotFoundException e) {
+                formApart.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
+                return false;
+            }
+//            catch (SQLException e) {
+//                formMoto.setMsgCtrl("Usuário já Cadastrado");
+//                return false;
+//            }
+
+        } else {
+            formApart.setMsgCtrl(msgErroAtual);
+            return false;
+        }
+    }
+
 
     //testado
     public static boolean validaCPF(String CPF) {

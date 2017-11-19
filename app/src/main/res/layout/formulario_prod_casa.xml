@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/valiptucasa"
                 android:inputType="number"
-                android:maxLength="2"
+                android:maxLength="15"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/valcondominiocasa"
                 android:inputType="number"
-                android:maxLength="2"
+                android:maxLength="15"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
@@ -141,27 +141,6 @@
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
-
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/vendaoualuguelcasa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/vendacasa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/vendacasa" />
-
-            <RadioButton
-                android:id="@+id/aluguelcasa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/aluguelcasa" />
-
-        </RadioGroup>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/layoutcepcasa"
@@ -191,10 +170,31 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/areaconstruidacasa"
                 android:inputType="number"
-                android:maxLength="5"
+                android:maxLength="10"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/vendaoualuguelcasa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/vendacasa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/vendacasa" />
+
+            <RadioButton
+                android:id="@+id/aluguelcasa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/aluguelcasa" />
+
+        </RadioGroup>
 
         <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/possuiounaopiscinacasa"
@@ -334,7 +334,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/precocasa"
                 android:inputType="number"
-                android:maxLength="10"
+                android:maxLength="15"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
 

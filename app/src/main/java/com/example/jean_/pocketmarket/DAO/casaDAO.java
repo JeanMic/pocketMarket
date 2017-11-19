@@ -41,7 +41,7 @@ public class casaDAO extends acesso implements metodosDAO {
                 "tituloProduto,\n" +
                 "descricaoProduto,\n" +
                 "categoriaProduto,\n" +
-                "fotoProduto,\n" +
+                //"fotoProduto,\n" +
                 "precoProduto,\n" +
                 "dataDeCadastro\n" +
                 ")\n" +
@@ -62,25 +62,25 @@ public class casaDAO extends acesso implements metodosDAO {
                 "'" + casa.getAreaConstruida() +"', \n" +
                 "'" + casa.isPossuiCameraVigilancia() +"', \n" +
                 "0.0, \n" +
-                "FALSE, \n" +
-                "FALSE, \n" +
-                "FALSE, \n" +
+                "false, \n" +
+                "false, \n" +
+                "false, \n" +
                 "'" + casa.getTituloProduto() +"', \n" +
                 "'" + casa.getDescricaoProduto() +"', \n" +
                 "'" + casa.getCategoriaProduto() +"', \n" +
-                "'" + casa.getFotoProduto() +"', \n" +
+               // "'" + casa.getFotoProduto() +"', \n" +
                 "'" + casa.getPrecoProduto() +"', \n" +
-                "NOW()\n" +
-                ");\n" +
-                "\n" +
-                "INSERT INTO market.produtoimovel_has_usuario (\n" +
-                "produtoImovel_idprodutoImovel,\n" +
-                "usuario_CPFCNPJ\n" +
-                ")\n"; //+
-               // "SELECT LAST_INSERT_ID(), '" + CPF_usuario_logado + "';";
+                "'" + casa.getDatacadastroFormatada().format(casa.getDataDeCadastro()) + "'\n" +
+                ");\n";
 
+        sqlRelacionamento = "INSERT INTO market.produtoimovel_has_usuario (\n" +
+                "produtoImovel_idprodutoImovel,\n" +
+                "usuario_CPFCNPJ)\n" +
+                "SELECT LAST_INSERT_ID(),\n" +
+                "'01234567890';";
         try {
-            rs = stm.executeQuery(sql);
+            stm.executeUpdate(sql);
+            stm.executeUpdate(sqlRelacionamento);
             this.desconecta();
         } catch (SQLException e) {
             e.printStackTrace();
