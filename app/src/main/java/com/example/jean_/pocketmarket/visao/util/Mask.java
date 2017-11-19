@@ -1,4 +1,4 @@
-package com.example.jean_.pocketmarket.visao.telasPrimarias;
+package com.example.jean_.pocketmarket.visao.util;
 
 import android.text.Editable;
 import android.text.TextWatcher;

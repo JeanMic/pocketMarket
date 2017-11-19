@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.jean_.pocketmarket.R;
 import com.example.jean_.pocketmarket.controle.controle;
+import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdCarro;
 import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdMoto;
 
 import java.io.UnsupportedEncodingException;
@@ -81,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 //linha abaixo comentada para testes
                 //Intent decisaoCadastro = new Intent(getApplicationContext(), decisaoFormularioCadastro.class);
-                Intent decisaoCadastro = new Intent(getApplicationContext(), formularioProdMoto.class);
+                Intent decisaoCadastro = new Intent(getApplicationContext(), formularioProdCarro.class);
 
                 startActivity(decisaoCadastro);
                 break;

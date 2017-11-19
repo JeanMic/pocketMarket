@@ -23,7 +23,7 @@ public class carroDAO extends acesso implements metodosDAO {
                 "tituloProduto,\n" +
                 "descricaoProduto,\n" +
                 "categoriaProduto,\n" +
-                "fotoProduto,\n" +
+                // "fotoProduto,\n" +
                 "precoProduto,\n" +
                 "dataDeCadastro,\n" +
                 "marca,\n" +
@@ -42,9 +42,9 @@ public class carroDAO extends acesso implements metodosDAO {
                 "'" + carro.getTituloProduto() + "',\n" +
                 "'" + carro.getDescricaoProduto() + "',\n" +
                 "'" + carro.getCategoriaProduto() + "',\n" +
-                "'" + carro.getFotoProduto() + "',\n" +
+                //"'" + carro.getFotoProduto() + "',\n" +
                 "'" + carro.getPrecoProduto() + "',\n" +
-                "NOW(),\n" +
+                "'" + carro.getDatacadastroFormatada().format(carro.getDataDeCadastro()) + "',\n" +
                 "'" + carro.getMarca() + "',\n" +
                 "'" + carro.getModelo() + "',\n" +
                 "'" + carro.getAnoFabricação() + "',\n" +
@@ -55,14 +55,18 @@ public class carroDAO extends acesso implements metodosDAO {
                 "'" + carro.getPossuiMultas() + "',\n" +
                 "'0' , \n" +
                 "'" + carro.getQtdPortas() + "',\n" +
-                "'" + carro.getCambio() + "',\n" +
+                "'" + carro.getCambio() + "')\n";
+
+        sqlRelacionamento = "INSERT INTO market.usuario_has_produtoveiculo (\n" +
+                "produtoVeiculo_idVenda,\n" +
+                "usuario_CPFCNPJ)\n" +
                 "\n" +
-                "INSERT INTO market.usuario_has_produtoveiculo ( produtoVeiculo_idVenda,\n" +
-                "usuario_CPFCNPJ )\n"; //+
-               // "SELECT LAST_INSERT_ID(), '" + CPF_usuario_logado + "';";
+                "SELECT LAST_INSERT_ID(),\n" +
+                "'01234567890';";
 
         try {
-            rs = stm.executeQuery(sql);
+            stm.executeUpdate(sql);
+            stm.executeUpdate(sqlRelacionamento);
             this.desconecta();
         } catch (SQLException e) {
             e.printStackTrace();

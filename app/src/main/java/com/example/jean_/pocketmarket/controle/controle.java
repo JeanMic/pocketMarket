@@ -4,13 +4,16 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.example.jean_.pocketmarket.DAO.autenticacao;
+import com.example.jean_.pocketmarket.DAO.carroDAO;
 import com.example.jean_.pocketmarket.DAO.motocicletaDAO;
 import com.example.jean_.pocketmarket.DAO.usuarioPFDAO;
 import com.example.jean_.pocketmarket.DAO.usuarioPJDAO;
 import com.example.jean_.pocketmarket.R;
+import com.example.jean_.pocketmarket.modelo.carro;
 import com.example.jean_.pocketmarket.modelo.motocicleta;
 import com.example.jean_.pocketmarket.modelo.usuarioPF;
 import com.example.jean_.pocketmarket.modelo.usuarioPJ;
+import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdCarro;
 import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdMoto;
 import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPF;
 import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPJ;
@@ -204,6 +207,67 @@ public class controle {
 
         } else {
             formMoto.setMsgCtrl(msgErroAtual);
+            return false;
+        }
+    }
+
+    public static boolean validaEntradasProdutoCarro(formularioProdCarro formCarro) {
+
+        //validações comuns para todos os produtos
+        if (validaVazio(formCarro.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
+                validaVazio(formCarro.getViewdescricaoProduto().getText().toString().trim(), "A Descrição Deve ser Informado") &&
+                validaNumeroInteiro(formCarro.getViewprecoProduto().getText().toString().trim(), "O Preço Deve Ser Informado", "Informe Somente Números no Campo Preco Produto") &&
+
+                //validações do produto veiculo
+                validaVazio(formCarro.getViewMarca().getText().toString().trim(), "A Marca Deve Ser Informada") &&
+                validaVazio(formCarro.getViewModelo().getText().toString().trim(), "O Modelo Deve Ser Informado") &&
+                validaNumeroInteiro(formCarro.getViewanoFabricacao().getText().toString().trim(), "O Campo Ano Fabricação Deve ser Informado", "Informe Somente Números no Campo Ano Fabricaçao") &&
+                validaPlaca(formCarro.getViewPlaca().getText().toString().trim()) &&
+                validaNumeroInteiro(formCarro.getViewQuilometragem().getText().toString().trim(), "O Campo Quilometragem Deve ser Informado", "Informe Somente Números no Campo Quilometragem") &&
+                validaVazio(formCarro.getViewCor().getText().toString().trim(), "A Cor Deve Ser Informado") &&
+
+                //validação do produto moto
+                validaNumeroInteiro(formCarro.getViewQtsPortas().getText().toString().trim(), "As Cilindradas Devem ser Informadas", "Informe Somente Números no Campo Cilindradas") &&
+                validaVazio(formCarro.getViewCambio().getText().toString().trim(), "O Cambio Deve ser Informado")) {
+
+            carro carro = new carro();
+
+            //sets comuns a todos os produtos
+            carro.setTituloProduto(formCarro.getViewtituloProduto().getText().toString().trim());
+            carro.setDescricaoProduto(formCarro.getViewdescricaoProduto().getText().toString().trim());
+            carro.setPrecoProduto(Float.parseFloat(formCarro.getViewprecoProduto().getText().toString().trim()));
+            carro.setCategoriaProduto("Carro");
+            carro.setDataDeCadastro(new Date());
+            carro.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+
+            //sets comuns para todos os produtos veículos
+            carro.setMarca(formCarro.getViewMarca().getText().toString().trim());
+            carro.setModelo(formCarro.getViewModelo().getText().toString().trim());
+            carro.setAnoFabricação(Integer.parseInt(formCarro.getViewanoFabricacao().getText().toString().trim()));
+            carro.setPlaca(formCarro.getViewPlaca().getText().toString().trim());
+            carro.setQuilometragem(Integer.parseInt(formCarro.getViewQuilometragem().getText().toString().trim()));
+            carro.setCor(formCarro.getViewCor().getText().toString().trim());
+            carro.setCombustivel((formCarro.getViewCombustivel().getCheckedRadioButtonId() == R.id.combustivelalcoolcarro) ? "ALCOOL" : (formCarro.getViewCombustivel().getCheckedRadioButtonId() == R.id.combustivelgasolinacarro) ? "GASOLINA" : "FLEX");
+            carro.setPossuiMultas((formCarro.getViewRadiopossuiMultas().getCheckedRadioButtonId() == R.id.possuimultassimcarro) ? true : false);
+
+            //set comun para o produto carro
+            carro.setQtdPortas(Integer.parseInt(formCarro.getViewQtsPortas().getText().toString().trim()));
+            carro.setCambio(formCarro.getViewCambio().getText().toString().trim());
+
+            try {
+                new carroDAO().insert(carro);
+                return true;
+            } catch (ClassNotFoundException e) {
+                formCarro.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
+                return false;
+            }
+//            catch (SQLException e) {
+//                formMoto.setMsgCtrl("Usuário já Cadastrado");
+//                return false;
+//            }
+
+        } else {
+            formCarro.setMsgCtrl(msgErroAtual);
             return false;
         }
     }

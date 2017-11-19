@@ -3,12 +3,9 @@ package com.example.jean_.pocketmarket.visao.telasPrimarias;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -18,6 +15,7 @@ import android.widget.Toast;
 import com.example.jean_.pocketmarket.R;
 import com.example.jean_.pocketmarket.controle.controle;
 import com.example.jean_.pocketmarket.visao.telasNavegacao.telaPrincipal;
+import com.example.jean_.pocketmarket.visao.util.Mask;
 
 /**
  * Created by jmtb on 25/10/2017.
