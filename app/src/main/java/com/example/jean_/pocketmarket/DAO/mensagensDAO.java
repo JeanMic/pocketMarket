@@ -23,17 +23,17 @@ public class mensagensDAO extends acesso implements metodosDAO {
                 "nomeRazaoSocialRemetente,\n" +
                 "dataHoraEnvio,\n" +
                 "mensagem,\n" +
-                "usuario_CPFCNPJ\n" +
+                "CPFCNPJ_Remetente\n" +
                 ")\n" +
                 "VALUES\n" +
                 "(\n" +
                 "'" + msg.getCPFCNPJdestinatario() + "',\n" +
                 "'" + msg.getNomeRazaoSocialRemetente() + "',\n" +
-                "'" + msg.getDataHoraEnvio() + "',\n" +
+                "'" + msg.getDatacadastroFormatada().format(msg.getDataEnvio()) + "', \n" +
                 "'" + msg.getMensagem() + "', \n" +
-                "'" + msg.getCPFCNPJremetente() + "')";
+                "'" + msg.getCPFCNPJRemetente() + "')";
         try {
-            rs = stm.executeQuery(sql);
+            stm.executeUpdate(sql);
             this.desconecta();
         } catch (SQLException e) {
             e.printStackTrace();

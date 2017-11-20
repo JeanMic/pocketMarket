@@ -64,6 +64,15 @@
         <activity
             android:name=".visao.telasNavegacao.formularioProdapartamento"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasNavegacao.formularioProdServico"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasNavegacao.formularioMensagem"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

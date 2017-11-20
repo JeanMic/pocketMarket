@@ -30,10 +30,10 @@ public class servicosDAO extends acesso implements metodosDAO {
                 "'" + serv.getTituloServico() + "', \n" +
                 "'" + serv.getDescricaoServico() + "',\n" +
                 "'" + serv.getCategoriaServico() + "', \n" +
-                "'" + serv.getPrecoServico() + "',\n"; //+
-               // "'" + DEFINIR ONDE VOU PEGAR O CPF DO USUARIO LOGADO +")'";
+                "'" + serv.getPrecoServico() + "',\n" +
+                "'01234567890')";
         try {
-            rs = stm.executeQuery(sql);
+            stm.executeUpdate(sql);
             this.desconecta();
         } catch (SQLException e) {
             e.printStackTrace();

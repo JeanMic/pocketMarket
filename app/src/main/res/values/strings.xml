@@ -144,13 +144,25 @@
     <string name="tamanhotelacelular">Tamanho da Tela (Polegadas)</string>
     <!-- Textos layout venda celulares -->
 
+    <!-- Textos layout venda servico -->
+    <string name="titulovendaservico">Titulo Serviço</string>
+    <string name="descricaovendaservico">Descrição Serviço</string>
+    <string name="precoservico">Preço Serviço</string>
+    <string name="registroprodutoservico">Registrar Serviço</string>
+    <!-- Textos layout venda servico -->
+
+    <!-- Textos layout venda servico -->
+    <string name="titulomsg">Titulo Mensagem</string>
+    <string name="descricaomsg">Mensagem</string>
+    <string name="registromsg">Registrar Envio Mensagem</string>
+    <!-- Textos layout venda servico -->
 
     <!-- Textos compartilhados -->
     <string name="possui">Sim</string>
     <string name="naopossui">Não</string>
     <string name="marcaprocessador">Marca Processador</string>
     <string name="modeloprocessador">Modelo Processador</string>
-    <string name="qtdgbshd">Quanidade Gigas HD</string>
+    <string name="qtdgbshd">Quantidade Gigas HD</string>
     <string name="sistema">Sistema Operacional</string>
     <string name="versaosistema">Versão Sistema Operacional</string>
 

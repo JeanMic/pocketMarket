@@ -56,8 +56,8 @@ public class desktopDAO extends acesso implements metodosDAO {
                 "'" + compdesk.getVersaoSistema() + "',\n" +
                 "'" + compdesk.isUsado() + "',\n" +
                 "0.0, \n" +
-                "FALSE, \n" +
-                "FALSE, \n" +
+                "'false', \n" +
+                "'false', \n" +
                 "'" + compdesk.isPossuiMonitor() + "',\n" +
                 "'" + compdesk.isPossuiTeclado() + "',\n" +
                 "'" + compdesk.isPossuiEstabilizador() + "',\n" +
@@ -67,17 +67,17 @@ public class desktopDAO extends acesso implements metodosDAO {
                 "'" + compdesk.getCategoriaProduto() + "',\n" +
                 "'" + compdesk.getFotoProduto() + "',\n" +
                 "'" + compdesk.getPrecoProduto() + "',\n" +
-                "NOW() \n" +
-                ");\n" +
-                "\n" +
-                "INSERT INTO market.produtocomputadoresnotebooks_has_usuario (\n" +
-                "produtoComputadoresNotebooks_idprodutoComputadoresNotebooks,\n" +
-                "usuario_CPFCNPJ\n" +
-                ")\n"; //+
-               // "SELECT LAST_INSERT_ID(), '" + CPF_usuario_logado + "';";
+                "'" + compdesk.getDatacadastroFormatada().format(compdesk.getDataDeCadastro()) + "'\n" +
+                ");\n";
 
+        sqlRelacionamento = "INSERT INTO market.produtocomputadoresnotebooks_has_usuario (\n" +
+                "produtoComputadoresNotebooks_idprodutoComputadoresNotebooks,\n" +
+                "usuario_CPFCNPJ)\n" +
+                "SELECT LAST_INSERT_ID(),\n" +
+                "'01234567890';";
         try {
-            rs = stm.executeQuery(sql);
+            stm.executeUpdate(sql);
+            stm.executeUpdate(sqlRelacionamento);
             this.desconecta();
         } catch (SQLException e) {
             e.printStackTrace();

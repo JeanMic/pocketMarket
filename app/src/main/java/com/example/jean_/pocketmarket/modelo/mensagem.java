@@ -4,35 +4,40 @@ package com.example.jean_.pocketmarket.modelo;
  * Created by jean_ on 11/09/2017.
  */
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class mensagem {
 
-    private int CPFCNPJRemetente;
+    private String CPFCNPJRemetente;
 
     private String nomeRazaoSocialRemetente;
 
-    private int CPFCNPJDestinatario;
+    private String CPFCNPJDestinatario;
 
-    private Date DataHoraEnvio;
+    private Date DataEnvio;
+
+    private SimpleDateFormat datacadastroFormatada;
 
     private String Mensagem;
 
+    private String TituloMensagem;
 
-    public void setCPFCNPJEnvio(int CPFCNPJremetente) {
-        this.CPFCNPJRemetente = CPFCNPJremetente;
-    }
 
-    public int getCPFCNPJremetente() {
-        return CPFCNPJRemetente;
-    }
-
-    public void setCPFCNPJdestinatario(int CPFCNPJdestinatario) {
+    public void setCPFCNPJdestinatario(String CPFCNPJdestinatario) {
         this.CPFCNPJDestinatario = CPFCNPJdestinatario;
     }
 
-    public int getCPFCNPJdestinatario() {
+    public String getCPFCNPJdestinatario() {
         return CPFCNPJDestinatario;
+    }
+
+    public String getCPFCNPJRemetente() {
+        return CPFCNPJRemetente;
+    }
+
+    public void setCPFCNPJRemetente(String CPFCNPJRemetente) {
+        this.CPFCNPJRemetente = CPFCNPJRemetente;
     }
 
     public void setNomeRazaoSocialRemetente(String nomeRazaoSocialRemetente) {
@@ -43,12 +48,12 @@ public class mensagem {
         return nomeRazaoSocialRemetente;
     }
 
-    public void setDataHoraEnvio(Date DataHoraEnvio) {
-        this.DataHoraEnvio = DataHoraEnvio;
+    public void setDataEnvio(Date DataHoraEnvio) {
+        this.DataEnvio = DataHoraEnvio;
     }
 
-    public Date getDataHoraEnvio() {
-        return DataHoraEnvio;
+    public Date getDataEnvio() {
+        return DataEnvio;
     }
 
     public void setMensagem(String Mensagem) {
@@ -57,6 +62,23 @@ public class mensagem {
 
     public String getMensagem() {
         return Mensagem;
+    }
+
+    public String getTituloMensagem() {
+        return TituloMensagem;
+    }
+
+    public void setTituloMensagem(String tituloMensagem) {
+        TituloMensagem = tituloMensagem;
+    }
+
+
+    public SimpleDateFormat getDatacadastroFormatada() {
+        return datacadastroFormatada;
+    }
+
+    public void setDatacadastroFormatada(SimpleDateFormat datacadastroFormatada) {
+        this.datacadastroFormatada = datacadastroFormatada;
     }
 
 }

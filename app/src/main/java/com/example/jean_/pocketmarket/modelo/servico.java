@@ -1,5 +1,8 @@
 package com.example.jean_.pocketmarket.modelo;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by jean_ on 11/09/2017.
  */
@@ -13,6 +16,10 @@ public class servico {
     private String categoriaServico;
 
     private float precoServico;
+
+    private Date dataDeCadastro;
+
+    private SimpleDateFormat datacadastroFormatada;
 
 
     public void setTituloServico(String tituloServico) {
@@ -45,6 +52,22 @@ public class servico {
 
     public float getPrecoServico() {
         return precoServico;
+    }
+
+    public Date getDataDeCadastro() {
+        return dataDeCadastro;
+    }
+
+    public SimpleDateFormat getDatacadastroFormatada() {
+        return datacadastroFormatada;
+    }
+
+    public void setDataDeCadastro(Date dataDeCadastro) {
+        this.dataDeCadastro = dataDeCadastro;
+    }
+
+    public void setDatacadastroFormatada(SimpleDateFormat datacadastroFormatada) {
+        this.datacadastroFormatada = datacadastroFormatada;
     }
 
 }

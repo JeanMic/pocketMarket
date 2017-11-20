@@ -7,19 +7,34 @@ import com.example.jean_.pocketmarket.DAO.apartamentoDAO;
 import com.example.jean_.pocketmarket.DAO.autenticacao;
 import com.example.jean_.pocketmarket.DAO.carroDAO;
 import com.example.jean_.pocketmarket.DAO.casaDAO;
+import com.example.jean_.pocketmarket.DAO.celularesTelefoniaDAO;
+import com.example.jean_.pocketmarket.DAO.desktopDAO;
+import com.example.jean_.pocketmarket.DAO.mensagensDAO;
 import com.example.jean_.pocketmarket.DAO.motocicletaDAO;
+import com.example.jean_.pocketmarket.DAO.notebookDAO;
+import com.example.jean_.pocketmarket.DAO.servicosDAO;
 import com.example.jean_.pocketmarket.DAO.usuarioPFDAO;
 import com.example.jean_.pocketmarket.DAO.usuarioPJDAO;
 import com.example.jean_.pocketmarket.R;
 import com.example.jean_.pocketmarket.modelo.apartamento;
 import com.example.jean_.pocketmarket.modelo.carro;
 import com.example.jean_.pocketmarket.modelo.casa;
+import com.example.jean_.pocketmarket.modelo.celularesTelefonia;
+import com.example.jean_.pocketmarket.modelo.desktop;
+import com.example.jean_.pocketmarket.modelo.mensagem;
 import com.example.jean_.pocketmarket.modelo.motocicleta;
+import com.example.jean_.pocketmarket.modelo.notebook;
+import com.example.jean_.pocketmarket.modelo.servico;
 import com.example.jean_.pocketmarket.modelo.usuarioPF;
 import com.example.jean_.pocketmarket.modelo.usuarioPJ;
+import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioMensagem;
 import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdCarro;
 import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdCasa;
+import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdCelulares;
+import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdDesktop;
 import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdMoto;
+import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdNotebook;
+import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdServico;
 import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdapartamento;
 import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPF;
 import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPJ;
@@ -34,6 +49,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import static android.R.string.ok;
 
 /**
  * Created by jmtb on 23/10/2017.
@@ -404,6 +421,257 @@ public class controle {
 
         } else {
             formApart.setMsgCtrl(msgErroAtual);
+            return false;
+        }
+    }
+
+    public static boolean validaEntradasProdutoNotebook(formularioProdNotebook formNote) {
+
+        //validações comuns para todos os produtos
+        if (validaVazio(formNote.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
+                validaVazio(formNote.getViewdescricaoProduto().getText().toString().trim(), "A Descrição Deve ser Informado") &&
+                validaNumeroInteiro(formNote.getViewprecoProduto().getText().toString().trim(), "O Preço Deve Ser Informado", "Informe Somente Números no Campo Preco Produto") &&
+
+                //validações do produto computadornotebook
+                validaVazio(formNote.getViewMarca().getText().toString().trim(), "O Campo Marca Deve ser Informado") &&
+                validaVazio(formNote.getViewModelo().getText().toString().trim(), "O Campo Modelo Deve ser Informado") &&
+                validaNumeroInteiro(formNote.getViewRAM().getText().toString().trim(), "O Campo RAM Deve ser Informado", "Informe Somente Números no Campo RAM") &&
+                validaVazio(formNote.getViewMarcaProcessador().getText().toString().trim(), "O Campo Marca Processador Deve ser Informado") &&
+                validaVazio(formNote.getViewModeloProcessador().getText().toString().trim(), "O Campo Modelo Processador Deve ser Informado") &&
+                validaNumeroInteiro(formNote.getViewArmazenamento().getText().toString().trim(), "O Campo Armazenamento Deve ser Informado", "Informe Somente Números no Armazenamento") &&
+                validaVazio(formNote.getViewSistema().getText().toString().trim(), "O Campo Sistema Deve ser Informado") &&
+                validaVazio(formNote.getViewVersaoSistema().getText().toString().trim(), "O Campo Versão Sistema Deve ser Informado") &&
+
+                //validação do produto notebook
+                validaNumeroInteiro(formNote.getViewTamanhoTela().getText().toString().trim(), "O Tamanho da Tela Deve ser Informado", "Informe Somente Números no Campo Tamanho Tela")) {
+
+            notebook noteObj = new notebook();
+
+            //sets comuns a todos os produtos
+            noteObj.setTituloProduto(formNote.getViewtituloProduto().getText().toString().trim());
+            noteObj.setDescricaoProduto(formNote.getViewdescricaoProduto().getText().toString().trim());
+            noteObj.setPrecoProduto(Float.parseFloat(formNote.getViewprecoProduto().getText().toString().trim()));
+            noteObj.setCategoriaProduto("Notebook");
+            noteObj.setDataDeCadastro(new Date());
+            noteObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+
+            //sets comuns para todos os produtos computadoresnotebooks
+            noteObj.setMarca(formNote.getViewMarca().getText().toString().trim());
+            noteObj.setModelo(formNote.getViewModelo().getText().toString().trim());
+            noteObj.setRAM(Integer.parseInt(formNote.getViewRAM().getText().toString().trim()));
+            noteObj.setMarcaProcessador(formNote.getViewMarcaProcessador().getText().toString().trim());
+            noteObj.setModeloProcessador(formNote.getViewModeloProcessador().getText().toString().trim());
+            noteObj.setArmazenamento(Integer.parseInt(formNote.getViewArmazenamento().getText().toString().trim()));
+            noteObj.setSistema(formNote.getViewSistema().getText().toString().trim());
+            noteObj.setVersaoSistema(formNote.getViewVersaoSistema().getText().toString().trim());
+            noteObj.setUsado((formNote.getViewUsado().getCheckedRadioButtonId() == R.id.usadonotebook) ? true : false);
+
+            //set comun para o produto notebooks
+            noteObj.setTamanhoTela(Integer.parseInt(formNote.getViewTamanhoTela().getText().toString().trim()));
+            noteObj.setPossuiTecladoNumerico((formNote.getViewpossuitecladonumerico().getCheckedRadioButtonId() == R.id.tecladonumericonotebook) ? true : false);
+            noteObj.setPossuiCarregador((formNote.getViewpossuicarregador().getCheckedRadioButtonId() == R.id.possuicarregadordanotebook) ? true : false);
+
+            try {
+                new notebookDAO().insert(noteObj);
+                return true;
+            } catch (ClassNotFoundException e) {
+                formNote.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
+                return false;
+            }
+//            catch (SQLException e) {
+//                formMoto.setMsgCtrl("Usuário já Cadastrado");
+//                return false;
+//            }
+
+        } else {
+            formNote.setMsgCtrl(msgErroAtual);
+            return false;
+        }
+    }
+
+    public static boolean validaEntradasProdutoDesktop(formularioProdDesktop formdesk) {
+
+        //validações comuns para todos os produtos
+        if (validaVazio(formdesk.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
+                validaVazio(formdesk.getViewdescricaoProduto().getText().toString().trim(), "A Descrição Deve ser Informado") &&
+                validaNumeroInteiro(formdesk.getViewprecoProduto().getText().toString().trim(), "O Preço Deve Ser Informado", "Informe Somente Números no Campo Preco Produto") &&
+
+                //validações do produto computadornotebook
+                validaVazio(formdesk.getViewMarca().getText().toString().trim(), "O Campo Marca Deve ser Informado") &&
+                validaVazio(formdesk.getViewModelo().getText().toString().trim(), "O Campo Modelo Deve ser Informado") &&
+                validaNumeroInteiro(formdesk.getViewRAM().getText().toString().trim(), "O Campo RAM Deve ser Informado", "Informe Somente Números no Campo RAM") &&
+                validaVazio(formdesk.getViewMarcaProcessador().getText().toString().trim(), "O Campo Marca Processador Deve ser Informado") &&
+                validaVazio(formdesk.getViewModeloProcessador().getText().toString().trim(), "O Campo Modelo Processador Deve ser Informado") &&
+                validaNumeroInteiro(formdesk.getViewArmazenamento().getText().toString().trim(), "O Campo Armazenamento Deve ser Informado", "Informe Somente Números no Armazenamento") &&
+                validaVazio(formdesk.getViewSistema().getText().toString().trim(), "O Campo Sistema Deve ser Informado") &&
+                validaVazio(formdesk.getViewVersaoSistema().getText().toString().trim(), "O Campo Versão Sistema Deve ser Informado")) {
+
+            desktop deskObj = new desktop();
+
+            //sets comuns a todos os produtos
+            deskObj.setTituloProduto(formdesk.getViewtituloProduto().getText().toString().trim());
+            deskObj.setDescricaoProduto(formdesk.getViewdescricaoProduto().getText().toString().trim());
+            deskObj.setPrecoProduto(Float.parseFloat(formdesk.getViewprecoProduto().getText().toString().trim()));
+            deskObj.setCategoriaProduto("Desktop");
+            deskObj.setDataDeCadastro(new Date());
+            deskObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+
+            //sets comuns para todos os produtos computadoresnotebooks
+            deskObj.setMarca(formdesk.getViewMarca().getText().toString().trim());
+            deskObj.setModelo(formdesk.getViewModelo().getText().toString().trim());
+            deskObj.setRAM(Integer.parseInt(formdesk.getViewRAM().getText().toString().trim()));
+            deskObj.setMarcaProcessador(formdesk.getViewMarcaProcessador().getText().toString().trim());
+            deskObj.setModeloProcessador(formdesk.getViewModeloProcessador().getText().toString().trim());
+            deskObj.setArmazenamento(Integer.parseInt(formdesk.getViewArmazenamento().getText().toString().trim()));
+            deskObj.setSistema(formdesk.getViewSistema().getText().toString().trim());
+            deskObj.setVersaoSistema(formdesk.getViewVersaoSistema().getText().toString().trim());
+            deskObj.setUsado((formdesk.getViewUsado().getCheckedRadioButtonId() == R.id.usadodesktop) ? true : false);
+
+            //set comun para o produto Desktop
+            deskObj.setPossuiMonitor((formdesk.getViewPossuimonitor().getCheckedRadioButtonId() == R.id.possuimonitordesktop) ? true : false);
+            deskObj.setPossuiTeclado((formdesk.getViewpossuiTeclado().getCheckedRadioButtonId() == R.id.possuitecladodadesktop) ? true : false);
+            deskObj.setPossuiEstabilizador((formdesk.getViewpossuiEstabilizador().getCheckedRadioButtonId() == R.id.possuiestabilizadordesktop) ? true : false);
+            deskObj.setpossuiMouse((formdesk.getViewpossuiMouse().getCheckedRadioButtonId() == R.id.possuimousedesktop) ? true : false);
+
+            try {
+                new desktopDAO().insert(deskObj);
+                return true;
+            } catch (ClassNotFoundException e) {
+                formdesk.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
+                return false;
+            }
+//            catch (SQLException e) {
+//                formMoto.setMsgCtrl("Usuário já Cadastrado");
+//                return false;
+//            }
+
+        } else {
+            formdesk.setMsgCtrl(msgErroAtual);
+            return false;
+        }
+    }
+
+    public static boolean validaEntradasProdutoCelular(formularioProdCelulares formCel) {
+
+        //validações comuns para todos os produtos
+        if (validaVazio(formCel.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
+                validaVazio(formCel.getViewdescricaoProduto().getText().toString().trim(), "A Descrição Deve ser Informado") &&
+                validaNumeroInteiro(formCel.getViewprecoProduto().getText().toString().trim(), "O Preço Deve Ser Informado", "Informe Somente Números no Campo Preco Produto") &&
+
+                //validações do produto celulares
+                validaVazio(formCel.getViewMarca().getText().toString().trim(), "O Campo Marca Deve ser Informado") &&
+                validaVazio(formCel.getViewModelo().getText().toString().trim(), "O Campo Modelo Deve ser Informado") &&
+                validaNumeroInteiro(formCel.getViewArmazenamento().getText().toString().trim(), "O Campo Armazenamento Deve ser Informado", "Informe Somente Números no Armazenamento") &&
+                validaVazio(formCel.getViewSistema().getText().toString().trim(), "O Campo Sistema Deve ser Informado") &&
+                validaVazio(formCel.getViewVersaoSistema().getText().toString().trim(), "O Campo Versão Sistema Deve ser Informado") &&
+                validaNumeroInteiro(formCel.getViewtamanhoTela().getText().toString().trim(), "O Campo Tamanho Tela Deve ser Informado", "Informe Somente Números no Tamanho Tela")) {
+
+            celularesTelefonia celObj = new celularesTelefonia();
+
+            //sets comuns a todos os produtos
+            celObj.setTituloProduto(formCel.getViewtituloProduto().getText().toString().trim());
+            celObj.setDescricaoProduto(formCel.getViewdescricaoProduto().getText().toString().trim());
+            celObj.setPrecoProduto(Float.parseFloat(formCel.getViewprecoProduto().getText().toString().trim()));
+            celObj.setCategoriaProduto("Celular");
+            celObj.setDataDeCadastro(new Date());
+            celObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+
+            //sets comuns para todos os produtos celulares
+            celObj.setMarca(formCel.getViewMarca().getText().toString().trim());
+            celObj.setModelo(formCel.getViewModelo().getText().toString().trim());
+            celObj.setSistema(formCel.getViewSistema().getText().toString().trim());
+            celObj.setVersaoSistema(formCel.getViewVersaoSistema().getText().toString().trim());
+            celObj.setTamanhoTela(formCel.getViewtamanhoTela().getText().toString().trim());
+            celObj.setArmazenamento(formCel.getViewArmazenamento().getText().toString().trim());
+            celObj.setUsado((formCel.getViewUsado().getCheckedRadioButtonId() == R.id.usadocelulares) ? true : false);
+            celObj.setPossuiCarregador((formCel.getViewPussuiCarregador().getCheckedRadioButtonId() == R.id.possuicarregadorcelulares) ? true : false);
+            celObj.setPossuiFonedeOuvido((formCel.getViewPussuiFoneOuvido().getCheckedRadioButtonId() == R.id.possuicfoneouvidocelulares) ? true : false);
+
+            try {
+                new celularesTelefoniaDAO().insert(celObj);
+                return true;
+            } catch (ClassNotFoundException e) {
+                formCel.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
+                return false;
+            }
+//            catch (SQLException e) {
+//                formMoto.setMsgCtrl("Usuário já Cadastrado");
+//                return false;
+//            }
+
+        } else {
+            formCel.setMsgCtrl(msgErroAtual);
+            return false;
+        }
+    }
+
+    public static boolean validaEntradasProdutoServico(formularioProdServico formServico) {
+
+        //validações comuns para todos os produtos
+        if (validaVazio(formServico.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
+                validaVazio(formServico.getViewdescricaoProduto().getText().toString().trim(), "A Descrição Deve ser Informado") &&
+                validaNumeroInteiro(formServico.getViewprecoProduto().getText().toString().trim(), "O Preço Deve Ser Informado", "Informe Somente Números no Campo Preco Produto")) {
+
+            servico servicoObj = new servico();
+
+            //sets comuns a todos os Servicos
+            servicoObj.setTituloServico(formServico.getViewtituloProduto().getText().toString().trim());
+            servicoObj.setDescricaoServico(formServico.getViewdescricaoProduto().getText().toString().trim());
+            servicoObj.setPrecoServico(Float.parseFloat(formServico.getViewprecoProduto().getText().toString().trim()));
+            servicoObj.setCategoriaServico("Servico");
+            servicoObj.setDataDeCadastro(new Date());
+            servicoObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+
+            try {
+                new servicosDAO().insert(servicoObj);
+                return true;
+            } catch (ClassNotFoundException e) {
+                formServico.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
+                return false;
+            }
+//            catch (SQLException e) {
+//                formMoto.setMsgCtrl("Usuário já Cadastrado");
+//                return false;
+//            }
+
+        } else {
+            formServico.setMsgCtrl(msgErroAtual);
+            return false;
+        }
+    }
+
+    public static boolean validaEntradasMensagem(formularioMensagem formMsg) {
+
+        //validações comuns para todos os produtos
+        if (validaVazio(formMsg.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
+                validaVazio(formMsg.getViewdescricaoProduto().getText().toString().trim(), "A Descrição Deve ser Informado")) {
+
+
+            mensagem mensagemObj = new mensagem();
+
+            //sets comuns a todos os Servicos
+            mensagemObj.setTituloMensagem(formMsg.getViewtituloProduto().getText().toString().trim());
+            mensagemObj.setMensagem(formMsg.getViewdescricaoProduto().getText().toString().trim());
+            mensagemObj.setDataEnvio(new Date());
+            mensagemObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+            mensagemObj.setNomeRazaoSocialRemetente("TESTE REMETENTE");
+            mensagemObj.setCPFCNPJRemetente("00000000000191");
+            mensagemObj.setCPFCNPJdestinatario("01234567890");
+
+            try {
+                new mensagensDAO().insert(mensagemObj);
+                return true;
+            } catch (ClassNotFoundException e) {
+                formMsg.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
+                return false;
+            }
+//            catch (SQLException e) {
+//                formMoto.setMsgCtrl("Usuário já Cadastrado");
+//                return false;
+//            }
+
+        } else {
+            formMsg.setMsgCtrl(msgErroAtual);
             return false;
         }
     }
