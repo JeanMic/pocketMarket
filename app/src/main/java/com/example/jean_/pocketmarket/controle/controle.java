@@ -646,7 +646,6 @@ public class controle {
         if (validaVazio(formMsg.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
                 validaVazio(formMsg.getViewdescricaoProduto().getText().toString().trim(), "A Descrição Deve ser Informado")) {
 
-
             mensagem mensagemObj = new mensagem();
 
             //sets comuns a todos os Servicos
