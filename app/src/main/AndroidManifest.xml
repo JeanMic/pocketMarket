@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".visao.telasPrimarias.LoginActivity"
+        <activity
+            android:name=".visao.telasAntesLogin.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,55 +23,115 @@
         </activity>
 
         <activity
-            android:name=".visao.telasPrimarias.decisaoFormularioCadastro"
+            android:name=".visao.telasAntesLogin.decisaoFormularioCadastro"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".visao.telasPrimarias.formularioPF"
+            android:name=".visao.telasAntesLogin.formularioPF"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".visao.telasPrimarias.formularioPJ"
+            android:name=".visao.telasAntesLogin.formularioPJ"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".visao.telasNavegacao.telaPrincipal"
+            android:name=".visao.telasDepoisLogin.principal.telaPrincipal"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".visao.telasNavegacao.formularioProdNotebook"
+            android:name=".visao.telasDepoisLogin.formularios_cadastro.formularioProdNotebook"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".visao.telasNavegacao.formularioProdMoto"
+            android:name=".visao.telasDepoisLogin.formularios_cadastro.formularioProdMoto"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".visao.telasNavegacao.formularioProdDesktop"
+            android:name=".visao.telasDepoisLogin.formularios_cadastro.formularioProdDesktop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".visao.telasNavegacao.formularioProdCelulares"
+            android:name=".visao.telasDepoisLogin.formularios_cadastro.formularioProdCelulares"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".visao.telasNavegacao.formularioProdCasa"
+            android:name=".visao.telasDepoisLogin.formularios_cadastro.formularioProdCasa"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".visao.telasNavegacao.formularioProdCarro"
+            android:name=".visao.telasDepoisLogin.formularios_cadastro.formularioProdCarro"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".visao.telasNavegacao.formularioProdapartamento"
+            android:name=".visao.telasDepoisLogin.formularios_cadastro.formularioProdapartamento"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".visao.telasNavegacao.formularioProdServico"
+            android:name=".visao.telasDepoisLogin.formularios_cadastro.formularioProdServico"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".visao.telasNavegacao.formularioMensagem"
+            android:name=".visao.telasDepoisLogin.formularios_cadastro.formularioMensagem"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaCategoriasProdutos"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaCategoriasProdutosAnunciados"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaComputadoresNotebooks"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaImoveis"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaPesquisaCategoriaComputadoresNotebook"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaPesquisaCategoriaComputadoresNotebookAnunciado"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaPesquisaCategoriaImoveis"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaPesquisaCategoriaImoveisAnunciados"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaPesquisaCategoriasProduto"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaPesquisaCategoriaVeiculo"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaPesquisaCategoriaVeiculoAnunciados"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaProdutoServico"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaUsuarioCategoriasMensagens"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaUsuarioPrincipal"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasNavegacao.telaVeiculos"
             android:screenOrientation="portrait" />
 
     </application>

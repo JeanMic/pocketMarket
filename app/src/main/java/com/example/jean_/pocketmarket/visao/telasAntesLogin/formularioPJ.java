@@ -1,5 +1,6 @@
-package com.example.jean_.pocketmarket.visao.telasPrimarias;
+package com.example.jean_.pocketmarket.visao.telasAntesLogin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -91,9 +92,8 @@ public class formularioPJ extends AppCompatActivity implements View.OnClickListe
         txtDDDNumcomercial = viewDDDNumcomercial.getText().toString().trim();
 
         if (controle.validaEntradasUsuarioPJ(this)) {
-            Toast.makeText(this, "cadastrou porra!!", Toast.LENGTH_LONG).show();
-            //Intent telaPrincipal = new Intent(getApplicationContext(), com.example.jean_.pocketmarket.visao.telasNavegacao.telaPrincipal.class);
-           // startActivity(telaPrincipal);
+            Intent telaPrincipal = new Intent(getApplicationContext(), com.example.jean_.pocketmarket.visao.telasDepoisLogin.principal.telaPrincipal.class);
+            startActivity(telaPrincipal);
         } else {
             Toast.makeText(this, this.msgCtrl, Toast.LENGTH_LONG).show();
         }

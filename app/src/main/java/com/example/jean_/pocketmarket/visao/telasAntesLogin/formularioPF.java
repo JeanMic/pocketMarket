@@ -1,4 +1,4 @@
-package com.example.jean_.pocketmarket.visao.telasPrimarias;
+package com.example.jean_.pocketmarket.visao.telasAntesLogin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.jean_.pocketmarket.R;
 import com.example.jean_.pocketmarket.controle.controle;
-import com.example.jean_.pocketmarket.visao.telasNavegacao.telaPrincipal;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.principal.telaPrincipal;
 import com.example.jean_.pocketmarket.visao.util.Mask;
 
 /**

@@ -1,6 +1,5 @@
-package com.example.jean_.pocketmarket.visao.telasNavegacao;
+package com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -12,13 +11,12 @@ import android.widget.Toast;
 
 import com.example.jean_.pocketmarket.R;
 import com.example.jean_.pocketmarket.controle.controle;
-import com.example.jean_.pocketmarket.visao.util.Mask;
 
 /**
  * Created by jmtb on 13/11/2017.
  */
 
-public class formularioProdDesktop extends AppCompatActivity implements View.OnClickListener {
+public class formularioProdNotebook extends AppCompatActivity implements View.OnClickListener {
 
     //a variável abaixo é populada no controle caso aconteça de um dado ser inválido
     private String msgCtrl;
@@ -31,7 +29,7 @@ public class formularioProdDesktop extends AppCompatActivity implements View.OnC
     private EditText viewdescricaoProduto;
     private EditText viewprecoProduto;
 
-    //views comuns para todos os produtos computadoresdesktops
+    //views comuns para todos os produtos computadoresnotebooks
     private EditText viewMarca;
     private EditText viewModelo;
     private EditText viewRAM;
@@ -42,16 +40,15 @@ public class formularioProdDesktop extends AppCompatActivity implements View.OnC
     private EditText viewVersaoSistema;
     private RadioGroup viewUsado;
 
-    //atributos de produtos desktops
-    private RadioGroup viewPossuimonitor;
-    private RadioGroup viewpossuiTeclado;
-    private RadioGroup viewpossuiEstabilizador;
-    private RadioGroup viewpossuiMouse;
+    //atributos de produtos notebooks
+    private EditText viewTamanhoTela;
+    private RadioGroup viewpossuitecladonumerico;
+    private RadioGroup viewpossuicarregador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.formulario_prod_desktop);
+        setContentView(R.layout.formulario_prod_notebook);
 
         //forçar conexao e operção na rede usando a tread da UI
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -69,7 +66,7 @@ public class formularioProdDesktop extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
 
-        if (controle.validaEntradasProdutoDesktop(this)) {
+        if (controle.validaEntradasProdutoNotebook(this)) {
             //Intent telaPrincipal = new Intent(getApplicationContext(), telaPrincipal.class);
             //startActivity(telaPrincipal);
             Toast.makeText(this, "cadastrou porra!!!!", Toast.LENGTH_LONG).show();
@@ -81,27 +78,26 @@ public class formularioProdDesktop extends AppCompatActivity implements View.OnC
     private void resgataIDViews() {
 
         //IDs de views comuns para todos os produtos
-        viewBtConfirm = (AppCompatButton) findViewById(R.id.confirmcadasdesktop);
-        viewtituloProduto = (EditText) findViewById(R.id.titulovendadesktop);
-        viewdescricaoProduto = (EditText) findViewById(R.id.descricaovendadesktop);
-        viewprecoProduto = (EditText) findViewById(R.id.precodesktop);
+        viewBtConfirm = (AppCompatButton) findViewById(R.id.confirmcadasnotebook);
+        viewtituloProduto = (EditText) findViewById(R.id.titulovendanotebook);
+        viewdescricaoProduto = (EditText) findViewById(R.id.descricaovendanotebook);
+        viewprecoProduto = (EditText) findViewById(R.id.preconotebook);
 
-        //IDs de views comuns para todos os computadoresdesktops
-        viewMarca = (EditText) findViewById(R.id.marcadesktop);
-        viewModelo = (EditText) findViewById(R.id.modelodesktop);
-        viewRAM = (EditText) findViewById(R.id.qtdramdesktop);
-        viewMarcaProcessador = (EditText) findViewById(R.id.marcaprocessadordesktop);
-        viewModeloProcessador = (EditText) findViewById(R.id.modeloprocessadordesktop);
-        viewArmazenamento = (EditText) findViewById(R.id.qtdgbshddesktop);
-        viewSistema = (EditText) findViewById(R.id.sistemadesktop);
-        viewVersaoSistema = (EditText) findViewById(R.id.versaodesktop);
-        viewUsado = (RadioGroup) findViewById(R.id.produtousadodesktop);
+        //IDs de views comuns para todos os computadoresnotebooks
+        viewMarca = (EditText) findViewById(R.id.marcanotebook);
+        viewModelo = (EditText) findViewById(R.id.modelonotebook);
+        viewRAM = (EditText) findViewById(R.id.qtdramnotebook);
+        viewMarcaProcessador = (EditText) findViewById(R.id.marcaprocessadornotebook);
+        viewModeloProcessador = (EditText) findViewById(R.id.modeloprocessadornotebook);
+        viewArmazenamento = (EditText) findViewById(R.id.qtdgbshdnotebook);
+        viewSistema = (EditText) findViewById(R.id.sistemanotebook);
+        viewVersaoSistema = (EditText) findViewById(R.id.versaonotebook);
+        viewUsado = (RadioGroup) findViewById(R.id.produtousadonotebook);
 
-        //IDs de views comuns para todos os desktops
-        viewPossuimonitor = (RadioGroup) findViewById(R.id.possuiounaomonitordesktop);
-        viewpossuiTeclado = (RadioGroup) findViewById(R.id.possuiounaotecladodesktop);
-        viewpossuiEstabilizador = (RadioGroup) findViewById(R.id.possuiounaoestabilizadordesktop);
-        viewpossuiMouse = (RadioGroup) findViewById(R.id.possuiounaomousedesktop);
+        //IDs de views comuns para todos os notebooks
+        viewTamanhoTela = (EditText) findViewById(R.id.tamanhotelanotebook);
+        viewpossuitecladonumerico = (RadioGroup) findViewById(R.id.possuiounaotecladonumericonotebook);
+        viewpossuicarregador = (RadioGroup) findViewById(R.id.possuiounaocarregadortebook);
 
     }
 
@@ -153,20 +149,16 @@ public class formularioProdDesktop extends AppCompatActivity implements View.OnC
         return viewUsado;
     }
 
-    public RadioGroup getViewPossuimonitor() {
-        return viewPossuimonitor;
+    public EditText getViewTamanhoTela() {
+        return viewTamanhoTela;
     }
 
-    public RadioGroup getViewpossuiTeclado() {
-        return viewpossuiTeclado;
+    public RadioGroup getViewpossuitecladonumerico() {
+        return viewpossuitecladonumerico;
     }
 
-    public RadioGroup getViewpossuiEstabilizador() {
-        return viewpossuiEstabilizador;
-    }
-
-    public RadioGroup getViewpossuiMouse() {
-        return viewpossuiMouse;
+    public RadioGroup getViewpossuicarregador() {
+        return viewpossuicarregador;
     }
 
     public void setMsgCtrl(String msgCtrl) {

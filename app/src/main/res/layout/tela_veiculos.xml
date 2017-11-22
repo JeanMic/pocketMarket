@@ -10,7 +10,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
-    tools:context="com.example.jean_.pocketmarket.visao.telasNavegacao.telaVeiculos">
+    tools:context="com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasNavegacao.telaVeiculos">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
-                app:srcCompat="@drawable/Motocicleta" />
+                app:srcCompat="@drawable/motocicleta" />
 
         </LinearLayout>
 

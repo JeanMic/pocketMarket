@@ -10,7 +10,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
-    tools:context="com.example.jean_.pocketmarket.visao.telasNavegacao.telaPrincipal">
+    tools:context="com.example.jean_.pocketmarket.visao.telasDepoisLogin.principal.telaPrincipal">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -46,15 +46,15 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/Publicidade" />
+                app:srcCompat="@drawable/publicidade" />
 
             <ImageView
                 android:id="@+id/ImgPrincipalPesquisaProduto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/Carrinho" />
+                android:clickable="true"
+                app:srcCompat="@drawable/carrinho" />
         </LinearLayout>
 
         <LinearLayout
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/Servico" />
+                app:srcCompat="@drawable/servico" />
 
             <ImageView
                 android:id="@+id/ImgMinhaConta"
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/Pasta" />
+                app:srcCompat="@drawable/pasta" />
 
         </LinearLayout>
 

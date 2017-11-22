@@ -1,8 +1,7 @@
-package com.example.jean_.pocketmarket.visao.telasPrimarias;
+package com.example.jean_.pocketmarket.visao.telasAntesLogin;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;

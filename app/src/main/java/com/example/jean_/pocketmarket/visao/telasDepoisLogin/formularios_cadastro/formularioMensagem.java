@@ -1,24 +1,21 @@
-package com.example.jean_.pocketmarket.visao.telasNavegacao;
+package com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.jean_.pocketmarket.R;
 import com.example.jean_.pocketmarket.controle.controle;
-import com.example.jean_.pocketmarket.visao.util.Mask;
 
 /**
  * Created by jmtb on 13/11/2017.
  */
 
-public class formularioProdServico extends AppCompatActivity implements View.OnClickListener {
+public class formularioMensagem extends AppCompatActivity implements View.OnClickListener {
 
     //a variável abaixo é populada no controle caso aconteça de um dado ser inválido
     private String msgCtrl;
@@ -29,12 +26,11 @@ public class formularioProdServico extends AppCompatActivity implements View.OnC
     //views comuns para todos os servicos
     private EditText viewtituloProduto;
     private EditText viewdescricaoProduto;
-    private EditText viewprecoProduto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.formulario_prod_servico);
+        setContentView(R.layout.formulario_mensagem);
 
         //forçar conexao e operção na rede usando a tread da UI
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -52,7 +48,7 @@ public class formularioProdServico extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
 
-        if (controle.validaEntradasProdutoServico(this)) {
+        if (controle.validaEntradasMensagem(this)) {
             //Intent telaPrincipal = new Intent(getApplicationContext(), telaPrincipal.class);
             //startActivity(telaPrincipal);
             Toast.makeText(this, "cadastrou porra!!!!", Toast.LENGTH_LONG).show();
@@ -64,10 +60,9 @@ public class formularioProdServico extends AppCompatActivity implements View.OnC
     private void resgataIDViews() {
 
         //IDs de views comuns para todos os produtos
-        viewBtConfirm = (AppCompatButton) findViewById(R.id.confirmcadasservico);
-        viewtituloProduto = (EditText) findViewById(R.id.tituloservico);
-        viewdescricaoProduto = (EditText) findViewById(R.id.descricaoservico);
-        viewprecoProduto = (EditText) findViewById(R.id.precoservico);
+        viewBtConfirm = (AppCompatButton) findViewById(R.id.confirmcadasmsg);
+        viewtituloProduto = (EditText) findViewById(R.id.titulomsg);
+        viewdescricaoProduto = (EditText) findViewById(R.id.descricaomsg);
 
     }
 
@@ -77,10 +72,6 @@ public class formularioProdServico extends AppCompatActivity implements View.OnC
 
     public EditText getViewdescricaoProduto() {
         return viewdescricaoProduto;
-    }
-
-    public EditText getViewprecoProduto() {
-        return viewprecoProduto;
     }
 
     public void setMsgCtrl(String msgCtrl) {

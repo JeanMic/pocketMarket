@@ -1,8 +1,5 @@
 package com.example.jean_.pocketmarket.controle;
 
-import android.widget.EditText;
-import android.widget.RadioGroup;
-
 import com.example.jean_.pocketmarket.DAO.apartamentoDAO;
 import com.example.jean_.pocketmarket.DAO.autenticacao;
 import com.example.jean_.pocketmarket.DAO.carroDAO;
@@ -27,17 +24,17 @@ import com.example.jean_.pocketmarket.modelo.notebook;
 import com.example.jean_.pocketmarket.modelo.servico;
 import com.example.jean_.pocketmarket.modelo.usuarioPF;
 import com.example.jean_.pocketmarket.modelo.usuarioPJ;
-import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioMensagem;
-import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdCarro;
-import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdCasa;
-import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdCelulares;
-import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdDesktop;
-import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdMoto;
-import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdNotebook;
-import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdServico;
-import com.example.jean_.pocketmarket.visao.telasNavegacao.formularioProdapartamento;
-import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPF;
-import com.example.jean_.pocketmarket.visao.telasPrimarias.formularioPJ;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro.formularioMensagem;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro.formularioProdCarro;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro.formularioProdCasa;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro.formularioProdCelulares;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro.formularioProdDesktop;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro.formularioProdMoto;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro.formularioProdNotebook;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro.formularioProdServico;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro.formularioProdapartamento;
+import com.example.jean_.pocketmarket.visao.telasAntesLogin.formularioPF;
+import com.example.jean_.pocketmarket.visao.telasAntesLogin.formularioPJ;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -49,8 +46,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
-import static android.R.string.ok;
 
 /**
  * Created by jmtb on 23/10/2017.
@@ -1005,5 +1000,4 @@ public class controle {
         }
 
     }
-
 }

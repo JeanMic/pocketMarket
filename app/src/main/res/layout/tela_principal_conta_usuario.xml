@@ -10,7 +10,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
-    tools:context="com.example.jean_.pocketmarket.visao.telasNavegacao.telaPrincipal">
+    tools:context="com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasNavegacao.telaUsuarioPrincipal">
 
 
     <RelativeLayout
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
-                app:srcCompat="@drawable/Mensagens" />
+                app:srcCompat="@drawable/mensagens" />
 
             <ImageView
                 android:id="@+id/ImgCoontaUsuarioServicosProdutos"

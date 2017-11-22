@@ -1,6 +1,5 @@
-package com.example.jean_.pocketmarket.visao.telasNavegacao;
+package com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +11,6 @@ import android.widget.Toast;
 
 import com.example.jean_.pocketmarket.R;
 import com.example.jean_.pocketmarket.controle.controle;
-import com.example.jean_.pocketmarket.visao.util.Mask;
 
 /**
  * Created by jmtb on 13/11/2017.

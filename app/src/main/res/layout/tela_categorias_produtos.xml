@@ -10,7 +10,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
-    tools:context="com.example.jean_.pocketmarket.visao.telasNavegacao.telaCategoriasProdutos">
+    tools:context="com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasNavegacao.telaCategoriasProdutos">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/Treiler" />
+                app:srcCompat="@drawable/treiler" />
 
             <ImageView
                 android:id="@+id/ImgTelaCategoriasImoveis"
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/Imoveis" />
+                app:srcCompat="@drawable/imoveis" />
         </LinearLayout>
 
         <LinearLayout
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/Servidor" />
+                app:srcCompat="@drawable/servidor" />
 
             <ImageView
                 android:id="@+id/ImgTelaCategoriasSmartphone"
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/Phonelink" />
+                app:srcCompat="@drawable/phonelink" />
 
         </LinearLayout>
 

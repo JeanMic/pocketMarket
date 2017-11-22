@@ -1,6 +1,5 @@
-package com.example.jean_.pocketmarket.visao.telasNavegacao;
+package com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
