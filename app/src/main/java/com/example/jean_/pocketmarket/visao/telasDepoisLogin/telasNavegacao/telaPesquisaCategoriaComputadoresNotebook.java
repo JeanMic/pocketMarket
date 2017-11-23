@@ -27,7 +27,7 @@ public class telaPesquisaCategoriaComputadoresNotebook extends AppCompatActivity
         StrictMode.setThreadPolicy(policy);
 
         //Metodo executado para esconder o actionBar
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         //resgato o ID das views
         resgataIDViews();
