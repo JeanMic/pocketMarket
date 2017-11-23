@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/treiler" />
+                app:srcCompat="@drawable/treiler2" />
 
             <ImageView
                 android:id="@+id/ImgTelaCategoriasImoveis"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/servidor" />
+                app:srcCompat="@drawable/servidor2" />
 
             <ImageView
                 android:id="@+id/ImgTelaCategoriasSmartphone"

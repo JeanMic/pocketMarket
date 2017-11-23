@@ -30,7 +30,7 @@ public class telaCategoriasProdutosAnunciados extends AppCompatActivity implemen
         StrictMode.setThreadPolicy(policy);
 
         //Metodo executado para esconder o actionBar
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         //resgato o ID das views
         resgataIDViews();
