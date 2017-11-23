@@ -175,194 +175,359 @@
                 android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/vendaoualuguelapartamento"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/vendaapartamento"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Venda ou Aluguel?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/vendaoualuguelapartamento"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/vendaapartamento" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/aluguelapartamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/aluguelapartamento" />
+                <RadioButton
+                    android:id="@+id/vendaapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/vendaapartamento" />
 
-        </RadioGroup>
-        
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaopiscinaapartamento"
+                <RadioButton
+                    android:id="@+id/aluguelapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/aluguelapartamento" />
+
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuipiscinaapartamento"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Possui Piscina?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaopiscinaapartamento"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuipiscinaapartamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/possuipiscinaapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuipiscinaapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaoareadeservicoapartamento"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuiareadeservicoapartamento"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Possui Área de Serviço?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaoareadeservicoapartamento"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuiareadeservicoapartamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/possuiareadeservicoapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuiareadeservicoapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaoarcondicionadoapartamento"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuiarcondicionadoapartamento"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView100"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Possui Ar Condicionado?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaoarcondicionadoapartamento"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuiarcondicionadoapartamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/possuiarcondicionadoapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuiarcondicionadoapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaoquartoempregadaapartamento"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuiquartoempregadaapartamento"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Possui Quarto Empregada?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaoquartoempregadaapartamento"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuiquartoempregadaapartamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/possuiquartoempregadaapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuiquartoempregadaapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaocondominiofechadoapartamento"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuicondominiofechadoapartamento"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Localizado em Condominio Fechado?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaocondominiofechadoapartamento"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuicondominiofechadoapartamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/possuicondominiofechadoapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuicondominiofechadoapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaoacademiaapartamento"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuiacademiaapartamento"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Prédio Possui Academia?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaoacademiaapartamento"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuiacademiaapartamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/possuiacademiaapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuiacademiaapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaovarandaapartamento"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuivarandaapartamento"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Apartamento Possui Varanda?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaovarandaapartamento"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuivarandaapartamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/possuivarandaapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuivarandaapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaoelevadorapartamento"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuielevadorapartamento"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Prédio Possui Elevador?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaoelevadorapartamento"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuielevadorapartamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/possuielevadorapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuielevadorapartamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
+
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/layoutprecoapartamento"
