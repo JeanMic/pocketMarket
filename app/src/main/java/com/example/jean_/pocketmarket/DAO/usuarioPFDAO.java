@@ -74,7 +74,7 @@ public class usuarioPFDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public ArrayList<carro> select() {
+    public ArrayList<carro> select(String qualSelect) {
 
         try {
 

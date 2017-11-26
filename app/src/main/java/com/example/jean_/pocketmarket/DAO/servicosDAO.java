@@ -37,7 +37,7 @@ public class servicosDAO extends acesso implements metodosDAO {
                 "'" + serv.getDescricaoServico() + "',\n" +
                 "'" + serv.getCategoriaServico() + "', \n" +
                 "'" + serv.getPrecoServico() + "',\n" +
-                "'01234567890')";
+                "'"+ serv.getCPFCNPJVendedor() +"')";
         try {
             stm.executeUpdate(sql);
             this.desconecta();
@@ -47,7 +47,7 @@ public class servicosDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public ArrayList<?> select() {
+    public ArrayList<?> select(String qualSelect) {
 
         ArrayList<servico> lista = new ArrayList<>();
 

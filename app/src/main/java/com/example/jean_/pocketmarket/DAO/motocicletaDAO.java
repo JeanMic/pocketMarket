@@ -67,7 +67,7 @@ public class motocicletaDAO extends acesso implements metodosDAO {
                 "usuario_CPFCNPJ)\n" +
                 "\n" +
                 "SELECT LAST_INSERT_ID(),\n" +
-                "'01234567890';";
+                "'" + motocicleta.getCPFCNPJVendedor() +"';";
 
         try {
             stm.executeUpdate(sql);
@@ -79,7 +79,7 @@ public class motocicletaDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public ArrayList<?> select() {
+    public ArrayList<?> select(String qualSelect) {
 
         ArrayList<motocicleta> lista = new ArrayList<>();
 

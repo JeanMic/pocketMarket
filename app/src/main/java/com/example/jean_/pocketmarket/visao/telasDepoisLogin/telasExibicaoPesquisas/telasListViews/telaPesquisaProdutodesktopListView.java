@@ -23,7 +23,7 @@ public class telaPesquisaProdutodesktopListView extends ActionBarActivity {
 
         this.listView = (ListView) findViewById(R.id.listViewdesktop);
         try {
-            this.listView.setAdapter(new desktopAdaptador(this, controle.getProdutos("Desktop")));
+            this.listView.setAdapter(new desktopAdaptador(this, controle.getProdutos("Desktop", "")));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

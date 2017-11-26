@@ -13,7 +13,7 @@ public interface metodosDAO {
 
     void insert(Object obj) throws SQLException;
 
-    ArrayList<?> select();
+    ArrayList<?> select(String qualSelect);
 
     void update() throws SQLException;
 

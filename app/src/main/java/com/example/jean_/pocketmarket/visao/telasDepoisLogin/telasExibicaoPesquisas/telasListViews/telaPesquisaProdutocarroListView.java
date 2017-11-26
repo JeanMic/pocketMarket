@@ -23,7 +23,7 @@ public class telaPesquisaProdutocarroListView extends ActionBarActivity {
 
         this.listView = (ListView) findViewById(R.id.listViewcarro);
         try {
-            this.listView.setAdapter(new carroAdaptador(this, controle.getProdutos("Carro")));
+            this.listView.setAdapter(new carroAdaptador(this, controle.getProdutos("Carro", "")));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

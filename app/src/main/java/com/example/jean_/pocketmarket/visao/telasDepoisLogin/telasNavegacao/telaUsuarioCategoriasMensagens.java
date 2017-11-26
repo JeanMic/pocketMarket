@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasNavegacao;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.jean_.pocketmarket.R;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaMsgEnviadaListView;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaMsgRecebidaListView;
 
 /**
  * Created by jean_ on 21/11/2017.
@@ -53,13 +56,13 @@ public class telaUsuarioCategoriasMensagens extends AppCompatActivity implements
 
             case R.id.ImgCoontaUsuarioMensagensRecebidas:
                 //fazer
-//                Intent CategoriasProdutos = new Intent(getApplicationContext(), telaCategoriasProdutos.class);
-//                startActivity(CategoriasProdutos);
+                Intent msgrecebida = new Intent(getApplicationContext(), telaPesquisaMsgRecebidaListView.class);
+                startActivity(msgrecebida);
                 break;
             case R.id.ImgCoontaUsuarioMensagensEnviadas:
                 //fazer
-//                Intent CategoriasPesquisaProdutos = new Intent(getApplicationContext(), telaPesquisaCategoriasProduto.class);
-//                startActivity(CategoriasPesquisaProdutos);
+                Intent msgenviada = new Intent(getApplicationContext(), telaPesquisaMsgEnviadaListView.class);
+                startActivity(msgenviada);
                 break;
 
         }

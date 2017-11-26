@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.DAO;
 
+import com.example.jean_.pocketmarket.controle.controle;
 import com.example.jean_.pocketmarket.modelo.carro;
 import com.example.jean_.pocketmarket.modelo.celularesTelefonia;
 import com.example.jean_.pocketmarket.modelo.notebook;
@@ -66,7 +67,7 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
                 "produtoCelularestelefonia_idprodutoCelularestelefonia,\n" +
                 "usuario_CPFCNPJ)\n" +
                 "SELECT LAST_INSERT_ID(),\n" +
-                "'01234567890';";
+                "'"+ celtel.getCPFCNPJVendedor() +"';";
 
         try {
             stm.executeUpdate(sql);
@@ -78,9 +79,10 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public ArrayList<?> select() {
+    public ArrayList<?> select(String qualSelect) {
 
         ArrayList<celularesTelefonia> lista = new ArrayList<>();
+        String segundaCondicao = qualSelect.isEmpty() ? "" : controle.usuarioLogadoPF == null ? "AND usuario_CPFCNPJ = '" + controle.usuarioLogadoPF.getCPFCNPJ() + "'" : "AND usuario_CPFCNPJ = '" + controle.usuarioLogadoPJ.getCPFCNPJ() + "'";
 
         sql = "SELECT\n" +
                 "  idprodutoCelularestelefonia,\n" +
@@ -100,7 +102,10 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
                 "  dataDeCadastro,\n" +
                 "  fotoProduto, \n" +
                 "  produtocelularestelefonia_has_usuario.usuario_CPFCNPJ\n" +
-                "FROM market.produtocelularestelefonia INNER JOIN produtocelularestelefonia_has_usuario ON produtocelularestelefonia.idprodutoCelularestelefonia = produtocelularestelefonia_has_usuario.produtoCelularestelefonia_idprodutoCelularestelefonia WHERE categoriaProduto = 'Celular'";
+                "FROM market.produtocelularestelefonia INNER JOIN produtocelularestelefonia_has_usuario ON " +
+                "produtocelularestelefonia.idprodutoCelularestelefonia = produtocelularestelefonia_has_usuario.produtoCelularestelefonia_idprodutoCelularestelefonia " +
+                "WHERE categoriaProduto = 'Celular'" + segundaCondicao;
+
         try {
             ResultSet resultado = stm.executeQuery(sql);
             Date data = null;

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.jean_.pocketmarket.R;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaMsgRecebidaListView;
 
 /**
  * Created by jean_ on 21/11/2017.
@@ -56,12 +57,12 @@ public class telaUsuarioPrincipal extends AppCompatActivity implements View.OnCl
         switch (v.getId()) {
 
             case R.id.ImgCoontaUsuarioMensagens:
-                Intent pesquisaveiculo = new Intent(getApplicationContext(), telaUsuarioCategoriasMensagens.class);
-                startActivity(pesquisaveiculo);
+                Intent mensagens = new Intent(getApplicationContext(), telaUsuarioCategoriasMensagens.class);
+                startActivity(mensagens);
                 break;
             case R.id.ImgCoontaUsuarioServicosProdutos:
-                Intent pesquisaimoveis = new Intent(getApplicationContext(), telaCategoriasProdutosAnunciados.class);
-                startActivity(pesquisaimoveis);
+                Intent pesquisaservicosprodutosanunciados = new Intent(getApplicationContext(), telaCategoriasProdutosAnunciados.class);
+                startActivity(pesquisaservicosprodutosanunciados);
                 break;
             case R.id.ImgCoontaUsuarioDadosCadastrais:
                 //fazer

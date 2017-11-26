@@ -67,7 +67,7 @@ public class carroDAO extends acesso implements metodosDAO {
                 "usuario_CPFCNPJ)\n" +
                 "\n" +
                 "SELECT LAST_INSERT_ID(),\n" +
-                "'01234567890';";
+                "'" + carro.getCPFCNPJVendedor() +"';";
 
         try {
             stm.executeUpdate(sql);
@@ -80,7 +80,7 @@ public class carroDAO extends acesso implements metodosDAO {
     }
 
 //    @Override
-    public ArrayList<?> select() {
+    public ArrayList<?> select(String qualSelect) {
 
         ArrayList<carro> lista = new ArrayList<>();
 

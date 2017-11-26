@@ -83,7 +83,7 @@ public class apartamentoDAO extends acesso implements metodosDAO {
                 "produtoImovel_idprodutoImovel,\n" +
                 "usuario_CPFCNPJ)\n" +
                 "SELECT LAST_INSERT_ID(),\n" +
-                "'01234567890';";
+                "'"+ apartamento.getCPFCNPJVendedor() +"';";
 
         try {
             stm.executeUpdate(sql);
@@ -95,7 +95,7 @@ public class apartamentoDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public ArrayList<?> select() {
+    public ArrayList<?> select(String qualSelect) {
 
         ArrayList<apartamento> lista = new ArrayList<>();
 

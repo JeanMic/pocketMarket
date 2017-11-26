@@ -11,6 +11,8 @@ public class mensagem {
 
     private String CPFCNPJRemetente;
 
+    private String Idmensagem;
+
     private String nomeRazaoSocialRemetente;
 
     private String CPFCNPJDestinatario;
@@ -79,6 +81,14 @@ public class mensagem {
 
     public void setDatacadastroFormatada(SimpleDateFormat datacadastroFormatada) {
         this.datacadastroFormatada = datacadastroFormatada;
+    }
+
+    public String getIdmensagem() {
+        return Idmensagem;
+    }
+
+    public void setIdmensagem(String idmensagem) {
+        Idmensagem = idmensagem;
     }
 
 }

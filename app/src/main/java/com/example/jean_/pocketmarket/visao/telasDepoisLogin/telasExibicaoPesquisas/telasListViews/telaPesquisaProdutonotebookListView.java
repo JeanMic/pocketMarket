@@ -23,7 +23,7 @@ public class telaPesquisaProdutonotebookListView extends ActionBarActivity {
 
         this.listView = (ListView) findViewById(R.id.listViewnotebook);
         try {
-            this.listView.setAdapter(new notebookAdaptador(this, controle.getProdutos("Notebook")));
+            this.listView.setAdapter(new notebookAdaptador(this, controle.getProdutos("Notebook", "")));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

@@ -82,7 +82,7 @@ public class casaDAO extends acesso implements metodosDAO {
                 "produtoImovel_idprodutoImovel,\n" +
                 "usuario_CPFCNPJ)\n" +
                 "SELECT LAST_INSERT_ID(),\n" +
-                "'01234567890';";
+                "'"+ casa.getCPFCNPJVendedor() +"';";
         try {
             stm.executeUpdate(sql);
             stm.executeUpdate(sqlRelacionamento);
@@ -93,7 +93,7 @@ public class casaDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public ArrayList<?> select() {
+    public ArrayList<?> select(String qualSelect) {
 
         ArrayList<casa> lista = new ArrayList<>();
 

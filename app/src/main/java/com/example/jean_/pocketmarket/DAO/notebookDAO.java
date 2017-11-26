@@ -78,7 +78,7 @@ public class notebookDAO extends acesso implements metodosDAO {
                 "produtoComputadoresNotebooks_idprodutoComputadoresNotebooks,\n" +
                 "usuario_CPFCNPJ)\n" +
                 "SELECT LAST_INSERT_ID(),\n" +
-                "'01234567890';";
+                "'"+ compnote.getCPFCNPJVendedor() +"';";
         try {
             stm.executeUpdate(sql);
             stm.executeUpdate(sqlRelacionamento);
@@ -89,7 +89,7 @@ public class notebookDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public ArrayList<?> select() {
+    public ArrayList<?> select(String qualSelect) {
 
         ArrayList<notebook> lista = new ArrayList<>();
 

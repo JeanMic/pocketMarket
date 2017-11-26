@@ -63,7 +63,7 @@ public class usuarioPJDAO extends acesso implements metodosDAO {
                 //   "        '',\n" +
                 "'" + usuario.getRazaoSocial() + "', \n" +
                 "'" + usuario.getDataFundacao() + "', \n" +
-                "'" + usuario.getIdadeFundacao() + "');"; //COLOCAR A IDADE DE FUNDAÇAO
+                "'" + usuario.getIdadeFundacao() + "');";
         try {
             stm.executeUpdate(sql);
         } catch (SQLException e) {
@@ -74,7 +74,7 @@ public class usuarioPJDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public ArrayList<carro> select() {
+    public ArrayList<?> select(String qualSelect) {
 
         try {
 

@@ -80,7 +80,7 @@ public class desktopDAO extends acesso implements metodosDAO {
                 "produtoComputadoresNotebooks_idprodutoComputadoresNotebooks,\n" +
                 "usuario_CPFCNPJ)\n" +
                 "SELECT LAST_INSERT_ID(),\n" +
-                "'01234567890';";
+                "'"+ compdesk.getCPFCNPJVendedor() +"';";
         try {
             stm.executeUpdate(sql);
             stm.executeUpdate(sqlRelacionamento);
@@ -91,7 +91,7 @@ public class desktopDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public ArrayList<?> select() {
+    public ArrayList<?> select(String qualSelect) {
 
         ArrayList<desktop> lista = new ArrayList<>();
 
@@ -120,7 +120,9 @@ public class desktopDAO extends acesso implements metodosDAO {
                 "  produtocomputadoresnotebooks.dataDeCadastro,\n" +
                 "  produtocomputadoresnotebooks.fotoProduto, \n" +
                 "  produtocomputadoresnotebooks_has_usuario.usuario_CPFCNPJ\n" +
-                "  FROM market.produtocomputadoresnotebooks INNER JOIN produtocomputadoresnotebooks_has_usuario ON produtocomputadoresnotebooks.idprodutoComputadoresNotebooks = produtocomputadoresnotebooks_has_usuario.produtoComputadoresNotebooks_idprodutoComputadoresNotebooks WHERE categoriaProduto = 'Desktop';";
+                "  FROM market.produtocomputadoresnotebooks INNER JOIN produtocomputadoresnotebooks_has_usuario " +
+                "ON produtocomputadoresnotebooks.idprodutoComputadoresNotebooks = produtocomputadoresnotebooks_has_usuario.produtoComputadoresNotebooks_idprodutoComputadoresNotebooks " +
+                "WHERE categoriaProduto = 'Desktop';";
 
         try {
             ResultSet resultado = stm.executeQuery(sql);

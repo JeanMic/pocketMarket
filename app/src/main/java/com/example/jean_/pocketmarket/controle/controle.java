@@ -22,6 +22,7 @@ import com.example.jean_.pocketmarket.modelo.mensagem;
 import com.example.jean_.pocketmarket.modelo.motocicleta;
 import com.example.jean_.pocketmarket.modelo.notebook;
 import com.example.jean_.pocketmarket.modelo.servico;
+import com.example.jean_.pocketmarket.modelo.usuario;
 import com.example.jean_.pocketmarket.modelo.usuarioPF;
 import com.example.jean_.pocketmarket.modelo.usuarioPJ;
 import com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro.formularioMensagem;
@@ -54,6 +55,9 @@ import java.util.GregorianCalendar;
 
 public class controle {
 
+    public static usuarioPF usuarioLogadoPF;
+    public static usuarioPJ usuarioLogadoPJ;
+    public static String usuarioLogado;
     private static String msgErroAtual;
 
     public static boolean autenticacao(String login, String Senha) throws NoSuchAlgorithmException, UnsupportedEncodingException, ClassNotFoundException, SQLException {
@@ -196,6 +200,7 @@ public class controle {
             moto.setCategoriaProduto("Moto");
             moto.setDataDeCadastro(new Date());
             moto.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+            moto.setCPFCNPJVendedor(usuarioLogadoPF == null ? usuarioLogadoPJ.getCPFCNPJ() : usuarioLogadoPF.getCPFCNPJ());
 
             //sets comuns para todos os produtos veículos
             moto.setMarca(formMoto.getViewMarca().getText().toString().trim());
@@ -256,6 +261,7 @@ public class controle {
             carro.setCategoriaProduto("Carro");
             carro.setDataDeCadastro(new Date());
             carro.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+            carro.setCPFCNPJVendedor(usuarioLogadoPF == null ? usuarioLogadoPJ.getCPFCNPJ() : usuarioLogadoPF.getCPFCNPJ());
 
             //sets comuns para todos os produtos veículos
             carro.setMarca(formCarro.getViewMarca().getText().toString().trim());
@@ -316,6 +322,7 @@ public class controle {
             casaObj.setCategoriaProduto("Casa");
             casaObj.setDataDeCadastro(new Date());
             casaObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+            casaObj.setCPFCNPJVendedor(usuarioLogadoPF == null ? usuarioLogadoPJ.getCPFCNPJ() : usuarioLogadoPF.getCPFCNPJ());
 
             //sets comuns para todos os produtos Imovel
             casaObj.setQtdQuartos(Integer.parseInt(formCasa.getViewQtdquartos().getText().toString().trim()));
@@ -380,6 +387,7 @@ public class controle {
             apartObj.setCategoriaProduto("Apartamento");
             apartObj.setDataDeCadastro(new Date());
             apartObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+            apartObj.setCPFCNPJVendedor(usuarioLogadoPF == null ? usuarioLogadoPJ.getCPFCNPJ() : usuarioLogadoPF.getCPFCNPJ());
 
             //sets comuns para todos os produtos Imovel
             apartObj.setQtdQuartos(Integer.parseInt(formApart.getViewQtdquartos().getText().toString().trim()));
@@ -448,6 +456,7 @@ public class controle {
             noteObj.setCategoriaProduto("Notebook");
             noteObj.setDataDeCadastro(new Date());
             noteObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+            noteObj.setCPFCNPJVendedor(usuarioLogadoPF == null ? usuarioLogadoPJ.getCPFCNPJ() : usuarioLogadoPF.getCPFCNPJ());
 
             //sets comuns para todos os produtos computadoresnotebooks
             noteObj.setMarca(formNote.getViewMarca().getText().toString().trim());
@@ -509,6 +518,7 @@ public class controle {
             deskObj.setCategoriaProduto("Desktop");
             deskObj.setDataDeCadastro(new Date());
             deskObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+            deskObj.setCPFCNPJVendedor(usuarioLogadoPF == null ? usuarioLogadoPJ.getCPFCNPJ() : usuarioLogadoPF.getCPFCNPJ());
 
             //sets comuns para todos os produtos computadoresnotebooks
             deskObj.setMarca(formdesk.getViewMarca().getText().toString().trim());
@@ -569,6 +579,7 @@ public class controle {
             celObj.setCategoriaProduto("Celular");
             celObj.setDataDeCadastro(new Date());
             celObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+            celObj.setCPFCNPJVendedor(usuarioLogadoPF == null ? usuarioLogadoPJ.getCPFCNPJ() : usuarioLogadoPF.getCPFCNPJ());
 
             //sets comuns para todos os produtos celulares
             celObj.setMarca(formCel.getViewMarca().getText().toString().trim());
@@ -615,6 +626,7 @@ public class controle {
             servicoObj.setCategoriaServico("Servico");
             servicoObj.setDataDeCadastro(new Date());
             servicoObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+            servicoObj.setCPFCNPJVendedor(usuarioLogadoPF == null ? usuarioLogadoPJ.getCPFCNPJ() : usuarioLogadoPF.getCPFCNPJ());
 
             try {
                 new servicosDAO().insert(servicoObj);
@@ -647,8 +659,8 @@ public class controle {
             mensagemObj.setMensagem(formMsg.getViewdescricaoProduto().getText().toString().trim());
             mensagemObj.setDataEnvio(new Date());
             mensagemObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
-            mensagemObj.setNomeRazaoSocialRemetente("TESTE REMETENTE");
-            mensagemObj.setCPFCNPJRemetente("00000000000191");
+            mensagemObj.setNomeRazaoSocialRemetente(usuarioLogadoPF == null ? usuarioLogadoPJ.getRazaoSocial() : usuarioLogadoPF.getNome());
+            mensagemObj.setCPFCNPJRemetente(usuarioLogadoPF == null ? usuarioLogadoPJ.getCPFCNPJ() : usuarioLogadoPF.getCPFCNPJ());
             mensagemObj.setCPFCNPJdestinatario(formMsg.getViewdestinatario().getText().toString().trim());
 
             try {
@@ -669,28 +681,27 @@ public class controle {
         }
     }
 
-    public static ArrayList<?> getProdutos(String pesquisa) throws ClassNotFoundException {
+    public static ArrayList<?> getProdutos(String pesquisa, String qualSelect) throws ClassNotFoundException {
 
         switch (pesquisa) {
             case "Celular":
-                return new celularesTelefoniaDAO().select();
+                return new celularesTelefoniaDAO().select(qualSelect);
             case "Desktop":
-                return new desktopDAO().select();
+                return new desktopDAO().select(qualSelect);
             case "Notebook":
-                return new notebookDAO().select();
+                return new notebookDAO().select(qualSelect);
             case "Apartamento":
-                return new apartamentoDAO().select();
+                return new apartamentoDAO().select(qualSelect);
             case "Casa":
-                return new casaDAO().select();
+                return new casaDAO().select(qualSelect);
             case "Carro":
-                return new carroDAO().select();
+                return new carroDAO().select(qualSelect);
             case "Moto":
-                return new motocicletaDAO().select();
+                return new motocicletaDAO().select(qualSelect);
             case "Servico":
-                return new servicosDAO().select();
+                return new servicosDAO().select(qualSelect);
             case "Msg":
-                System.out.println("Terça-feira");
-                break;
+                return new mensagensDAO().select(qualSelect);
         }
         return null;
     }
