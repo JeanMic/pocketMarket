@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/cpfcnpglogin"
                 android:inputType="number"
+                android:maxLength="14"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
@@ -50,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/senhaLogin"
+                android:maxLength="15"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />

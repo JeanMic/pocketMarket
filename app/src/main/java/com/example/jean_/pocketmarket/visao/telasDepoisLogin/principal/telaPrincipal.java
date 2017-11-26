@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.jean_.pocketmarket.R;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutoservicoListView;
 import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasNavegacao.telaCategoriasProdutos;
 import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasNavegacao.telaPesquisaCategoriasProduto;
 import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasNavegacao.telaProdutoServico;
@@ -75,8 +76,8 @@ public class telaPrincipal extends AppCompatActivity implements View.OnClickList
                 startActivity(CategoriasPesquisaProdutos);
                 break;
             case R.id.ImgPesquisaServico:
-//                Intent CategoriasPesquisaProdutos = new Intent(getApplicationContext(), telaPesquisaCategoriasProduto.class);
-//                startActivity(CategoriasPesquisaProdutos);
+                Intent pesquisaServico = new Intent(getApplicationContext(), telaPesquisaProdutoservicoListView.class);
+                startActivity(pesquisaServico);
                 break;
             case R.id.ImgMinhaConta:
                 Intent TelaPrincipalUsuarios = new Intent(getApplicationContext(), telaUsuarioPrincipal.class);

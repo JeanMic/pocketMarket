@@ -18,7 +18,9 @@ public class autenticacao extends acesso {
 
         try {
             rs = stm.executeQuery(sql);
-            return rs.next();
+            boolean resultado = rs.next();
+            desconecta();
+            return resultado;
         } catch (SQLException e) {
             e.printStackTrace();
         }

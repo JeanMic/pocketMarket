@@ -1,9 +1,14 @@
 package com.example.jean_.pocketmarket.DAO;
 
+import com.example.jean_.pocketmarket.modelo.carro;
 import com.example.jean_.pocketmarket.modelo.motocicleta;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by jean_ on 17/10/2017.
@@ -74,13 +79,67 @@ public class motocicletaDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public ArrayList<Object> select() {
+    public ArrayList<?> select() {
+
+        ArrayList<motocicleta> lista = new ArrayList<>();
+
+        sql = "SELECT\n" +
+                " produtoveiculo.idVenda,\n" +
+                " produtoveiculo.tituloProduto,\n" +
+                " produtoveiculo.descricaoProduto,\n" +
+                " produtoveiculo.categoriaProduto,\n" +
+                " produtoveiculo.fotoProduto,\n" +
+                " produtoveiculo.precoProduto,\n" +
+                " produtoveiculo.dataDeCadastro,\n" +
+                " produtoveiculo.marca,\n" +
+                " produtoveiculo.modelo,\n" +
+                " produtoveiculo.anoFabricacao,\n" +
+                " produtoveiculo.placa,\n" +
+                " produtoveiculo.quilometragem,\n" +
+                " produtoveiculo.cor,\n" +
+                " produtoveiculo.combustivel,\n" +
+                " produtoveiculo.possuiMultas,\n" +
+                " produtoveiculo.cilindradas,\n" +
+                " produtoveiculo.qtdPortas,\n" +
+                " produtoveiculo.cambio, \n" +
+                " usuario_has_produtoveiculo.usuario_CPFCNPJ\n" +
+                "  FROM produtoveiculo INNER JOIN usuario_has_produtoveiculo ON produtoveiculo.idVenda = usuario_has_produtoveiculo.produtoVeiculo_idVenda WHERE categoriaProduto = 'Moto';";
 
         try {
+            ResultSet resultado = stm.executeQuery(sql);
+            Date data = null;
+            if (resultado != null){
+                while (resultado.next()){
 
+                    motocicleta obj = new motocicleta();
 
+                    obj.setCilindradas(resultado.getInt("cilindradas"));
+                    obj.setMarca(resultado.getString("marca"));
+                    obj.setModelo(resultado.getString("modelo"));
+                    obj.setAnoFabricação(Integer.parseInt(resultado.getString("anoFabricacao")));
+                    obj.setPlaca(resultado.getString("placa"));
+                    obj.setQuilometragem(Integer.parseInt(resultado.getString("quilometragem")));
+                    obj.setCor(resultado.getString("cor"));
+                    obj.setCombustivel(resultado.getString("combustivel"));
+                    obj.setPossuiMultas(Boolean.parseBoolean(resultado.getString("possuiMultas")));
+                    obj.setTituloProduto(resultado.getString("tituloProduto"));
+                    obj.setDescricaoProduto(resultado.getString("descricaoProduto"));
+                    obj.setCategoriaProduto(resultado.getString("categoriaProduto"));
+                    obj.setPrecoProduto(Float.parseFloat(resultado.getString("precoProduto")));
+                    obj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+                    obj.setDataDeCadastro(new Date(obj.getDatacadastroFormatada().parse(resultado.getString("dataDeCadastro")).getTime()));
+                    obj.setIdvenda(resultado.getString("idVenda"));
+                    obj.setCPFCNPJVendedor(resultado.getString("usuario_CPFCNPJ"));
+
+                    lista.add(obj);
+                    obj = null;
+                }
+            }
             this.desconecta();
+            return lista;
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         return null;

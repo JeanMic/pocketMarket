@@ -193,110 +193,200 @@
                 android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/produtousadodesktop"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/usadodesktop"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Usado?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/produtousadodesktop"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naousadodesktop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/usadodesktop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naousadodesktop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaomonitordesktop"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuimonitordesktop"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Possui Monitor?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaomonitordesktop"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuimonitordesktop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/possuimonitordesktop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuimonitordesktop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaotecladodesktop"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuitecladodadesktop"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Possui Teclado?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaotecladodesktop"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuitecladodesktop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/possuitecladodadesktop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuitecladodesktop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaoestabilizadordesktop"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuiestabilizadordesktop"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Possui Estabilizador?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaoestabilizadordesktop"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuiestabilizadordesktop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/possuiestabilizadordesktop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuiestabilizadordesktop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaomousedesktop"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuimousedesktop"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Possui Mouse?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaomousedesktop"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuimousedesktop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/possuimousedesktop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuimousedesktop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
+
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/layoutprecodesktop"

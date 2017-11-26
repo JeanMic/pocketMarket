@@ -17,7 +17,11 @@ public class servico {
 
     private float precoServico;
 
+    private String CPFCNPJVendedor;
+
     private Date dataDeCadastro;
+
+    private String Idservico;
 
     private SimpleDateFormat datacadastroFormatada;
 
@@ -68,6 +72,22 @@ public class servico {
 
     public void setDatacadastroFormatada(SimpleDateFormat datacadastroFormatada) {
         this.datacadastroFormatada = datacadastroFormatada;
+    }
+
+    public String getCPFCNPJVendedor() {
+        return CPFCNPJVendedor;
+    }
+
+    public void setCPFCNPJVendedor(String CPFCNPJVendedor) {
+        this.CPFCNPJVendedor = CPFCNPJVendedor;
+    }
+
+    public String getIdservico() {
+        return Idservico;
+    }
+
+    public void setIdservico(String idservico) {
+        Idservico = idservico;
     }
 
 }

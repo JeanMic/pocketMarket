@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.jean_.pocketmarket.R;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutocarroListView;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutomotoListView;
 
 /**
  * Created by jean_ on 21/11/2017.
@@ -53,14 +55,12 @@ public class telaPesquisaCategoriaVeiculo extends AppCompatActivity implements V
         switch (v.getId()) {
 
             case R.id.ImgTelaVeiculosPesquisaCarro:
-                  //fazer
-//                Intent CategoriasProdutos = new Intent(getApplicationContext(), telaCategoriasProdutos.class);
-//                startActivity(CategoriasProdutos);
+                Intent carro = new Intent(getApplicationContext(), telaPesquisaProdutocarroListView.class);
+                startActivity(carro);
                 break;
             case R.id.ImgTelaVeiculosPesquisaMoto:
-                  //fazer
-//                Intent CategoriasPesquisaProdutos = new Intent(getApplicationContext(), telaPesquisaCategoriasProduto.class);
-//                startActivity(CategoriasPesquisaProdutos);
+                Intent moto = new Intent(getApplicationContext(), telaPesquisaProdutomotoListView.class);
+                startActivity(moto);
                 break;
 
         }

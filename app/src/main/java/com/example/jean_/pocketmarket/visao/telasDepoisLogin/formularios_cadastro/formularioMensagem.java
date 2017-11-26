@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -24,8 +25,9 @@ public class formularioMensagem extends AppCompatActivity implements View.OnClic
     private AppCompatButton viewBtConfirm;
 
     //views comuns para todos os servicos
-    private EditText viewtituloProduto;
-    private EditText viewdescricaoProduto;
+    private EditText viewtitulomsg;
+    private EditText viewdescricaomsg;
+    private EditText viewdestinatario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,15 @@ public class formularioMensagem extends AppCompatActivity implements View.OnClic
         //metodos dos items do formulário
         resgataIDViews();
 
+        //pega o cpf repassado na itent anterior
+        Intent intent = getIntent();
+        if (intent != null){
+            Bundle bundle = intent.getExtras();
+            if (bundle != null){
+                this.viewdestinatario.setText(bundle.getString("destinatario"));
+            }
+        }
+
         viewBtConfirm.setOnClickListener(this);
     }
 
@@ -49,9 +60,7 @@ public class formularioMensagem extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
 
         if (controle.validaEntradasMensagem(this)) {
-            //Intent telaPrincipal = new Intent(getApplicationContext(), telaPrincipal.class);
-            //startActivity(telaPrincipal);
-            Toast.makeText(this, "cadastrou porra!!!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Mensagem Enviada", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, this.msgCtrl, Toast.LENGTH_LONG).show();
         }
@@ -61,20 +70,24 @@ public class formularioMensagem extends AppCompatActivity implements View.OnClic
 
         //IDs de views comuns para todos os produtos
         viewBtConfirm = (AppCompatButton) findViewById(R.id.confirmcadasmsg);
-        viewtituloProduto = (EditText) findViewById(R.id.titulomsg);
-        viewdescricaoProduto = (EditText) findViewById(R.id.descricaomsg);
-
+        viewtitulomsg = (EditText) findViewById(R.id.titulomsg);
+        viewdescricaomsg = (EditText) findViewById(R.id.descricaomsg);
+        viewdestinatario = (EditText) findViewById(R.id.destinatario);
     }
 
     public EditText getViewtituloProduto() {
-        return viewtituloProduto;
+        return viewtitulomsg;
     }
 
     public EditText getViewdescricaoProduto() {
-        return viewdescricaoProduto;
+        return viewdescricaomsg;
     }
 
     public void setMsgCtrl(String msgCtrl) {
         this.msgCtrl = msgCtrl;
+    }
+
+    public EditText getViewdestinatario() {
+        return viewdestinatario;
     }
 }

@@ -3,6 +3,7 @@ package com.example.jean_.pocketmarket.DAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.example.jean_.pocketmarket.modelo.carro;
 import com.example.jean_.pocketmarket.modelo.usuarioPF;
 
 /**
@@ -73,7 +74,7 @@ public class usuarioPFDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public ArrayList<Object> select() {
+    public ArrayList<carro> select() {
 
         try {
 

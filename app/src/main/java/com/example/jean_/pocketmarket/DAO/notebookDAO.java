@@ -1,9 +1,14 @@
 package com.example.jean_.pocketmarket.DAO;
 
+import com.example.jean_.pocketmarket.modelo.carro;
 import com.example.jean_.pocketmarket.modelo.notebook;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by jean_ on 17/10/2017.
@@ -84,13 +89,75 @@ public class notebookDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public ArrayList<Object> select() {
+    public ArrayList<?> select() {
+
+        ArrayList<notebook> lista = new ArrayList<>();
+
+        sql = "SELECT\n" +
+                "  produtocomputadoresnotebooks.idprodutoComputadoresNotebooks,\n" +
+                "  produtocomputadoresnotebooks.marca,\n" +
+                "  produtocomputadoresnotebooks.modelo,\n" +
+                "  produtocomputadoresnotebooks.RAM,\n" +
+                "  produtocomputadoresnotebooks.marcaProcessador,\n" +
+                "  produtocomputadoresnotebooks.modeloProcessador,\n" +
+                "  produtocomputadoresnotebooks.armazenamento,\n" +
+                "  produtocomputadoresnotebooks.sistema,\n" +
+                "  produtocomputadoresnotebooks.versaoSistema,\n" +
+                "  produtocomputadoresnotebooks.usado,\n" +
+                "  produtocomputadoresnotebooks.tamanhoTela,\n" +
+                "  produtocomputadoresnotebooks.possuiTecladoNumerico,\n" +
+                "  produtocomputadoresnotebooks.possuiCarregador,\n" +
+                "  produtocomputadoresnotebooks.possuiMonitor,\n" +
+                "  produtocomputadoresnotebooks.possuiTeclado,\n" +
+                "  produtocomputadoresnotebooks.possuiEstabilizador,\n" +
+                "  produtocomputadoresnotebooks.possuiMouse,\n" +
+                "  produtocomputadoresnotebooks.tituloProduto,\n" +
+                "  produtocomputadoresnotebooks.descricaoProduto,\n" +
+                "  produtocomputadoresnotebooks.categoriaProduto,\n" +
+                "  produtocomputadoresnotebooks.precoProduto,\n" +
+                "  produtocomputadoresnotebooks.dataDeCadastro,\n" +
+                "  produtocomputadoresnotebooks.fotoProduto, \n" +
+                "  produtocomputadoresnotebooks_has_usuario.usuario_CPFCNPJ\n" +
+                "  FROM market.produtocomputadoresnotebooks INNER JOIN produtocomputadoresnotebooks_has_usuario ON produtocomputadoresnotebooks.idprodutoComputadoresNotebooks = produtocomputadoresnotebooks_has_usuario.produtoComputadoresNotebooks_idprodutoComputadoresNotebooks WHERE categoriaProduto = 'Notebook';";
 
         try {
+            ResultSet resultado = stm.executeQuery(sql);
+            Date data = null;
+            if (resultado != null) {
+                while (resultado.next()) {
 
+                    notebook obj = new notebook();
 
+                    obj.setTamanhoTela(Float.parseFloat(resultado.getString("tamanhoTela")));
+                    obj.setPossuiTecladoNumerico(Boolean.parseBoolean(resultado.getString("possuiTecladoNumerico")));
+                    obj.setPossuiCarregador(Boolean.parseBoolean(resultado.getString("possuiCarregador")));
+                    obj.setMarca(resultado.getString("marca"));
+                    obj.setModelo(resultado.getString("modelo"));
+                    obj.setRAM(resultado.getInt("RAM"));
+                    obj.setMarcaProcessador(resultado.getString("marcaProcessador"));
+                    obj.setModeloProcessador(resultado.getString("modeloProcessador"));
+                    obj.setArmazenamento(resultado.getInt("armazenamento"));
+                    obj.setSistema(resultado.getString("sistema"));
+                    obj.setVersaoSistema(resultado.getString("versaoSistema"));
+                    obj.setUsado(Boolean.parseBoolean(resultado.getString("usado")));
+                    obj.setTituloProduto(resultado.getString("tituloProduto"));
+                    obj.setDescricaoProduto(resultado.getString("descricaoProduto"));
+                    obj.setCategoriaProduto(resultado.getString("categoriaProduto"));
+                    obj.setPrecoProduto(Float.parseFloat(resultado.getString("precoProduto")));
+                    obj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+                    obj.setDataDeCadastro(new Date(obj.getDatacadastroFormatada().parse(resultado.getString("dataDeCadastro")).getTime()));
+                    obj.setIdvenda(resultado.getString("idprodutoComputadoresNotebooks"));
+                    obj.setCPFCNPJVendedor(resultado.getString("usuario_CPFCNPJ"));
+
+                    lista.add(obj);
+                    obj = null;
+                }
+            }
             this.desconecta();
+            return lista;
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         return null;

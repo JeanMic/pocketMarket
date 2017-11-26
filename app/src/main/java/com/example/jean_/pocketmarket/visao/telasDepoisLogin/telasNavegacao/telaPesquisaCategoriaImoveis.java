@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasNavegacao;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.jean_.pocketmarket.R;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutoapartamentoListView;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutocasaListView;
 
 /**
  * Created by jean_ on 21/11/2017.
@@ -52,14 +55,13 @@ public class telaPesquisaCategoriaImoveis extends AppCompatActivity implements V
         switch (v.getId()) {
 
             case R.id.ImgTelaImoveisPesquisaCasa:
-                //fazer
-//                Intent CategoriasProdutos = new Intent(getApplicationContext(), telaCategoriasProdutos.class);
-//                startActivity(CategoriasProdutos);
+
+                Intent casa = new Intent(getApplicationContext(), telaPesquisaProdutocasaListView.class);
+                startActivity(casa);
                 break;
             case R.id.ImgTelaImoveisPesquisaApartamento:
-                //fazer
-//                Intent CategoriasPesquisaProdutos = new Intent(getApplicationContext(), telaPesquisaCategoriasProduto.class);
-//                startActivity(CategoriasPesquisaProdutos);
+                Intent apartamento = new Intent(getApplicationContext(), telaPesquisaProdutoapartamentoListView.class);
+                startActivity(apartamento);
                 break;
 
         }

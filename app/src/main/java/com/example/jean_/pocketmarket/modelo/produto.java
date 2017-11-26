@@ -23,6 +23,10 @@ public abstract class produto {
 
     private SimpleDateFormat datacadastroFormatada;
 
+    private String idvenda;
+
+    private String CPFCNPJVendedor;
+
 
     public void setTituloProduto(String tituloProduto) {
         this.tituloProduto = tituloProduto;
@@ -80,6 +84,22 @@ public abstract class produto {
     public SimpleDateFormat getDatacadastroFormatada() {
 
         return datacadastroFormatada;
+    }
+
+    public String getIdvenda() {
+        return idvenda;
+    }
+
+    public void setIdvenda(String idvenda) {
+        this.idvenda = idvenda;
+    }
+
+    public String getCPFCNPJVendedor() {
+        return CPFCNPJVendedor;
+    }
+
+    public void setCPFCNPJVendedor(String CPFCNPJVendedor) {
+        this.CPFCNPJVendedor = CPFCNPJVendedor;
     }
 }
 

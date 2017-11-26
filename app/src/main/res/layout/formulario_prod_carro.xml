@@ -163,53 +163,89 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/combustivelcarro"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/combustivelflexcarro"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Combustivel"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/combustivelcarro"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/combustivelcarroflex" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/combustivelalcoolcarro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/combustivelcarroalcool" />
+                <RadioButton
+                    android:id="@+id/combustivelflexcarro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/combustivelcarroflex" />
 
-            <RadioButton
-                android:id="@+id/combustivelgasolinacarro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/combustivelcarrogasolina" />
+                <RadioButton
+                    android:id="@+id/combustivelalcoolcarro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/combustivelcarroalcool" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/combustivelgasolinacarro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/combustivelcarrogasolina" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuimultascarro"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuimultassimcarro"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Possui Multas?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuimultascarro"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possuimultassimcarro" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/possuimultasnaocarro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/possuimultasnaocarro" />
+                <RadioButton
+                    android:id="@+id/possuimultassimcarro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possuimultassimcarro" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/possuimultasnaocarro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/possuimultasnaocarro" />
+
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/layoutqtdportascarro"

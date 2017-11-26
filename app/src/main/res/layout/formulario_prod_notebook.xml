@@ -210,68 +210,122 @@
                 android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/produtousadonotebook"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/usadonotebook"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Usado?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/produtousadonotebook"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naousadonotebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/usadonotebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naousadonotebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaotecladonumericonotebook"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/tecladonumericonotebook"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Teclado Numérico?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaotecladonumericonotebook"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuitecladonumericonotebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/tecladonumericonotebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuitecladonumericonotebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/possuiounaocarregadortebook"
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
-            <RadioButton
-                android:id="@+id/possuicarregadordanotebook"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Possui carregador?"
+                android:textSize="18sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/possuiounaocarregadortebook"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/possui" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/naopossuicarregadornotebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/naopossui" />
+                <RadioButton
+                    android:id="@+id/possuicarregadordanotebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/possui" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/naopossuicarregadornotebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naopossui" />
+
+            </RadioGroup>
+
+        </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/layoutpreconotebook"

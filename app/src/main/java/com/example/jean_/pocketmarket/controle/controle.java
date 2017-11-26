@@ -43,6 +43,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -68,10 +69,8 @@ public class controle {
         autenticacao obj = new autenticacao();
         //se trouxe resultado é pq foi encontrado
         if (obj.select(login, hexSenhaEncripitada.toString())) {
-            obj.desconecta();
             return true;
         } else {
-            obj.desconecta();
             return false;
         }
     }
@@ -650,7 +649,7 @@ public class controle {
             mensagemObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
             mensagemObj.setNomeRazaoSocialRemetente("TESTE REMETENTE");
             mensagemObj.setCPFCNPJRemetente("00000000000191");
-            mensagemObj.setCPFCNPJdestinatario("01234567890");
+            mensagemObj.setCPFCNPJdestinatario(formMsg.getViewdestinatario().getText().toString().trim());
 
             try {
                 new mensagensDAO().insert(mensagemObj);
@@ -670,6 +669,31 @@ public class controle {
         }
     }
 
+    public static ArrayList<?> getProdutos(String pesquisa) throws ClassNotFoundException {
+
+        switch (pesquisa) {
+            case "Celular":
+                return new celularesTelefoniaDAO().select();
+            case "Desktop":
+                return new desktopDAO().select();
+            case "Notebook":
+                return new notebookDAO().select();
+            case "Apartamento":
+                return new apartamentoDAO().select();
+            case "Casa":
+                return new casaDAO().select();
+            case "Carro":
+                return new carroDAO().select();
+            case "Moto":
+                return new motocicletaDAO().select();
+            case "Servico":
+                return new servicosDAO().select();
+            case "Msg":
+                System.out.println("Terça-feira");
+                break;
+        }
+        return null;
+    }
 
     //testado
     public static boolean validaCPF(String CPF) {
@@ -902,7 +926,6 @@ public class controle {
         try {
             dataNascInput = formato.parse(dataNasc);
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

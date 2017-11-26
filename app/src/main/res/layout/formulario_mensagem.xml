@@ -24,6 +24,23 @@
             android:src="@drawable/logo" />
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutdestinatario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/destinatario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Destinatario"
+                android:inputType="text"
+                android:maxLength="50"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:id="@+id/layouttitulomsg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

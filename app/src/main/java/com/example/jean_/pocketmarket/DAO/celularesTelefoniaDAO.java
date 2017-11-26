@@ -1,9 +1,15 @@
 package com.example.jean_.pocketmarket.DAO;
 
+import com.example.jean_.pocketmarket.modelo.carro;
 import com.example.jean_.pocketmarket.modelo.celularesTelefonia;
+import com.example.jean_.pocketmarket.modelo.notebook;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by jean_ on 17/10/2017.
@@ -33,7 +39,7 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
                 "tituloProduto,\n" +
                 "descricaoProduto,\n" +
                 "categoriaProduto,\n" +
-               // "fotoProduto,\n" +
+                // "fotoProduto,\n" +
                 "precoProduto,\n" +
                 "dataDeCadastro\n" +
                 ")\n" +
@@ -51,7 +57,7 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
                 "'" + celtel.getTituloProduto() + "', \n" +
                 "'" + celtel.getDescricaoProduto() + "', \n" +
                 "'" + celtel.getCategoriaProduto() + "', \n" +
-               // "'" + celtel.getFotoProduto() + "', \n" +
+                // "'" + celtel.getFotoProduto() + "', \n" +
                 "'" + celtel.getPrecoProduto() + "', \n" +
                 "'" + celtel.getDatacadastroFormatada().format(celtel.getDataDeCadastro()) + "'\n" +
                 ");\n";
@@ -72,13 +78,64 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public ArrayList<Object> select() {
+    public ArrayList<?> select() {
 
+        ArrayList<celularesTelefonia> lista = new ArrayList<>();
+
+        sql = "SELECT\n" +
+                "  idprodutoCelularestelefonia,\n" +
+                "  sistema,\n" +
+                "  versaoSistema,\n" +
+                "  tamanhoTela,\n" +
+                "  marca,\n" +
+                "  modelo,\n" +
+                "  armazenamento,\n" +
+                "  usado,\n" +
+                "  possuiCarregador,\n" +
+                "  possuiFoneDeOuvido,\n" +
+                "  tituloProduto,\n" +
+                "  descricaoProduto,\n" +
+                "  categoriaProduto,\n" +
+                "  precoProduto,\n" +
+                "  dataDeCadastro,\n" +
+                "  fotoProduto, \n" +
+                "  produtocelularestelefonia_has_usuario.usuario_CPFCNPJ\n" +
+                "FROM market.produtocelularestelefonia INNER JOIN produtocelularestelefonia_has_usuario ON produtocelularestelefonia.idprodutoCelularestelefonia = produtocelularestelefonia_has_usuario.produtoCelularestelefonia_idprodutoCelularestelefonia WHERE categoriaProduto = 'Celular'";
         try {
+            ResultSet resultado = stm.executeQuery(sql);
+            Date data = null;
+            if (resultado != null) {
+                while (resultado.next()) {
 
+                    celularesTelefonia obj = new celularesTelefonia();
 
+                    obj.setTamanhoTela(resultado.getString("tamanhoTela"));
+                    obj.setPossuiFonedeOuvido(Boolean.parseBoolean(resultado.getString("possuiFoneDeOuvido")));
+                    obj.setPossuiCarregador(Boolean.parseBoolean(resultado.getString("possuiCarregador")));
+                    obj.setMarca(resultado.getString("marca"));
+                    obj.setModelo(resultado.getString("modelo"));
+                    obj.setArmazenamento(resultado.getString("armazenamento"));
+                    obj.setSistema(resultado.getString("sistema"));
+                    obj.setVersaoSistema(resultado.getString("versaoSistema"));
+                    obj.setUsado(Boolean.parseBoolean(resultado.getString("usado")));
+                    obj.setTituloProduto(resultado.getString("tituloProduto"));
+                    obj.setDescricaoProduto(resultado.getString("descricaoProduto"));
+                    obj.setCategoriaProduto(resultado.getString("categoriaProduto"));
+                    obj.setPrecoProduto(Float.parseFloat(resultado.getString("precoProduto")));
+                    obj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
+                    obj.setDataDeCadastro(new Date(obj.getDatacadastroFormatada().parse(resultado.getString("dataDeCadastro")).getTime()));
+                    obj.setIdvenda(resultado.getString("idprodutoCelularestelefonia"));
+                    obj.setCPFCNPJVendedor(resultado.getString("usuario_CPFCNPJ"));
+
+                    lista.add(obj);
+                    obj = null;
+                }
+            }
             this.desconecta();
+            return lista;
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         return null;

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.jean_.pocketmarket.R;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutosmartphoneListView;
 
 /**
  * Created by jean_ on 21/11/2017.
@@ -71,9 +72,8 @@ public class telaPesquisaCategoriasProduto extends AppCompatActivity implements 
                 startActivity(pesquisacomputadores);
                 break;
             case R.id.ImgTelaPesquisaSmartphone:
-                //esse produto nao tem sub-categoria categoria, a itent é iniciada aqui mesmO
-//                Intent pesquisacelular = new Intent(getApplicationContext(), telaUsuarioPrincipal.class);
-//                startActivity(pesquisacelular);
+                Intent pesquisacelular = new Intent(getApplicationContext(), telaPesquisaProdutosmartphoneListView.class);
+                startActivity(pesquisacelular);
                 break;
         }
     }

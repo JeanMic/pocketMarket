@@ -206,11 +206,28 @@
                 android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
 
-        <Spinner
-            android:id="@+id/spinnerufscomercial"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutradio2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="UF"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinnerufscomercial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+        </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/layoutDDDnumcomercial"

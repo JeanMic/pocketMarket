@@ -133,6 +133,37 @@
         <activity
             android:name=".visao.telasDepoisLogin.telasNavegacao.telaVeiculos"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutocarroListView"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutomotoListView"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutocasaListView"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutoapartamentoListView"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutonotebookListView"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutodesktopListView"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutosmartphoneListView"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutoservicoListView"
+            android:screenOrientation="portrait" />
 
     </application>
 

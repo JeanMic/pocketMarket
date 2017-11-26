@@ -23,7 +23,6 @@ public abstract class veiculo extends produto {
     private Boolean possuiMultas;
 
 
-
     public void setMarca(String Marca) {
         this.Marca = Marca;
     }
