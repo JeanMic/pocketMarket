@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,8 @@ public class formularioProdServico extends AppCompatActivity implements View.OnC
     //variáveis de Ids e outras finalidades
     private AppCompatButton viewBtConfirm;
 
+    private String idAtualizacao;
+
     //views comuns para todos os servicos
     private EditText viewtituloProduto;
     private EditText viewdescricaoProduto;
@@ -43,15 +46,25 @@ public class formularioProdServico extends AppCompatActivity implements View.OnC
         //metodos dos items do formulário
         resgataIDViews();
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                this.idAtualizacao = bundle.getString("idVenda");
+
+                this.viewtituloProduto.setText(bundle.getString("tituloProduto"));
+                this.viewdescricaoProduto.setText(bundle.getString("descricaoProduto"));
+                this.viewprecoProduto.setText(bundle.getString("precoProduto"));
+            }
+        }
+
         viewBtConfirm.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
 
-        if (controle.validaEntradasProdutoServico(this)) {
-            //Intent telaPrincipal = new Intent(getApplicationContext(), telaPrincipal.class);
-            //startActivity(telaPrincipal);
+        if (controle.validaEntradasProdutoServico(this, idAtualizacao)) {
             Toast.makeText(this, "cadastrou porra!!!!", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, this.msgCtrl, Toast.LENGTH_LONG).show();
@@ -83,4 +96,13 @@ public class formularioProdServico extends AppCompatActivity implements View.OnC
     public void setMsgCtrl(String msgCtrl) {
         this.msgCtrl = msgCtrl;
     }
+
+    public String getIdAtualizacao() {
+        return idAtualizacao;
+    }
+
+    public void setIdAtualizacao(String idAtualizacao) {
+        this.idAtualizacao = idAtualizacao;
+    }
+
 }

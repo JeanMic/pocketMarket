@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,8 @@ public class formularioProdNotebook extends AppCompatActivity implements View.On
 
     //variáveis de Ids e outras finalidades
     private AppCompatButton viewBtConfirm;
+
+    private String idAtualizacao;
 
     //views comuns para todos os produtos
     private EditText viewtituloProduto;
@@ -60,15 +63,38 @@ public class formularioProdNotebook extends AppCompatActivity implements View.On
         //metodos dos items do formulário
         resgataIDViews();
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                this.idAtualizacao = bundle.getString("idVenda");
+
+                this.viewtituloProduto.setText(bundle.getString("tituloProduto"));
+                this.viewdescricaoProduto.setText(bundle.getString("descricaoProduto"));
+                this.viewprecoProduto.setText(bundle.getString("precoProduto"));
+
+                // views comuns para todos os produtos imoveis
+                this.viewMarca.setText(bundle.getString("marca"));
+                this.viewModelo.setText(bundle.getString("modelo"));
+                this.viewRAM.setText(bundle.getString("ram"));
+                this.viewMarcaProcessador.setText(bundle.getString("marcaprocessador"));
+                this.viewModeloProcessador.setText(bundle.getString("modeloprocessador"));
+                this.viewArmazenamento.setText(bundle.getString("armazenamento"));
+                this.viewSistema.setText(bundle.getString("sistema"));
+                this.viewVersaoSistema.setText(bundle.getString("sistemaversao"));
+
+                // view do produto notebook
+                this.viewTamanhoTela.setText(bundle.getString("tamanhotela"));
+            }
+        }
+
         viewBtConfirm.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
 
-        if (controle.validaEntradasProdutoNotebook(this)) {
-            //Intent telaPrincipal = new Intent(getApplicationContext(), telaPrincipal.class);
-            //startActivity(telaPrincipal);
+        if (controle.validaEntradasProdutoNotebook(this, idAtualizacao)) {
             Toast.makeText(this, "cadastrou porra!!!!", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, this.msgCtrl, Toast.LENGTH_LONG).show();
@@ -163,5 +189,13 @@ public class formularioProdNotebook extends AppCompatActivity implements View.On
 
     public void setMsgCtrl(String msgCtrl) {
         this.msgCtrl = msgCtrl;
+    }
+
+    public String getIdAtualizacao() {
+        return idAtualizacao;
+    }
+
+    public void setIdAtualizacao(String idAtualizacao) {
+        this.idAtualizacao = idAtualizacao;
     }
 }

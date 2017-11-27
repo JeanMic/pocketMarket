@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,8 @@ public class formularioProdCasa extends AppCompatActivity implements View.OnClic
 
     //variáveis de Ids e outras finalidades
     private AppCompatButton viewBtConfirm;
+
+    private String idAtualizacao;
 
     //views comuns para todos os produtos
     private EditText viewtituloProduto;
@@ -63,15 +66,36 @@ public class formularioProdCasa extends AppCompatActivity implements View.OnClic
         //metodos dos items do formulário
         resgataIDViews();
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                this.idAtualizacao = bundle.getString("idVenda");
+
+                this.viewtituloProduto.setText(bundle.getString("tituloProduto"));
+                this.viewdescricaoProduto.setText(bundle.getString("descricaoProduto"));
+                this.viewprecoProduto.setText(bundle.getString("precoProduto"));
+
+                // views comuns para todos os produtos imoveis
+                this.viewQtsquartos.setText(bundle.getString("qtdquartos"));
+                this.viewQtdsuites.setText(bundle.getString("qtdsuites"));
+                this.viewValorIPTU.setText(bundle.getString("valoriptu"));
+                this.viewValorCondominio.setText(bundle.getString("valorcondominio"));
+                this.viewVagsaGaragem.setText(bundle.getString("vagasgatagem"));
+                this.viewCEPImovel.setText(bundle.getString("cepimovel"));
+
+                // view do produto casa
+                this.viewAreaConstruida.setText(bundle.getString("areaconstruida"));
+            }
+        }
+
         viewBtConfirm.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
 
-        if (controle.validaEntradasProdutoCasa(this)) {
-            //Intent telaPrincipal = new Intent(getApplicationContext(), telaPrincipal.class);
-            //startActivity(telaPrincipal);
+        if (controle.validaEntradasProdutoCasa(this, idAtualizacao)) {
             Toast.makeText(this, "cadastrou porra!!!!", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, this.msgCtrl, Toast.LENGTH_LONG).show();
@@ -178,8 +202,15 @@ public class formularioProdCasa extends AppCompatActivity implements View.OnClic
         return viewPussuiCameraVigilancia;
     }
 
-
     public void setMsgCtrl(String msgCtrl) {
         this.msgCtrl = msgCtrl;
+    }
+
+    public String getIdAtualizacao() {
+        return idAtualizacao;
+    }
+
+    public void setIdAtualizacao(String idAtualizacao) {
+        this.idAtualizacao = idAtualizacao;
     }
 }

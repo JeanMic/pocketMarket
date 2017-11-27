@@ -1,7 +1,9 @@
 package com.example.jean_.pocketmarket.DAO;
 
+import com.example.jean_.pocketmarket.controle.controle;
 import com.example.jean_.pocketmarket.modelo.carro;
 import com.example.jean_.pocketmarket.modelo.motocicleta;
+import com.example.jean_.pocketmarket.modelo.notebook;
 import com.example.jean_.pocketmarket.modelo.servico;
 
 import java.sql.ResultSet;
@@ -37,7 +39,7 @@ public class servicosDAO extends acesso implements metodosDAO {
                 "'" + serv.getDescricaoServico() + "',\n" +
                 "'" + serv.getCategoriaServico() + "', \n" +
                 "'" + serv.getPrecoServico() + "',\n" +
-                "'"+ serv.getCPFCNPJVendedor() +"')";
+                "'" + serv.getCPFCNPJVendedor() + "')";
         try {
             stm.executeUpdate(sql);
             this.desconecta();
@@ -50,6 +52,8 @@ public class servicosDAO extends acesso implements metodosDAO {
     public ArrayList<?> select(String qualSelect) {
 
         ArrayList<servico> lista = new ArrayList<>();
+        String docusuariologado = controle.usuarioLogado.equals("PF") ? controle.usuarioLogadoPF.getCPFCNPJ() : controle.usuarioLogadoPJ.getCPFCNPJ();
+        String condicao = qualSelect.equals("Usuario") ? " WHERE usuario_CPFCNPJ = '" + docusuariologado + "';" : ";";
 
         sql = "SELECT\n" +
                 "  `tituloServico`,\n" +
@@ -58,7 +62,7 @@ public class servicosDAO extends acesso implements metodosDAO {
                 "  `precoServico`,\n" +
                 "  `usuario_CPFCNPJ`,\n" +
                 "  `idServico`\n" +
-                "FROM `market`.`servico`;";
+                "FROM `market`.`servico`" + condicao;
         try {
             ResultSet resultado = stm.executeQuery(sql);
             if (resultado != null) {
@@ -87,12 +91,37 @@ public class servicosDAO extends acesso implements metodosDAO {
 
     @Override
     public boolean update(Object obj, String idproduto) {
+
+        servico serv = (servico) obj;
+
+        sql = "UPDATE `market`.`servico`\n" +
+                "SET `tituloServico` = '" + serv.getTituloServico() + "',\n" +
+                "  `descricaoServico` = '" + serv.getDescricaoServico() + "',\n" +
+                "  `precoServico` = '" + serv.getPrecoServico() + "'\n" +
+                "WHERE `idServico` = '" + idproduto + "';";
+        try {
+            stm.executeUpdate(sql);
+            this.desconecta();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public boolean delete(String cpfcnpjvendedor, String idproduto) {
+
+        sql = "DELETE\n" +
+                "FROM `market`.`servico`\n" +
+                "WHERE `idServico` = '" + idproduto + "';";
+        try {
+            stm.executeUpdate(sql);
+            this.desconecta();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
-
 }

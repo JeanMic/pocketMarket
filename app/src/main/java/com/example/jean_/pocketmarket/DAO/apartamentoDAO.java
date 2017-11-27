@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.DAO;
 
+import com.example.jean_.pocketmarket.controle.controle;
 import com.example.jean_.pocketmarket.modelo.apartamento;
 import com.example.jean_.pocketmarket.modelo.carro;
 import com.example.jean_.pocketmarket.modelo.casa;
@@ -98,6 +99,8 @@ public class apartamentoDAO extends acesso implements metodosDAO {
     public ArrayList<?> select(String qualSelect) {
 
         ArrayList<apartamento> lista = new ArrayList<>();
+        String docusuariologado = controle.usuarioLogado.equals("PF") ? controle.usuarioLogadoPF.getCPFCNPJ() : controle.usuarioLogadoPJ.getCPFCNPJ();
+        String condicao = qualSelect.equals("Usuario") ? " AND usuario_CPFCNPJ = '" + docusuariologado + "';" : ";";
 
         sql = "SELECT\n" +
                 "  produtoimovel.idprodutoImovel,\n" +
@@ -126,7 +129,8 @@ public class apartamentoDAO extends acesso implements metodosDAO {
                 "  produtoimovel.dataDeCadastro,\n" +
                 "  produtoimovel.fotoProduto,\n" +
                 "  produtoimovel_has_usuario.usuario_CPFCNPJ\n" +
-                "  FROM market.produtoimovel INNER JOIN produtoimovel_has_usuario ON produtoimovel.idprodutoImovel = produtoimovel_has_usuario.produtoImovel_idprodutoImovel WHERE categoriaProduto = 'Apartamento';";
+                "  FROM market.produtoimovel INNER JOIN produtoimovel_has_usuario ON produtoimovel.idprodutoImovel = produtoimovel_has_usuario.produtoImovel_idprodutoImovel " +
+                "WHERE categoriaProduto = 'Apartamento'" + condicao;
 
         try {
             ResultSet resultado = stm.executeQuery(sql);
@@ -178,10 +182,32 @@ public class apartamentoDAO extends acesso implements metodosDAO {
     @Override
     public boolean update(Object obj, String idproduto) {
 
+        apartamento apartamento = (apartamento) obj;
+
+        sql = "UPDATE `market`.`produtoimovel`\n" +
+                "SET \n" +
+                "  `qtdQuartos` = '"+ apartamento.getQtdQuartos() + "',\n" +
+                "  `qtdDeSuites` = '"+ apartamento.getQtdDeSuites() +"',\n" +
+                "  `valorIPTU` = '"+ apartamento.getValorIPTU() +"',\n" +
+                "  `valorCondominio` = '"+ apartamento.getValorCondominio() +"',\n" +
+                "  `qtdVagasGaragem` = '"+ apartamento.getVagasNaGaragem() +"',\n" +
+                "  `vendaOuAluguel` = '"+ apartamento.getVendaOuAluguel() +"',\n" +
+                "  `CEPDoImovel` = '"+ apartamento.getCEPDoImovel() +"',\n" +
+                "  `possuiPiscina` = '"+ apartamento.isPossuiPiscina() +"',\n" +
+                "  `possuiAreadeServico` = '"+ apartamento.isPossuiAreaDeServico() +"',\n" +
+                "  `possuiArCondicionado` = '"+ apartamento.isPossuiArCondicionado() +"',\n" +
+                "  `possuiQuartoEmpregada` = '"+ apartamento.isPossuiQuardoEmpregada() +"',\n" +
+                "  `condominioFechado` = '"+ apartamento.isCondominioFechado() +"',\n" +
+                "  `areaUtil` = '"+ apartamento.getAreaUtil() +"',\n" +
+                "  `tituloProduto` = '"+ apartamento.getTituloProduto() +"',\n" +
+                "  `descricaoProduto` = '"+ apartamento.getDescricaoProduto() +"',\n" +
+                "  `precoProduto` = '"+ apartamento.getPrecoProduto() +"'\n" +
+                "WHERE `idprodutoImovel` = '"+ idproduto +"';";
+
         try {
-
-
+            stm.executeUpdate(sql);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -191,10 +217,20 @@ public class apartamentoDAO extends acesso implements metodosDAO {
     @Override
     public boolean delete(String cpfcnpjvendedor, String idproduto) {
 
+        sql = " DELETE\n" +
+                "        FROM `market`.`produtoimovel_has_usuario`\n" +
+                "        WHERE `produtoImovel_idprodutoImovel` = '"+ idproduto+ "'\n" +
+                "        AND `usuario_CPFCNPJ` = '"+ cpfcnpjvendedor+ "';";
+
+        String sql2 = "        DELETE\n" +
+                "        FROM `market`.`produtoimovel`\n" +
+                "        WHERE `idprodutoImovel` = '"+ idproduto +"';";
+
         try {
-
-
+            stm.executeUpdate(sql);
+            stm.executeUpdate(sql2);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }

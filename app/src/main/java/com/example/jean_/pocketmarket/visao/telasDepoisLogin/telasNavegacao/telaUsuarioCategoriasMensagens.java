@@ -55,12 +55,10 @@ public class telaUsuarioCategoriasMensagens extends AppCompatActivity implements
         switch (v.getId()) {
 
             case R.id.ImgCoontaUsuarioMensagensRecebidas:
-                //fazer
                 Intent msgrecebida = new Intent(getApplicationContext(), telaPesquisaMsgRecebidaListView.class);
                 startActivity(msgrecebida);
                 break;
             case R.id.ImgCoontaUsuarioMensagensEnviadas:
-                //fazer
                 Intent msgenviada = new Intent(getApplicationContext(), telaPesquisaMsgEnviadaListView.class);
                 startActivity(msgenviada);
                 break;

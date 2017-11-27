@@ -32,6 +32,8 @@ public class formularioPF extends AppCompatActivity implements View.OnClickListe
     private Spinner viewSpinner;
     private AppCompatButton viewBtConfirm;
 
+    private boolean atualizarcadastro = false;
+
     private RadioGroup viewRadioSexo;
     private EditText viewNome;
     private EditText viewCPF;
@@ -62,7 +64,6 @@ public class formularioPF extends AppCompatActivity implements View.OnClickListe
     private String txtUF;
     private String txtDDDNumCel;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +79,25 @@ public class formularioPF extends AppCompatActivity implements View.OnClickListe
         //metodos dos items do formulário
         resgataIDViews();
         spinner();
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                atualizarcadastro = true;
+                this.viewNome.setText(bundle.getString("nome"));
+                this.viewDtnasc.setText(bundle.getString("datanascimento"));
+                this.viewEmail.setText(bundle.getString("email"));
+                this.viewEndereco.setText(bundle.getString("endereco"));
+                this.viewCEP.setText(bundle.getString("cep"));
+                this.viewNumResid.setText(bundle.getString("numresid"));
+                this.viewComplResi.setText(bundle.getString("complementoresid"));
+                this.viewBairro.setText(bundle.getString("bairro"));
+                this.viewCidade.setText(bundle.getString("cidade"));
+                this.viewDDDNumCel.setText(bundle.getString("dddnumcel"));
+            }
+        }
+
         viewBtConfirm.setOnClickListener(this);
     }
 
@@ -100,13 +120,16 @@ public class formularioPF extends AppCompatActivity implements View.OnClickListe
         txtDDDNumCel = viewDDDNumCel.getText().toString().trim();
 
         if (controle.validaEntradasUsuarioPF(this)) {
-            Intent telaPrincipal = new Intent(getApplicationContext(), telaPrincipal.class);
-            startActivity(telaPrincipal);
+            if (atualizarcadastro){
+                Toast.makeText(this, "Cadastro Atualizado", Toast.LENGTH_LONG).show();
+            } else {
+                Intent telaPrincipal = new Intent(getApplicationContext(), telaPrincipal.class);
+                startActivity(telaPrincipal);
+            }
         } else {
             Toast.makeText(this, this.msgCtrl, Toast.LENGTH_LONG).show();
         }
     }
-
 
     private void resgataIDViews() {
 
@@ -208,5 +231,13 @@ public class formularioPF extends AppCompatActivity implements View.OnClickListe
 
     public void setMsgCtrl(String msgCtrl) {
         this.msgCtrl = msgCtrl;
+    }
+
+    public boolean isAtualizarcadastro() {
+        return atualizarcadastro;
+    }
+
+    public void setAtualizarcadastro(boolean atualizarcadastro) {
+        this.atualizarcadastro = atualizarcadastro;
     }
 }

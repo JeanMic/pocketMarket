@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasNavegacao;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.jean_.pocketmarket.R;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutoapartamentoUsuarioListView;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutocasaUsuarioListView;
 
 /**
  * Created by jean_ on 21/11/2017.
@@ -52,14 +55,12 @@ public class telaPesquisaCategoriaImoveisAnunciados extends AppCompatActivity im
         switch (v.getId()) {
 
             case R.id.ImgTelaImoveisPesquisaCasaAnunciada:
-                //fazer
-//                Intent CategoriasProdutos = new Intent(getApplicationContext(), telaCategoriasProdutos.class);
-//                startActivity(CategoriasProdutos);
+                Intent pesquisacasa = new Intent(getApplicationContext(), telaPesquisaProdutocasaUsuarioListView.class);
+                startActivity(pesquisacasa);
                 break;
             case R.id.ImgTelaImoveisPesquisaApartamentoAnunciada:
-                //fazer
-//                Intent CategoriasPesquisaProdutos = new Intent(getApplicationContext(), telaPesquisaCategoriasProduto.class);
-//                startActivity(CategoriasPesquisaProdutos);
+                Intent pesquisaapartamento = new Intent(getApplicationContext(), telaPesquisaProdutoapartamentoUsuarioListView.class);
+                startActivity(pesquisaapartamento);
                 break;
         }
     }

@@ -98,11 +98,16 @@ public class mensagensDAO extends acesso implements metodosDAO {
 
     @Override
     public boolean update(Object obj, String idproduto) {
+        mensagem msg = (mensagem) obj;
 
+        sql = "UPDATE `market`.`mensagem`\n" +
+                "SET   `mensagem` = '" + msg.getMensagem() + "',\n" +
+                "  `tituloMsg` = '" + msg.getTituloMensagem() + "'\n" +
+                "WHERE `idmensagem` = '"+ idproduto +"';";
         try {
-
-
+            stm.executeUpdate(sql);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -112,10 +117,13 @@ public class mensagensDAO extends acesso implements metodosDAO {
     @Override
     public boolean delete(String cpfcnpjvendedor, String idproduto) {
 
+        sql = "DELETE\n" +
+                "FROM `market`.`mensagem`\n" +
+                "WHERE `idmensagem` = '"+ idproduto +"';";
         try {
-
-
+            stm.executeUpdate(sql);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }

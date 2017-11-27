@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.DAO;
 
+import com.example.jean_.pocketmarket.controle.controle;
 import com.example.jean_.pocketmarket.modelo.carro;
 import com.example.jean_.pocketmarket.modelo.desktop;
 import com.example.jean_.pocketmarket.modelo.notebook;
@@ -94,6 +95,8 @@ public class desktopDAO extends acesso implements metodosDAO {
     public ArrayList<?> select(String qualSelect) {
 
         ArrayList<desktop> lista = new ArrayList<>();
+        String docusuariologado = controle.usuarioLogado.equals("PF") ? controle.usuarioLogadoPF.getCPFCNPJ() : controle.usuarioLogadoPJ.getCPFCNPJ();
+        String condicao = qualSelect.equals("Usuario") ? " AND usuario_CPFCNPJ = '" + docusuariologado + "';" : ";";
 
         sql = "SELECT\n" +
                 "  produtocomputadoresnotebooks.idprodutoComputadoresNotebooks,\n" +
@@ -122,7 +125,7 @@ public class desktopDAO extends acesso implements metodosDAO {
                 "  produtocomputadoresnotebooks_has_usuario.usuario_CPFCNPJ\n" +
                 "  FROM market.produtocomputadoresnotebooks INNER JOIN produtocomputadoresnotebooks_has_usuario " +
                 "ON produtocomputadoresnotebooks.idprodutoComputadoresNotebooks = produtocomputadoresnotebooks_has_usuario.produtoComputadoresNotebooks_idprodutoComputadoresNotebooks " +
-                "WHERE categoriaProduto = 'Desktop';";
+                "WHERE categoriaProduto = 'Desktop'" + condicao;
 
         try {
             ResultSet resultado = stm.executeQuery(sql);
@@ -172,10 +175,32 @@ public class desktopDAO extends acesso implements metodosDAO {
     @Override
     public boolean update(Object obj, String idproduto) {
 
+        desktop desktop = (desktop) obj;
+
+        sql = "UPDATE `market`.`produtocomputadoresnotebooks`\n" +
+                "SET \n" +
+                "  `marca` = '"+ desktop.getMarca() +"',\n" +
+                "  `modelo` = '"+ desktop.getModelo() +"',\n" +
+                "  `RAM` = '"+ desktop.getRAM() +"',\n" +
+                "  `marcaProcessador` = '"+ desktop.getMarcaProcessador() +"',\n" +
+                "  `modeloProcessador` = '"+ desktop.getModeloProcessador() +"',\n" +
+                "  `armazenamento` = '"+ desktop.getArmazenamento() +"',\n" +
+                "  `sistema` = '"+ desktop.getSistema() +"',\n" +
+                "  `versaoSistema` = '"+ desktop.getVersaoSistema() +"',\n" +
+                "  `usado` = '"+ desktop.isUsado() +"',\n" +
+                "  `possuiMonitor` = '"+ desktop.isPossuiMonitor() +"',\n" +
+                "  `possuiTeclado` = '"+ desktop.isPossuiTeclado() +"',\n" +
+                "  `possuiEstabilizador` = '"+ desktop.isPossuiEstabilizador() +"',\n" +
+                "  `possuiMouse` = '"+ desktop.ispossuiMouse() +"',\n" +
+                "  `tituloProduto` = '"+ desktop.getTituloProduto() +"',\n" +
+                "  `descricaoProduto` = '"+ desktop.getDescricaoProduto() +"',\n" +
+                "  `precoProduto` = '"+ desktop.getPrecoProduto() +"'\n" +
+                "WHERE `idprodutoComputadoresNotebooks` = '"+ idproduto +"';";
+
         try {
-
-
+            stm.executeUpdate(sql);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -185,10 +210,20 @@ public class desktopDAO extends acesso implements metodosDAO {
     @Override
     public boolean delete(String cpfcnpjvendedor, String idproduto) {
 
+        sql = "DELETE\n" +
+                "        FROM `market`.`produtocomputadoresnotebooks_has_usuario`\n" +
+                "        WHERE `produtoComputadoresNotebooks_idprodutoComputadoresNotebooks` = '" + idproduto +"'\n" +
+                "        AND `usuario_CPFCNPJ` = '" + cpfcnpjvendedor +"';";
+
+        String sql2 = "DELETE\n" +
+                "        FROM `market`.`produtocomputadoresnotebooks`\n" +
+                "        WHERE `idprodutoComputadoresNotebooks` = '" + idproduto +"';";
+
         try {
-
-
+            stm.executeUpdate(sql);
+            stm.executeUpdate(sql2);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }

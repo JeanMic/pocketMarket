@@ -24,10 +24,12 @@ public class formularioMensagem extends AppCompatActivity implements View.OnClic
     //variáveis de Ids e outras finalidades
     private AppCompatButton viewBtConfirm;
 
+    private String idmensagem = "";
+
     //views comuns para todos os servicos
     private EditText viewtitulomsg;
     private EditText viewdescricaomsg;
-    private EditText viewdestinatario;
+    private String destinatario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +48,11 @@ public class formularioMensagem extends AppCompatActivity implements View.OnClic
 
         //pega o cpf repassado na itent anterior
         Intent intent = getIntent();
-        if (intent != null){
+        if (intent != null) {
             Bundle bundle = intent.getExtras();
-            if (bundle != null){
-                this.viewdestinatario.setText(bundle.getString("destinatario"));
+            if (bundle != null) {
+                setDestinatario(bundle.getString("destinatario"));
+                this.idmensagem = (bundle.getString("idMsg"));
             }
         }
 
@@ -59,8 +62,12 @@ public class formularioMensagem extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
 
-        if (controle.validaEntradasMensagem(this)) {
-            Toast.makeText(this, "Mensagem Enviada", Toast.LENGTH_LONG).show();
+        if (controle.validaEntradasMensagem(this, idmensagem)) {
+            if (idmensagem == null) {
+                Toast.makeText(this, "Mensagem Enviada", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Mensagem Editada", Toast.LENGTH_LONG).show();
+            }
         } else {
             Toast.makeText(this, this.msgCtrl, Toast.LENGTH_LONG).show();
         }
@@ -72,7 +79,6 @@ public class formularioMensagem extends AppCompatActivity implements View.OnClic
         viewBtConfirm = (AppCompatButton) findViewById(R.id.confirmcadasmsg);
         viewtitulomsg = (EditText) findViewById(R.id.titulomsg);
         viewdescricaomsg = (EditText) findViewById(R.id.descricaomsg);
-        viewdestinatario = (EditText) findViewById(R.id.destinatario);
     }
 
     public EditText getViewtituloProduto() {
@@ -87,7 +93,25 @@ public class formularioMensagem extends AppCompatActivity implements View.OnClic
         this.msgCtrl = msgCtrl;
     }
 
-    public EditText getViewdestinatario() {
-        return viewdestinatario;
+    public String getViewdestinatario() {
+        return destinatario;
     }
+
+    public void setDestinatario(String destinatario) {
+        this.destinatario = destinatario;
+    }
+
+    public String getDestinatario() {
+        return destinatario;
+    }
+
+
+    public String getIdmensagem() {
+        return idmensagem;
+    }
+
+    public void setIdmensagem(String idmensagem) {
+        this.idmensagem = idmensagem;
+    }
+
 }

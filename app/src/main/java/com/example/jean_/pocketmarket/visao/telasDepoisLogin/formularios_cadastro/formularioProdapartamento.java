@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,8 @@ public class formularioProdapartamento extends AppCompatActivity implements View
 
     //variáveis de Ids e outras finalidades
     private AppCompatButton viewBtConfirm;
+
+    private String idAtualizacao;
 
     //views comuns para todos os produtos
     private EditText viewtituloProduto;
@@ -65,15 +68,36 @@ public class formularioProdapartamento extends AppCompatActivity implements View
         //metodos dos items do formulário
         resgataIDViews();
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                this.idAtualizacao = bundle.getString("idVenda");
+
+                this.viewtituloProduto.setText(bundle.getString("tituloProduto"));
+                this.viewdescricaoProduto.setText(bundle.getString("descricaoProduto"));
+                this.viewprecoProduto.setText(bundle.getString("precoProduto"));
+
+                // views comuns para todos os produtos imoveis
+                this.viewQtsquartos.setText(bundle.getString("qtdquartos"));
+                this.viewQtdsuites.setText(bundle.getString("qtdsuites"));
+                this.viewValorIPTU.setText(bundle.getString("valoriptu"));
+                this.viewValorCondominio.setText(bundle.getString("valorcondominio"));
+                this.viewVagsaGaragem.setText(bundle.getString("vagasgatagem"));
+                this.viewCEPImovel.setText(bundle.getString("cepimovel"));
+
+                // view do produto apartamento
+                this.viewAreaUtil.setText(bundle.getString("areautil"));
+            }
+        }
+
         viewBtConfirm.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
 
-        if (controle.validaEntradasProdutoApartamento(this)) {
-            //Intent telaPrincipal = new Intent(getApplicationContext(), telaPrincipal.class);
-            //startActivity(telaPrincipal);
+        if (controle.validaEntradasProdutoApartamento(this, idAtualizacao)) {
             Toast.makeText(this, "cadastrou porra!!!!", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, this.msgCtrl, Toast.LENGTH_LONG).show();
@@ -194,4 +218,13 @@ public class formularioProdapartamento extends AppCompatActivity implements View
     public void setMsgCtrl(String msgCtrl) {
         this.msgCtrl = msgCtrl;
     }
+
+    public String getIdAtualizacao() {
+        return idAtualizacao;
+    }
+
+    public void setIdAtualizacao(String idAtualizacao) {
+        this.idAtualizacao = idAtualizacao;
+    }
+
 }

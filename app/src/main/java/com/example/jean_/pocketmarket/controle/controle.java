@@ -112,7 +112,11 @@ public class controle {
             usupf.setIdade(calculaIdade(formPF.getTxtDtNasc(), "dd/MM/yyyy"));
 
             try {
-                new usuarioPFDAO().insert(usupf);
+                if (formPF.isAtualizarcadastro()) {
+                    new usuarioPFDAO().update(usupf, null);
+                } else {
+                    new usuarioPFDAO().insert(usupf);
+                }
                 return true;
             } catch (ClassNotFoundException e) {
                 formPF.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
@@ -157,7 +161,11 @@ public class controle {
             usupj.setIdadeFundacao(calculaIdade(formPJ.getTxtDtfundacao(), "dd/MM/yyyy"));
 
             try {
-                new usuarioPJDAO().insert(usupj);
+                if (formPJ.isAtualizarcadastro()) {
+                    new usuarioPJDAO().update(usupj, null);
+                } else {
+                    new usuarioPJDAO().insert(usupj);
+                }
                 return true;
             } catch (ClassNotFoundException e) {
                 formPJ.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
@@ -166,7 +174,6 @@ public class controle {
                 formPJ.setMsgCtrl("Usuário já Cadastrado");
                 return false;
             }
-
         } else {
             formPJ.setMsgCtrl(msgErroAtual);
             return false;
@@ -303,7 +310,7 @@ public class controle {
         }
     }
 
-    public static boolean validaEntradasProdutoCasa(formularioProdCasa formCasa) {
+    public static boolean validaEntradasProdutoCasa(formularioProdCasa formCasa, String idatualizacao) {
 
         //validações comuns para todos os produtos
         if (validaVazio(formCasa.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
@@ -351,7 +358,11 @@ public class controle {
             casaObj.setPossuiCameraVigilancia((formCasa.getViewPussuiCameraVigilancia().getCheckedRadioButtonId() == R.id.possuicameravigilanciacasa) ? true : false);
 
             try {
-                new casaDAO().insert(casaObj);
+                if (idatualizacao == null) {
+                    new casaDAO().insert(casaObj);
+                } else {
+                    new casaDAO().update(casaObj, formCasa.getIdAtualizacao());
+                }
                 return true;
             } catch (ClassNotFoundException e) {
                 formCasa.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
@@ -368,7 +379,7 @@ public class controle {
         }
     }
 
-    public static boolean validaEntradasProdutoApartamento(formularioProdapartamento formApart) {
+    public static boolean validaEntradasProdutoApartamento(formularioProdapartamento formApart, String idatualizacao) {
 
         //validações comuns para todos os produtos
         if (validaVazio(formApart.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
@@ -418,7 +429,11 @@ public class controle {
             apartObj.setPossuiElevadorPredio((formApart.getViewPussuiElevadorPredio().getCheckedRadioButtonId() == R.id.possuielevadorapartamento) ? true : false);
 
             try {
-                new apartamentoDAO().insert(apartObj);
+                if (idatualizacao == null) {
+                    new apartamentoDAO().insert(apartObj);
+                } else {
+                    new apartamentoDAO().update(apartObj, formApart.getIdAtualizacao());
+                }
                 return true;
             } catch (ClassNotFoundException e) {
                 formApart.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
@@ -435,7 +450,7 @@ public class controle {
         }
     }
 
-    public static boolean validaEntradasProdutoNotebook(formularioProdNotebook formNote) {
+    public static boolean validaEntradasProdutoNotebook(formularioProdNotebook formNote, String idatualizacao) {
 
         //validações comuns para todos os produtos
         if (validaVazio(formNote.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
@@ -483,7 +498,11 @@ public class controle {
             noteObj.setPossuiCarregador((formNote.getViewpossuicarregador().getCheckedRadioButtonId() == R.id.possuicarregadordanotebook) ? true : false);
 
             try {
-                new notebookDAO().insert(noteObj);
+                if (idatualizacao == null) {
+                    new notebookDAO().insert(noteObj);
+                } else {
+                    new notebookDAO().update(noteObj, formNote.getIdAtualizacao());
+                }
                 return true;
             } catch (ClassNotFoundException e) {
                 formNote.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
@@ -500,7 +519,7 @@ public class controle {
         }
     }
 
-    public static boolean validaEntradasProdutoDesktop(formularioProdDesktop formdesk) {
+    public static boolean validaEntradasProdutoDesktop(formularioProdDesktop formdesk, String idatualizacao) {
 
         //validações comuns para todos os produtos
         if (validaVazio(formdesk.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
@@ -546,7 +565,11 @@ public class controle {
             deskObj.setpossuiMouse((formdesk.getViewpossuiMouse().getCheckedRadioButtonId() == R.id.possuimousedesktop) ? true : false);
 
             try {
-                new desktopDAO().insert(deskObj);
+                if (idatualizacao == null) {
+                    new desktopDAO().insert(deskObj);
+                } else {
+                    new desktopDAO().update(deskObj, formdesk.getIdAtualizacao());
+                }
                 return true;
             } catch (ClassNotFoundException e) {
                 formdesk.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
@@ -563,7 +586,7 @@ public class controle {
         }
     }
 
-    public static boolean validaEntradasProdutoCelular(formularioProdCelulares formCel) {
+    public static boolean validaEntradasProdutoCelular(formularioProdCelulares formCel, String idatualizacao) {
 
         //validações comuns para todos os produtos
         if (validaVazio(formCel.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
@@ -601,7 +624,11 @@ public class controle {
             celObj.setPossuiFonedeOuvido((formCel.getViewPussuiFoneOuvido().getCheckedRadioButtonId() == R.id.possuicfoneouvidocelulares) ? true : false);
 
             try {
-                new celularesTelefoniaDAO().insert(celObj);
+                if (idatualizacao == null) {
+                    new celularesTelefoniaDAO().insert(celObj);
+                } else {
+                    new celularesTelefoniaDAO().update(celObj, formCel.getIdAtualizacao());
+                }
                 return true;
             } catch (ClassNotFoundException e) {
                 formCel.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
@@ -618,7 +645,7 @@ public class controle {
         }
     }
 
-    public static boolean validaEntradasProdutoServico(formularioProdServico formServico) {
+    public static boolean validaEntradasProdutoServico(formularioProdServico formServico, String idatualizacao) {
 
         //validações comuns para todos os produtos
         if (validaVazio(formServico.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
@@ -637,7 +664,11 @@ public class controle {
             servicoObj.setCPFCNPJVendedor(usuarioLogadoPF == null ? usuarioLogadoPJ.getCPFCNPJ() : usuarioLogadoPF.getCPFCNPJ());
 
             try {
-                new servicosDAO().insert(servicoObj);
+                if (idatualizacao == null) {
+                    new servicosDAO().insert(servicoObj);
+                } else {
+                    new servicosDAO().update(servicoObj, formServico.getIdAtualizacao());
+                }
                 return true;
             } catch (ClassNotFoundException e) {
                 formServico.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
@@ -654,7 +685,7 @@ public class controle {
         }
     }
 
-    public static boolean validaEntradasMensagem(formularioMensagem formMsg) {
+    public static boolean validaEntradasMensagem(formularioMensagem formMsg, String idatualizacao) {
 
         //validações comuns para todos os produtos
         if (validaVazio(formMsg.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
@@ -669,10 +700,14 @@ public class controle {
             mensagemObj.setDatacadastroFormatada(new SimpleDateFormat("yyyy-MM-dd"));
             mensagemObj.setNomeRazaoSocialRemetente(usuarioLogadoPF == null ? usuarioLogadoPJ.getRazaoSocial() : usuarioLogadoPF.getNome());
             mensagemObj.setCPFCNPJRemetente(usuarioLogadoPF == null ? usuarioLogadoPJ.getCPFCNPJ() : usuarioLogadoPF.getCPFCNPJ());
-            mensagemObj.setCPFCNPJdestinatario(formMsg.getViewdestinatario().getText().toString().trim());
+            mensagemObj.setCPFCNPJdestinatario(formMsg.getDestinatario().trim());
 
             try {
-                new mensagensDAO().insert(mensagemObj);
+                if (idatualizacao == null) {
+                    new mensagensDAO().insert(mensagemObj);
+                } else {
+                    new mensagensDAO().update(mensagemObj, formMsg.getIdmensagem());
+                }
                 return true;
             } catch (ClassNotFoundException e) {
                 formMsg.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");

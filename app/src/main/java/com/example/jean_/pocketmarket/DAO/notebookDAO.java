@@ -1,6 +1,8 @@
 package com.example.jean_.pocketmarket.DAO;
 
+import com.example.jean_.pocketmarket.controle.controle;
 import com.example.jean_.pocketmarket.modelo.carro;
+import com.example.jean_.pocketmarket.modelo.casa;
 import com.example.jean_.pocketmarket.modelo.notebook;
 
 import java.sql.ResultSet;
@@ -92,6 +94,8 @@ public class notebookDAO extends acesso implements metodosDAO {
     public ArrayList<?> select(String qualSelect) {
 
         ArrayList<notebook> lista = new ArrayList<>();
+        String docusuariologado = controle.usuarioLogado.equals("PF") ? controle.usuarioLogadoPF.getCPFCNPJ() : controle.usuarioLogadoPJ.getCPFCNPJ();
+        String condicao = qualSelect.equals("Usuario") ? " AND usuario_CPFCNPJ = '" + docusuariologado + "';" : ";";
 
         sql = "SELECT\n" +
                 "  produtocomputadoresnotebooks.idprodutoComputadoresNotebooks,\n" +
@@ -118,7 +122,8 @@ public class notebookDAO extends acesso implements metodosDAO {
                 "  produtocomputadoresnotebooks.dataDeCadastro,\n" +
                 "  produtocomputadoresnotebooks.fotoProduto, \n" +
                 "  produtocomputadoresnotebooks_has_usuario.usuario_CPFCNPJ\n" +
-                "  FROM market.produtocomputadoresnotebooks INNER JOIN produtocomputadoresnotebooks_has_usuario ON produtocomputadoresnotebooks.idprodutoComputadoresNotebooks = produtocomputadoresnotebooks_has_usuario.produtoComputadoresNotebooks_idprodutoComputadoresNotebooks WHERE categoriaProduto = 'Notebook';";
+                "  FROM market.produtocomputadoresnotebooks INNER JOIN produtocomputadoresnotebooks_has_usuario ON produtocomputadoresnotebooks.idprodutoComputadoresNotebooks = produtocomputadoresnotebooks_has_usuario.produtoComputadoresNotebooks_idprodutoComputadoresNotebooks " +
+                " WHERE categoriaProduto = 'Notebook'" + condicao;
 
         try {
             ResultSet resultado = stm.executeQuery(sql);
@@ -166,10 +171,30 @@ public class notebookDAO extends acesso implements metodosDAO {
     @Override
     public boolean update(Object obj, String idproduto) {
 
+        notebook compnote = (notebook) obj;
+        sql = "UPDATE `market`.`produtocomputadoresnotebooks`\n" +
+                "SET \n" +
+                "  `marca` = '"+ compnote.getMarca() +"',\n" +
+                "  `modelo` = '"+ compnote.getModelo() +"',\n" +
+                "  `RAM` = '"+ compnote.getRAM() +"',\n" +
+                "  `marcaProcessador` = '"+ compnote.getMarcaProcessador() +"',\n" +
+                "  `modeloProcessador` = '"+ compnote.getModeloProcessador() +"',\n" +
+                "  `armazenamento` = '"+ compnote.getArmazenamento() +"',\n" +
+                "  `sistema` = '"+ compnote.getSistema() +"',\n" +
+                "  `versaoSistema` = '"+ compnote.getVersaoSistema() +"',\n" +
+                "  `usado` = '"+ compnote.isUsado() +"',\n" +
+                "  `tamanhoTela` = '"+ compnote.getTamanhoTela() +"',\n" +
+                "  `possuiTecladoNumerico` = '"+ compnote.isPossuiTecladoNumerico() +"',\n" +
+                "  `possuiCarregador` = '"+ compnote.isPossuiCarregador() +"',\n" +
+                "  `tituloProduto` = '"+ compnote.getTituloProduto() +"',\n" +
+                "  `descricaoProduto` = '"+ compnote.getDescricaoProduto() +"',\n" +
+                "  `precoProduto` = '"+ compnote.getPrecoProduto() +"'\n" +
+                "WHERE `idprodutoComputadoresNotebooks` = '"+ idproduto +"';";
+
         try {
-
-
+            stm.executeUpdate(sql);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -179,10 +204,19 @@ public class notebookDAO extends acesso implements metodosDAO {
     @Override
     public boolean delete(String cpfcnpjvendedor, String idproduto) {
 
+        sql = "DELETE\n" +
+                "        FROM `market`.`produtocomputadoresnotebooks_has_usuario`\n" +
+                "        WHERE `produtoComputadoresNotebooks_idprodutoComputadoresNotebooks` = '" + idproduto +"'\n" +
+                "        AND `usuario_CPFCNPJ` = '" + cpfcnpjvendedor +"';";
+
+        String sql2 = "DELETE\n" +
+                "        FROM `market`.`produtocomputadoresnotebooks`\n" +
+                "        WHERE `idprodutoComputadoresNotebooks` = '" + idproduto +"';";
         try {
-
-
+            stm.executeUpdate(sql);
+            stm.executeUpdate(sql2);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }

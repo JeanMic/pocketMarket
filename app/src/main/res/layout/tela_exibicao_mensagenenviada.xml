@@ -48,13 +48,22 @@
         android:text="Small Text"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <!--<Button-->
-    <!--style="?android:attr/buttonStyleSmall"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="Mandar Msg"-->
-    <!--android:id="@+id/mandarmsgvendedormensagenenviada"-->
-    <!--android:layout_alignParentTop="true"-->
-    <!--android:layout_alignParentEnd="true"/>-->
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar"
+        android:id="@+id/editardadosmsgenviadausuario"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deletar"
+        android:id="@+id/apagarmsgenviadausuario"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/editardadosmsgenviadausuario" />
 
 </RelativeLayout>

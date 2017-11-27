@@ -1,6 +1,7 @@
 package com.example.jean_.pocketmarket.DAO;
 
 import com.example.jean_.pocketmarket.modelo.carro;
+import com.example.jean_.pocketmarket.modelo.usuarioPF;
 import com.example.jean_.pocketmarket.modelo.usuarioPJ;
 
 import java.sql.SQLException;
@@ -89,10 +90,29 @@ public class usuarioPJDAO extends acesso implements metodosDAO {
     @Override
     public boolean update(Object obj, String idproduto) {
 
+        usuarioPJ usuario = (usuarioPJ) obj;
+
+        sql = "UPDATE `market`.`usuario`\n" +
+                "SET \n" +
+                "  `DDDTelefoneOuCelular` = '" + usuario.getDDDTelefoneOuCelular() + "',\n" +
+                "  `telefoneOuCelular` = '" + usuario.getTelefoneOuCelular() + "',\n" +
+                "  `email` = '" + usuario.getEmail() + "',\n" +
+                "  `enderecoComResi` = '" + usuario.getEnderecoComResi() + "',\n" +
+                "  `cepComResi` = '" + usuario.getCEPComResi() + "',\n" +
+                "  `complementoComResi` = '" + usuario.getComplementoComResi() + "',\n" +
+                "  `numeroComResi` = '" + usuario.getNumeroComResi() + "',\n" +
+                "  `bairroComResi` = '" + usuario.getBairroComResi() + "',\n" +
+                "  `cidadeComResi` = '" + usuario.getCidadeComResi() + "',\n" +
+                "  `UFComResi` = '" + usuario.getUFComResi() + "',\n" +
+                "  `senha` = '" + usuario.getSenha() + "',\n" +
+                "  `razaoSocial` = '" + usuario.getRazaoSocial() + "',\n" +
+                "  `dataFundacao` = '" + usuario.getDataFundacao() + "',\n" +
+                "  `idadeFundacao` = '" + usuario.getIdadeFundacao() + "'\n" +
+                "WHERE `CPFCNPJ` = '" + usuario.getCPFCNPJ() + "';";
         try {
-
-
+            stm.executeUpdate(sql);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }

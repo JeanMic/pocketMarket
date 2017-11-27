@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.jean_.pocketmarket.R;
 import com.example.jean_.pocketmarket.controle.controle;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.principal.telaPrincipal;
 import com.example.jean_.pocketmarket.visao.util.Mask;
 
 /**
@@ -27,6 +28,8 @@ public class formularioPJ extends AppCompatActivity implements View.OnClickListe
     //variáveis de Ids e outras finalidades
     private Spinner viewSpinnercomercial;
     private AppCompatButton viewBtConfirmpj;
+
+    private boolean atualizarcadastro = false;
 
     private EditText viewRazaosocial;
     private EditText viewCNPJ;
@@ -71,7 +74,27 @@ public class formularioPJ extends AppCompatActivity implements View.OnClickListe
         //metodos dos items do formulário
         resgataIDViews();
         spinner();
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                atualizarcadastro = true;
+                this.viewRazaosocial.setText(bundle.getString("razaosocial"));
+                this.viewDtfundacao.setText(bundle.getString("datafundacao"));
+                this.viewEmailcontato.setText(bundle.getString("email"));
+                this.viewEnderecocomercial.setText(bundle.getString("endereco"));
+                this.viewCEPcomercial.setText(bundle.getString("cep"));
+                this.viewNumcomercial.setText(bundle.getString("numcomer"));
+                this.viewComplcomercial.setText(bundle.getString("complementocomer"));
+                this.viewBairrocomercial.setText(bundle.getString("bairro"));
+                this.viewCidadecomercial.setText(bundle.getString("cidade"));
+                this.viewDDDNumcomercial.setText(bundle.getString("dddnumcel"));
+            }
+        }
+
         viewBtConfirmpj.setOnClickListener(this);
+
     }
 
     @Override
@@ -92,8 +115,12 @@ public class formularioPJ extends AppCompatActivity implements View.OnClickListe
         txtDDDNumcomercial = viewDDDNumcomercial.getText().toString().trim();
 
         if (controle.validaEntradasUsuarioPJ(this)) {
-            Intent telaPrincipal = new Intent(getApplicationContext(), com.example.jean_.pocketmarket.visao.telasDepoisLogin.principal.telaPrincipal.class);
-            startActivity(telaPrincipal);
+            if (atualizarcadastro) {
+                Toast.makeText(this, "Cadastro Atualizado", Toast.LENGTH_LONG).show();
+            } else {
+                Intent telaPrincipal = new Intent(getApplicationContext(), telaPrincipal.class);
+                startActivity(telaPrincipal);
+            }
         } else {
             Toast.makeText(this, this.msgCtrl, Toast.LENGTH_LONG).show();
         }
@@ -195,6 +222,14 @@ public class formularioPJ extends AppCompatActivity implements View.OnClickListe
 
     public void setMsgCtrl(String msgCtrl) {
         this.msgCtrl = msgCtrl;
+    }
+
+    public boolean isAtualizarcadastro() {
+        return atualizarcadastro;
+    }
+
+    public void setAtualizarcadastro(boolean atualizarcadastro) {
+        this.atualizarcadastro = atualizarcadastro;
     }
 
 }

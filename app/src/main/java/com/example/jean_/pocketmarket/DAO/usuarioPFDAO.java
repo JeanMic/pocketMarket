@@ -21,7 +21,7 @@ public class usuarioPFDAO extends acesso implements metodosDAO {
         usuarioPF usuario = (usuarioPF) usua;
         sql = "INSERT INTO `market`.`usuario`" +
                 "            (`CPFCNPJ`," +
-               // "             `foto`," +
+                // "             `foto`," +
                 "             `tipoUsuario`," +
                 "             `DDDTelefoneOuCelular`," +
                 "             `telefoneOuCelular`," +
@@ -75,24 +75,36 @@ public class usuarioPFDAO extends acesso implements metodosDAO {
 
     @Override
     public ArrayList<carro> select(String qualSelect) {
-
-        try {
-
-
-            this.desconecta();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         return null;
     }
 
     @Override
     public boolean update(Object obj, String idproduto) {
 
+        usuarioPF usuario = (usuarioPF) obj;
+
+        sql = "UPDATE `market`.`usuario`\n" +
+                "SET \n" +
+                "  `DDDTelefoneOuCelular` = '" + usuario.getDDDTelefoneOuCelular() + "',\n" +
+                "  `telefoneOuCelular` = '" + usuario.getTelefoneOuCelular() + "',\n" +
+                "  `email` = '" + usuario.getEmail() + "',\n" +
+                "  `enderecoComResi` = '" + usuario.getEnderecoComResi() + "',\n" +
+                "  `cepComResi` = '" + usuario.getCEPComResi() + "',\n" +
+                "  `complementoComResi` = '" + usuario.getComplementoComResi() + "',\n" +
+                "  `numeroComResi` = '" + usuario.getNumeroComResi() + "',\n" +
+                "  `bairroComResi` = '" + usuario.getBairroComResi() + "',\n" +
+                "  `cidadeComResi` = '" + usuario.getCidadeComResi() + "',\n" +
+                "  `UFComResi` = '" + usuario.getUFComResi() + "',\n" +
+                "  `senha` = '" + usuario.getSenha() + "',\n" +
+                "  `nome` = '" + usuario.getNome() + "',\n" +
+                "  `sexo` = '" + usuario.getSexo() + "',\n" +
+                "  `dataNascimento` = '" + usuario.getDataNascimento() + "',\n" +
+                "  `idade` = '" + usuario.getIdade() + "'\n" +
+                "WHERE `CPFCNPJ` = '" + usuario.getCPFCNPJ() + "';";
         try {
-
-
+            stm.executeUpdate(sql);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -101,14 +113,6 @@ public class usuarioPFDAO extends acesso implements metodosDAO {
 
     @Override
     public boolean delete(String cpfcnpjvendedor, String idproduto) {
-
-        try {
-
-
-            this.desconecta();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         return false;
     }
 }

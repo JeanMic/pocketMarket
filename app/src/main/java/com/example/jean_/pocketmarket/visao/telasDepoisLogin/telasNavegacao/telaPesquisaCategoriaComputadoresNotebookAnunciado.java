@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasNavegacao;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.jean_.pocketmarket.R;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutodesktopUsuarioListView;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutonotebookUsuarioListView;
 
 /**
  * Created by jean_ on 21/11/2017.
@@ -52,14 +55,12 @@ public class telaPesquisaCategoriaComputadoresNotebookAnunciado extends AppCompa
         switch (v.getId()) {
 
             case R.id.ImgComputadoresNotebooksPesquisaDesktopAnunciado:
-                //fazer
-//                Intent CategoriasProdutos = new Intent(getApplicationContext(), telaCategoriasProdutos.class);
-//                startActivity(CategoriasProdutos);
+                Intent pesquisadesk = new Intent(getApplicationContext(), telaPesquisaProdutodesktopUsuarioListView.class);
+                startActivity(pesquisadesk);
                 break;
             case R.id.ImgComputadoresNotebooksPesquisaNotebookAnunciado:
-                //fazer
-//                Intent CategoriasPesquisaProdutos = new Intent(getApplicationContext(), telaPesquisaCategoriasProduto.class);
-//                startActivity(CategoriasPesquisaProdutos);
+                Intent pesquisanote = new Intent(getApplicationContext(), telaPesquisaProdutonotebookUsuarioListView.class);
+                startActivity(pesquisanote);
                 break;
 
         }

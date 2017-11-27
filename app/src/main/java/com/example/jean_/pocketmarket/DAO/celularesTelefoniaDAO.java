@@ -67,7 +67,7 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
                 "produtoCelularestelefonia_idprodutoCelularestelefonia,\n" +
                 "usuario_CPFCNPJ)\n" +
                 "SELECT LAST_INSERT_ID(),\n" +
-                "'"+ celtel.getCPFCNPJVendedor() +"';";
+                "'" + celtel.getCPFCNPJVendedor() + "';";
 
         try {
             stm.executeUpdate(sql);
@@ -82,7 +82,8 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
     public ArrayList<?> select(String qualSelect) {
 
         ArrayList<celularesTelefonia> lista = new ArrayList<>();
-        String segundaCondicao = qualSelect.isEmpty() ? "" : controle.usuarioLogadoPF == null ? "AND usuario_CPFCNPJ = '" + controle.usuarioLogadoPF.getCPFCNPJ() + "'" : "AND usuario_CPFCNPJ = '" + controle.usuarioLogadoPJ.getCPFCNPJ() + "'";
+        String docusuariologado = controle.usuarioLogado.equals("PF") ? controle.usuarioLogadoPF.getCPFCNPJ() : controle.usuarioLogadoPJ.getCPFCNPJ();
+        String condicao = qualSelect.equals("Usuario") ? " AND usuario_CPFCNPJ = '" + docusuariologado + "';" : ";";
 
         sql = "SELECT\n" +
                 "  idprodutoCelularestelefonia,\n" +
@@ -104,7 +105,7 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
                 "  produtocelularestelefonia_has_usuario.usuario_CPFCNPJ\n" +
                 "FROM market.produtocelularestelefonia INNER JOIN produtocelularestelefonia_has_usuario ON " +
                 "produtocelularestelefonia.idprodutoCelularestelefonia = produtocelularestelefonia_has_usuario.produtoCelularestelefonia_idprodutoCelularestelefonia " +
-                "WHERE categoriaProduto = 'Celular'" + segundaCondicao;
+                "WHERE categoriaProduto = 'Celular'" + condicao;
 
         try {
             ResultSet resultado = stm.executeQuery(sql);
@@ -149,10 +150,27 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
     @Override
     public boolean update(Object obj, String idproduto) {
 
+        celularesTelefonia celtel = (celularesTelefonia) obj;
+
+        sql = "UPDATE `market`.`produtocelularestelefonia`\n" +
+                "SET\n" +
+                "  `sistema` = '" + celtel.getSistema() + "',\n" +
+                "  `versaoSistema` = '" + celtel.getVersaoSistema() + "',\n" +
+                "  `tamanhoTela` = '" + celtel.getTamanhoTela() + "',\n" +
+                "  `marca` = '" + celtel.getMarca() + "',\n" +
+                "  `modelo` = '" + celtel.getModelo() + "',\n" +
+                "  `armazenamento` = '" + celtel.getArmazenamento() + "',\n" +
+                "  `usado` = '" + celtel.isUsado() + "',\n" +
+                "  `possuiCarregador` = '" + celtel.isPossuiCarregador() + "',\n" +
+                "  `possuiFoneDeOuvido` = '" + celtel.isPossuiFonedeOuvido() + "',\n" +
+                "  `tituloProduto` = '" + celtel.getTituloProduto() + "',\n" +
+                "  `descricaoProduto` = '" + celtel.getDescricaoProduto() + "',\n" +
+                "  `precoProduto` = '" + celtel.getPrecoProduto() + "'\n" +
+                "WHERE `idprodutoCelularestelefonia` = '" + idproduto + "';";
         try {
-
-
+            stm.executeUpdate(sql);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -162,10 +180,19 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
     @Override
     public boolean delete(String cpfcnpfvendedor, String idproduto) {
 
+        sql = "        DELETE\n" +
+                "        FROM `market`.`produtocelularestelefonia_has_usuario`\n" +
+                "        WHERE `produtoCelularestelefonia_idprodutoCelularestelefonia` = '" + idproduto + "'\n" +
+                "        AND `usuario_CPFCNPJ` = '" + cpfcnpfvendedor + "';";
+
+        String sql2 = "        DELETE\n" +
+                "        FROM `market`.`produtocelularestelefonia`\n" +
+                "        WHERE `idprodutoCelularestelefonia` ='" + idproduto + "';";
         try {
-
-
+            stm.executeUpdate(sql);
+            stm.executeUpdate(sql2);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }

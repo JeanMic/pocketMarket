@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.DAO;
 
+import com.example.jean_.pocketmarket.controle.controle;
 import com.example.jean_.pocketmarket.modelo.carro;
 import com.example.jean_.pocketmarket.modelo.casa;
 
@@ -96,6 +97,8 @@ public class casaDAO extends acesso implements metodosDAO {
     public ArrayList<?> select(String qualSelect) {
 
         ArrayList<casa> lista = new ArrayList<>();
+        String docusuariologado = controle.usuarioLogado.equals("PF") ? controle.usuarioLogadoPF.getCPFCNPJ() : controle.usuarioLogadoPJ.getCPFCNPJ();
+        String condicao = qualSelect.equals("Usuario") ? " AND usuario_CPFCNPJ = '" + docusuariologado + "';" : ";";
 
         sql = "SELECT\n" +
                 "  produtoimovel.idprodutoImovel,\n" +
@@ -124,7 +127,8 @@ public class casaDAO extends acesso implements metodosDAO {
                 "  produtoimovel.dataDeCadastro,\n" +
                 "  produtoimovel.fotoProduto,\n" +
                 "  produtoimovel_has_usuario.usuario_CPFCNPJ\n" +
-                "  FROM market.produtoimovel INNER JOIN produtoimovel_has_usuario ON produtoimovel.idprodutoImovel = produtoimovel_has_usuario.produtoImovel_idprodutoImovel WHERE categoriaProduto = 'Casa';";
+                "  FROM market.produtoimovel INNER JOIN produtoimovel_has_usuario ON produtoimovel.idprodutoImovel = produtoimovel_has_usuario.produtoImovel_idprodutoImovel " +
+                "WHERE categoriaProduto = 'Casa'" + condicao;
 
         try {
             ResultSet resultado = stm.executeQuery(sql);
@@ -173,11 +177,33 @@ public class casaDAO extends acesso implements metodosDAO {
 
     @Override
     public boolean update(Object obj, String idproduto) {
+        casa casa = (casa) obj;
+
+        sql = "UPDATE `market`.`produtoimovel`\n" +
+                "SET \n" +
+                "  `qtdQuartos` = '"+ casa.getQtdQuartos() + "',\n" +
+                "  `qtdDeSuites` = '"+ casa.getQtdDeSuites() +"',\n" +
+                "  `valorIPTU` = '"+ casa.getValorIPTU() +"',\n" +
+                "  `valorCondominio` = '"+ casa.getValorCondominio() +"',\n" +
+                "  `qtdVagasGaragem` = '"+ casa.getVagasNaGaragem() +"',\n" +
+                "  `vendaOuAluguel` = '"+ casa.getVendaOuAluguel() +"',\n" +
+                "  `CEPDoImovel` = '"+ casa.getCEPDoImovel() +"',\n" +
+                "  `possuiPiscina` = '"+ casa.isPossuiPiscina() +"',\n" +
+                "  `possuiAreadeServico` = '"+ casa.isPossuiAreaDeServico() +"',\n" +
+                "  `possuiArCondicionado` = '"+ casa.isPossuiArCondicionado() +"',\n" +
+                "  `possuiQuartoEmpregada` = '"+ casa.isPossuiQuardoEmpregada() +"',\n" +
+                "  `condominioFechado` = '"+ casa.isCondominioFechado() +"',\n" +
+                "  `areaconstruida` = '"+ casa.getAreaConstruida() +"',\n" +
+                "  `possuiCameraVigilancia` = '"+ casa.isPossuiCameraVigilancia() +"',\n" +
+                "  `tituloProduto` = '"+ casa.getTituloProduto() +"',\n" +
+                "  `descricaoProduto` = '"+ casa.getDescricaoProduto() +"',\n" +
+                "  `precoProduto` = '"+ casa.getPrecoProduto() +"'\n" +
+                "WHERE `idprodutoImovel` = '"+ idproduto +"';";
 
         try {
-
-
+            stm.executeUpdate(sql);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -187,10 +213,20 @@ public class casaDAO extends acesso implements metodosDAO {
     @Override
     public boolean delete(String cpfcnpjvendedor, String idproduto) {
 
+        sql = " DELETE\n" +
+                "        FROM `market`.`produtoimovel_has_usuario`\n" +
+                "        WHERE `produtoImovel_idprodutoImovel` = '"+ idproduto+ "'\n" +
+                "        AND `usuario_CPFCNPJ` = '"+ cpfcnpjvendedor+ "';";
+
+        String sql2 = "        DELETE\n" +
+                "        FROM `market`.`produtoimovel`\n" +
+                "        WHERE `idprodutoImovel` = '"+ idproduto +"';";
+
         try {
-
-
+            stm.executeUpdate(sql);
+            stm.executeUpdate(sql2);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
