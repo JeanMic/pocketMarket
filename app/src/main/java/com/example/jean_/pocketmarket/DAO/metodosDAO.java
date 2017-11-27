@@ -15,7 +15,7 @@ public interface metodosDAO {
 
     ArrayList<?> select(String qualSelect);
 
-    void update() throws SQLException;
+    boolean update(Object obj, String idproduto) throws SQLException;
 
-    void delete();
+    boolean delete(String cpfcnpjvendedor, String idproduto);
 }

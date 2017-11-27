@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/listaidvendamotousuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/listatitulomotousuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/listaidvendamotousuario"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/listadescricaomotousuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/listatitulomotousuario"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/listavendedormotousuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/listadescricaomotousuario"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/listamarcamotousuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/listavendedormotousuario"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/listamodelomotousuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/listamarcamotousuario"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/listaprecomotousuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/listamodelomotousuario"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar"
+        android:id="@+id/editardadosmotousuario"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deletar"
+        android:id="@+id/apagarmotousuario"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/editardadosmotousuario" />
+</RelativeLayout>

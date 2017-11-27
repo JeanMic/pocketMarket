@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.DAO;
 
+import com.example.jean_.pocketmarket.controle.controle;
 import com.example.jean_.pocketmarket.modelo.carro;
 import com.example.jean_.pocketmarket.modelo.motocicleta;
 
@@ -82,6 +83,8 @@ public class motocicletaDAO extends acesso implements metodosDAO {
     public ArrayList<?> select(String qualSelect) {
 
         ArrayList<motocicleta> lista = new ArrayList<>();
+        String docusuariologado = controle.usuarioLogado.equals("PF") ? controle.usuarioLogadoPF.getCPFCNPJ() : controle.usuarioLogadoPJ.getCPFCNPJ();
+        String condicao = qualSelect.equals("Usuario") ? " AND usuario_CPFCNPJ = '" + docusuariologado + "';" : ";";
 
         sql = "SELECT\n" +
                 " produtoveiculo.idVenda,\n" +
@@ -103,7 +106,8 @@ public class motocicletaDAO extends acesso implements metodosDAO {
                 " produtoveiculo.qtdPortas,\n" +
                 " produtoveiculo.cambio, \n" +
                 " usuario_has_produtoveiculo.usuario_CPFCNPJ\n" +
-                "  FROM produtoveiculo INNER JOIN usuario_has_produtoveiculo ON produtoveiculo.idVenda = usuario_has_produtoveiculo.produtoVeiculo_idVenda WHERE categoriaProduto = 'Moto';";
+                "  FROM produtoveiculo INNER JOIN usuario_has_produtoveiculo ON produtoveiculo.idVenda = usuario_has_produtoveiculo.produtoVeiculo_idVenda " +
+                "WHERE categoriaProduto = 'Moto'" + condicao;
 
         try {
             ResultSet resultado = stm.executeQuery(sql);
@@ -146,26 +150,54 @@ public class motocicletaDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public void update() {
+    public boolean update(Object obj, String idproduto) {
 
+        motocicleta moto = (motocicleta) obj;
+
+        sql = "UPDATE `market`.`produtoveiculo`\n" +
+                "SET " +
+                "  `tituloProduto` = '" + moto.getTituloProduto() + "',\n" +
+                "  `descricaoProduto` = '" + moto.getDescricaoProduto() + "',\n" +
+                "  `categoriaProduto` = '" + moto.getCategoriaProduto() + "',\n" +
+                "  `precoProduto` = '" + moto.getPrecoProduto() + "',\n" +
+                "  `marca` = '" + moto.getMarca() + "',\n" +
+                "  `modelo` = '" + moto.getModelo() + "',\n" +
+                "  `anoFabricacao` = '" + moto.getAnoFabricação() + "',\n" +
+                "  `placa` = '" + moto.getPlaca() + "',\n" +
+                "  `quilometragem` = '" + moto.getQuilometragem() + "',\n" +
+                "  `cor` = '" + moto.getCor() + "',\n" +
+                "  `combustivel` = '" + moto.getCombustivel() + "',\n" +
+                "  `possuiMultas` = '" + moto.getPossuiMultas() + "',\n" +
+                "  `cilindradas` = '" + moto.getCilindradas() + "'\n" +
+                "WHERE `idVenda` = '" + idproduto + "';";
         try {
-
-
+            stm.executeUpdate(sql);
             this.desconecta();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
-    public void delete() {
+    public boolean delete(String cpfcnpjvendedor, String idproduto) {
 
+        sql = "DELETE\n" +
+                "FROM `market`.`usuario_has_produtoveiculo`\n" +
+                "WHERE `usuario_CPFCNPJ` = '" + cpfcnpjvendedor + "'\n" +
+                "    AND `produtoVeiculo_idVenda` = '" + idproduto + "';";
+
+        String sql2 = "DELETE\n" +
+                "FROM `market`.`produtoveiculo`\n" +
+                "WHERE `idVenda` = '" + idproduto + "';";
         try {
-
-
+            stm.executeUpdate(sql);
+            stm.executeUpdate(sql2);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 }

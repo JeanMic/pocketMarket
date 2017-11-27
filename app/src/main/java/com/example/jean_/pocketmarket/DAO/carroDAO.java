@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.DAO;
 
+import com.example.jean_.pocketmarket.controle.controle;
 import com.example.jean_.pocketmarket.modelo.carro;
 
 import java.sql.ResultSet;
@@ -67,7 +68,7 @@ public class carroDAO extends acesso implements metodosDAO {
                 "usuario_CPFCNPJ)\n" +
                 "\n" +
                 "SELECT LAST_INSERT_ID(),\n" +
-                "'" + carro.getCPFCNPJVendedor() +"';";
+                "'" + carro.getCPFCNPJVendedor() + "';";
 
         try {
             stm.executeUpdate(sql);
@@ -79,10 +80,12 @@ public class carroDAO extends acesso implements metodosDAO {
 
     }
 
-//    @Override
+    //    @Override
     public ArrayList<?> select(String qualSelect) {
 
         ArrayList<carro> lista = new ArrayList<>();
+        String docusuariologado = controle.usuarioLogado.equals("PF") ? controle.usuarioLogadoPF.getCPFCNPJ() : controle.usuarioLogadoPJ.getCPFCNPJ();
+        String condicao = qualSelect.equals("Usuario") ? " AND usuario_CPFCNPJ = '" + docusuariologado + "';" : ";";
 
         sql = "SELECT\n" +
                 " produtoveiculo.idVenda,\n" +
@@ -104,13 +107,14 @@ public class carroDAO extends acesso implements metodosDAO {
                 " produtoveiculo.qtdPortas,\n" +
                 " produtoveiculo.cambio, \n" +
                 " usuario_has_produtoveiculo.usuario_CPFCNPJ\n" +
-                "  FROM produtoveiculo INNER JOIN usuario_has_produtoveiculo ON produtoveiculo.idVenda = usuario_has_produtoveiculo.produtoVeiculo_idVenda WHERE categoriaProduto = 'Carro';";
+                "  FROM produtoveiculo INNER JOIN usuario_has_produtoveiculo ON produtoveiculo.idVenda = usuario_has_produtoveiculo.produtoVeiculo_idVenda " +
+                "WHERE categoriaProduto = 'Carro'" + condicao;
 
         try {
             ResultSet resultado = stm.executeQuery(sql);
             Date data = null;
-            if (resultado != null){
-                while (resultado.next()){
+            if (resultado != null) {
+                while (resultado.next()) {
 
                     carro obj = new carro();
 
@@ -148,26 +152,54 @@ public class carroDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public void update() {
+    public boolean update(Object obj, String idproduto) {
+        carro carro = (carro) obj;
 
+        sql = "UPDATE `market`.`produtoveiculo`\n" +
+                "SET " +
+                "  `tituloProduto` = '" + carro.getTituloProduto() + "',\n" +
+                "  `descricaoProduto` = '" + carro.getDescricaoProduto() + "',\n" +
+                "  `categoriaProduto` = '" + carro.getCategoriaProduto() + "',\n" +
+                "  `precoProduto` = '" + carro.getPrecoProduto() + "',\n" +
+                "  `marca` = '" + carro.getMarca() + "',\n" +
+                "  `modelo` = '" + carro.getModelo() + "',\n" +
+                "  `anoFabricacao` = '" + carro.getAnoFabricação() + "',\n" +
+                "  `placa` = '" + carro.getPlaca() + "',\n" +
+                "  `quilometragem` = '" + carro.getQuilometragem() + "',\n" +
+                "  `cor` = '" + carro.getCor() + "',\n" +
+                "  `combustivel` = '" + carro.getCombustivel() + "',\n" +
+                "  `possuiMultas` = '" + carro.getPossuiMultas() + "',\n" +
+                "  `qtdPortas` = '" + carro.getQtdPortas() + "',\n" +
+                "  `cambio` = '" + carro.getCambio() + "'\n" +
+                "WHERE `idVenda` = '" + idproduto + "';";
         try {
-
-
+            stm.executeUpdate(sql);
             this.desconecta();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
-    public void delete() {
+    public boolean delete(String cpfcnpjvendedor, String idproduto) {
 
+        sql = "DELETE\n" +
+                "FROM `market`.`usuario_has_produtoveiculo`\n" +
+                "WHERE `usuario_CPFCNPJ` = '" + cpfcnpjvendedor + "'\n" +
+                "    AND `produtoVeiculo_idVenda` = '" + idproduto + "';";
+
+        String sql2 = "DELETE\n" +
+                "FROM `market`.`produtoveiculo`\n" +
+                "WHERE `idVenda` = '" + idproduto + "';";
         try {
-
-
+            stm.executeUpdate(sql);
+            stm.executeUpdate(sql2);
             this.desconecta();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 }

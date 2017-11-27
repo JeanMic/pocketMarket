@@ -173,7 +173,7 @@ public class controle {
         }
     }
 
-    public static boolean validaEntradasProdutoMoto(formularioProdMoto formMoto) {
+    public static boolean validaEntradasProdutoMoto(formularioProdMoto formMoto, String idatualizacao) {
 
         //validações comuns para todos os produtos
         if (validaVazio(formMoto.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
@@ -216,7 +216,11 @@ public class controle {
             moto.setCilindradas(Integer.parseInt(formMoto.getViewCilindradas().getText().toString().trim()));
 
             try {
-                new motocicletaDAO().insert(moto);
+                if (idatualizacao == null) {
+                    new motocicletaDAO().insert(moto);
+                } else {
+                    new motocicletaDAO().update(moto, formMoto.getIdAtualizacao());
+                }
                 return true;
             } catch (ClassNotFoundException e) {
                 formMoto.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
@@ -233,7 +237,7 @@ public class controle {
         }
     }
 
-    public static boolean validaEntradasProdutoCarro(formularioProdCarro formCarro) {
+    public static boolean validaEntradasProdutoCarro(formularioProdCarro formCarro, String idatualizacao) {
 
         //validações comuns para todos os produtos
         if (validaVazio(formCarro.getViewtituloProduto().getText().toString().trim(), "O Titulo Deve ser Informado") &&
@@ -278,7 +282,11 @@ public class controle {
             carro.setCambio(formCarro.getViewCambio().getText().toString().trim());
 
             try {
-                new carroDAO().insert(carro);
+                if (idatualizacao == null) {
+                    new carroDAO().insert(carro);
+                } else {
+                    new carroDAO().update(carro, formCarro.getIdAtualizacao());
+                }
                 return true;
             } catch (ClassNotFoundException e) {
                 formCarro.setMsgCtrl("Ocorreu um Erro no Servidor, Tente Novamente Mais Tarde");
@@ -705,6 +713,64 @@ public class controle {
         }
         return null;
     }
+
+    public static boolean deletaProdutos(String produto, String cpfcnpjvendedor, String idproduto) {
+        try {
+            switch (produto) {
+                case "Celular":
+                    return new celularesTelefoniaDAO().delete(cpfcnpjvendedor, idproduto);
+                case "Desktop":
+                    return new desktopDAO().delete(cpfcnpjvendedor, idproduto);
+                case "Notebook":
+                    return new notebookDAO().delete(cpfcnpjvendedor, idproduto);
+                case "Apartamento":
+                    return new apartamentoDAO().delete(cpfcnpjvendedor, idproduto);
+                case "Casa":
+                    return new casaDAO().delete(cpfcnpjvendedor, idproduto);
+                case "Carro":
+                    return new carroDAO().delete(cpfcnpjvendedor, idproduto);
+                case "Moto":
+                    return new motocicletaDAO().delete(cpfcnpjvendedor, idproduto);
+                case "Servico":
+                    return new servicosDAO().delete(cpfcnpjvendedor, idproduto);
+                case "Msg":
+                    return new mensagensDAO().delete(cpfcnpjvendedor, idproduto);
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
+//    public static boolean updateProdutos(String produto, String idproduto) {
+//        try {
+//            switch (produto) {
+//                case "Celular":
+//                    return new celularesTelefoniaDAO().update(idproduto);
+//                case "Desktop":
+//                    return new desktopDAO().update(idproduto);
+//                case "Notebook":
+//                    return new notebookDAO().update(idproduto);
+//                case "Apartamento":
+//                    return new apartamentoDAO().update(idproduto);
+//                case "Casa":
+//                    return new casaDAO().update(idproduto);
+//                case "Carro":
+//                    return new carroDAO().update(idproduto);
+//                case "Moto":
+//                    return new motocicletaDAO().update(idproduto);
+//                case "Servico":
+//                    return new servicosDAO().update(idproduto);
+//                case "Msg":
+//                    return new mensagensDAO().update(idproduto);
+//            }
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//        return false;
+//    }
 
     //testado
     public static boolean validaCPF(String CPF) {

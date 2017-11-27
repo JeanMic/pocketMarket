@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,9 @@ import android.widget.Toast;
 import com.example.jean_.pocketmarket.R;
 import com.example.jean_.pocketmarket.controle.controle;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by jmtb on 13/11/2017.
  */
@@ -23,6 +27,8 @@ public class formularioProdCarro extends AppCompatActivity implements View.OnCli
 
     //variáveis de Ids e outras finalidades
     private AppCompatButton viewBtConfirm;
+
+    private String idAtualizacao;
 
     //views comuns para todos os produtos
     private EditText viewtituloProduto;
@@ -39,7 +45,7 @@ public class formularioProdCarro extends AppCompatActivity implements View.OnCli
     private RadioGroup viewCombustivel;
     private RadioGroup viewRadiopossuiMultas;
 
-    //views view do produto moto
+    //views view do produto carro
     private EditText viewQtsPortas;
     private EditText viewCambio;
 
@@ -59,15 +65,37 @@ public class formularioProdCarro extends AppCompatActivity implements View.OnCli
         //metodos dos items do formulário
         resgataIDViews();
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                this.idAtualizacao = bundle.getString("idVenda");
+
+                this.viewtituloProduto.setText(bundle.getString("tituloProduto"));
+                this.viewdescricaoProduto.setText(bundle.getString("descricaoProduto"));
+                this.viewprecoProduto.setText(bundle.getString("precoProduto"));
+
+                //this.views comuns para todos os produtos veiculos
+                this.viewMarca.setText(bundle.getString("marca"));
+                this.viewModelo.setText(bundle.getString("modelo"));
+                this.viewanoFabricacao.setText(bundle.getString("anoFabricacao"));
+                this.viewPlaca.setText(bundle.getString("placa"));
+                this.viewQuilometragem.setText(bundle.getString("quilometragem"));
+                this.viewCor.setText(bundle.getString("cor"));
+
+                //this.views this.view do produto moto
+                this.viewQtsPortas.setText(bundle.getString("qtdPortas"));
+                this.viewCambio.setText(bundle.getString("cambio"));
+            }
+        }
+
         viewBtConfirm.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
 
-        if (controle.validaEntradasProdutoCarro(this)) {
-            //Intent telaPrincipal = new Intent(getApplicationContext(), telaPrincipal.class);
-            //startActivity(telaPrincipal);
+        if (controle.validaEntradasProdutoCarro(this, idAtualizacao)) {
             Toast.makeText(this, "cadastrou porra!!!!", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, this.msgCtrl, Toast.LENGTH_LONG).show();
@@ -152,5 +180,13 @@ public class formularioProdCarro extends AppCompatActivity implements View.OnCli
 
     public void setMsgCtrl(String msgCtrl) {
         this.msgCtrl = msgCtrl;
+    }
+
+    public String getIdAtualizacao() {
+        return idAtualizacao;
+    }
+
+    public void setIdAtualizacao(String idAtualizacao) {
+        this.idAtualizacao = idAtualizacao;
     }
 }

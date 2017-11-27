@@ -55,7 +55,7 @@ public class mensagensDAO extends acesso implements metodosDAO {
 
         ArrayList<mensagem> lista = new ArrayList<>();
         String docPesquisa = controle.usuarioLogado.equals("PF") ? controle.usuarioLogadoPF.getCPFCNPJ() : controle.usuarioLogadoPJ.getCPFCNPJ();
-        String condicao = qualSelect.equals("MsgRecebida") ? "CPFCNPJDestinatario = '"+ docPesquisa +"'" :  "CPFCNPJ_Remetente = '"+ docPesquisa +"'";
+        String condicao = qualSelect.equals("MsgRecebida") ? "CPFCNPJDestinatario = '" + docPesquisa + "'" : "CPFCNPJ_Remetente = '" + docPesquisa + "'";
 
         sql = "SELECT\n" +
                 "  idmensagem,\n" +
@@ -97,7 +97,7 @@ public class mensagensDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public void update() {
+    public boolean update(Object obj, String idproduto) {
 
         try {
 
@@ -106,10 +106,11 @@ public class mensagensDAO extends acesso implements metodosDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
-    public void delete() {
+    public boolean delete(String cpfcnpjvendedor, String idproduto) {
 
         try {
 
@@ -118,5 +119,6 @@ public class mensagensDAO extends acesso implements metodosDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 }

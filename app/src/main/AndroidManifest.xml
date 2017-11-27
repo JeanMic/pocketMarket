@@ -173,6 +173,14 @@
             android:name=".visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaMsgEnviadaListView"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutocarroUsuarioListView"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutomotoUsuarioListView"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

@@ -86,13 +86,13 @@ public class servicosDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public void update() throws SQLException {
-
+    public boolean update(Object obj, String idproduto) {
+        return false;
     }
 
     @Override
-    public void delete() {
-
+    public boolean delete(String cpfcnpjvendedor, String idproduto) {
+        return false;
     }
 
 }

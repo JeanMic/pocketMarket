@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.visao.telasDepoisLogin.formularios_cadastro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,8 @@ public class formularioProdMoto extends AppCompatActivity implements View.OnClic
 
     //variáveis de Ids e outras finalidades
     private AppCompatButton viewBtConfirm;
+
+    private String idAtualizacao;
 
     //views comuns para todos os produtos
     private EditText viewtituloProduto;
@@ -58,13 +61,36 @@ public class formularioProdMoto extends AppCompatActivity implements View.OnClic
         //metodos dos items do formulário
         resgataIDViews();
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                this.idAtualizacao = bundle.getString("idVenda");
+
+                this.viewtituloProduto.setText(bundle.getString("tituloProduto"));
+                this.viewdescricaoProduto.setText(bundle.getString("descricaoProduto"));
+                this.viewprecoProduto.setText(bundle.getString("precoProduto"));
+
+                //this.views comuns para todos os produtos veiculos
+                this.viewMarca.setText(bundle.getString("marca"));
+                this.viewModelo.setText(bundle.getString("modelo"));
+                this.viewanoFabricacao.setText(bundle.getString("anoFabricacao"));
+                this.viewPlaca.setText(bundle.getString("placa"));
+                this.viewQuilometragem.setText(bundle.getString("quilometragem"));
+                this.viewCor.setText(bundle.getString("cor"));
+
+                //this.views this.view do produto moto
+                this.viewCilindradas.setText(bundle.getString("cilindradas"));
+            }
+        }
+
         viewBtConfirm.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
 
-        if (controle.validaEntradasProdutoMoto(this)) {
+        if (controle.validaEntradasProdutoMoto(this, idAtualizacao)) {
             //Intent telaPrincipal = new Intent(getApplicationContext(), telaPrincipal.class);
             //startActivity(telaPrincipal);
             Toast.makeText(this, "cadastrou porra!!!!", Toast.LENGTH_LONG).show();
@@ -146,5 +172,13 @@ public class formularioProdMoto extends AppCompatActivity implements View.OnClic
 
     public void setMsgCtrl(String msgCtrl) {
         this.msgCtrl = msgCtrl;
+    }
+
+    public String getIdAtualizacao() {
+        return idAtualizacao;
+    }
+
+    public void setIdAtualizacao(String idAtualizacao) {
+        this.idAtualizacao = idAtualizacao;
     }
 }

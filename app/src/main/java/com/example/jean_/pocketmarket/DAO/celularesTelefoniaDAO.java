@@ -147,7 +147,7 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public void update() {
+    public boolean update(Object obj, String idproduto) {
 
         try {
 
@@ -156,10 +156,11 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
-    public void delete() {
+    public boolean delete(String cpfcnpfvendedor, String idproduto) {
 
         try {
 
@@ -168,6 +169,7 @@ public class celularesTelefoniaDAO extends acesso implements metodosDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
 }

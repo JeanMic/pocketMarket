@@ -1,5 +1,6 @@
 package com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasNavegacao;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.jean_.pocketmarket.R;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutocarroUsuarioListView;
+import com.example.jean_.pocketmarket.visao.telasDepoisLogin.telasExibicaoPesquisas.telasListViews.telaPesquisaProdutomotoUsuarioListView;
 
 /**
  * Created by jean_ on 21/11/2017.
@@ -52,14 +55,12 @@ public class telaPesquisaCategoriaVeiculoAnunciados extends AppCompatActivity im
         switch (v.getId()) {
 
             case R.id.ImgTelaVeiculosPesquisaCarroAnunciado:
-                //fazer
-//                Intent CategoriasProdutos = new Intent(getApplicationContext(), telaCategoriasProdutos.class);
-//                startActivity(CategoriasProdutos);
+                Intent carropesquisado = new Intent(getApplicationContext(), telaPesquisaProdutocarroUsuarioListView.class);
+                startActivity(carropesquisado);
                 break;
             case R.id.ImgTelaVeiculosPesquisaMotoAnunciado:
-                //fazer
-//                Intent CategoriasPesquisaProdutos = new Intent(getApplicationContext(), telaPesquisaCategoriasProduto.class);
-//                startActivity(CategoriasPesquisaProdutos);
+                Intent motopesquisada = new Intent(getApplicationContext(), telaPesquisaProdutomotoUsuarioListView.class);
+                startActivity(motopesquisada);
                 break;
 
         }

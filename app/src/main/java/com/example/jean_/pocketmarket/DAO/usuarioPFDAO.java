@@ -87,7 +87,7 @@ public class usuarioPFDAO extends acesso implements metodosDAO {
     }
 
     @Override
-    public void update() {
+    public boolean update(Object obj, String idproduto) {
 
         try {
 
@@ -96,10 +96,11 @@ public class usuarioPFDAO extends acesso implements metodosDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
-    public void delete() {
+    public boolean delete(String cpfcnpjvendedor, String idproduto) {
 
         try {
 
@@ -108,5 +109,6 @@ public class usuarioPFDAO extends acesso implements metodosDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 }
